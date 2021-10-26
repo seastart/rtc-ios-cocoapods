@@ -8,9 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RTCEngineKit'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of RTCEngineKit.'
-
+  s.version          = '0.0.1'
+  s.summary          = 'RTC服务引擎.'
+  
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
@@ -20,23 +20,22 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
                        DESC
-
-  s.homepage         = 'https://github.com/SailorGa/RTCEngineKit'
+                       
+  s.homepage         = 'http://code.zaoing.com/meeting/RTCEngineKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'SailorGa' => 'ljia789@gmail.com' }
-  s.source           = { :git => 'https://github.com/SailorGa/RTCEngineKit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'http://code.zaoing.com/meeting/RTCEngineKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '9.0'
-
-  s.source_files = 'RTCEngineKit/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'RTCEngineKit' => ['RTCEngineKit/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  # 指定支持平台
+  s.ios.deployment_target = '9.0'
+  
+  # 依赖系统Frameworks库
+  s.ios.frameworks = 'QuartzCore', 'Foundation', 'CoreFoundation'
+  # 依赖系统Librarie库
+  s.ios.library = 'c++'
+  
+  # 依赖本地Frameworks库
+  s.vendored_frameworks = 'RTCEngineKit/RTCEngineKit.framework'
 end

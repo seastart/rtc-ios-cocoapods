@@ -1,6 +1,0 @@
-use_frameworks!
-target 'RTCEngineKit_Tests' do
-  pod 'RTCEngineKit', :path => '../'
-  
-  
-end
