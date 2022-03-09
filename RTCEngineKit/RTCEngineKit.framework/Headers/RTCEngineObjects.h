@@ -119,7 +119,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RTCEngineRoomModel : NSObject
 
 /// 房间ID
-@property (nonatomic, assign) NSInteger id;
+@property (nonatomic, copy) NSString *id;
 /// 最大音频路数
 @property (nonatomic, assign) NSInteger maxAudios;
 /// 最大成员路数
