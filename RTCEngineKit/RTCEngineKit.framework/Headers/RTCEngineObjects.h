@@ -32,9 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 初始化RTC配置参数
 @interface RTCEngineConfig : NSObject
 
-/// 平台分配的AppID
+/// AppID
 @property (nonatomic, copy) NSString *appId;
-/// 平台分配的AppKey
+/// AppKey
 @property (nonatomic, copy) NSString *appKey;
 /// 服务器地址
 @property (nonatomic, copy) NSString *domain;
@@ -46,9 +46,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *secret;
 /// 日志文件路径
 @property (nonatomic, copy, nullable) NSString *logFile;
-/// 服务线路ID
+/// 服务线路标识
 @property (nonatomic, copy, nullable) NSString *lineId;
-/// 服务分组ID
+/// 服务分组标识
 @property (nonatomic, copy, nullable) NSString *groupId;
 
 @end
@@ -57,16 +57,16 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 用户信息
 @interface RTCEngineUserModel : NSObject
 
-/// 用户ID(用户凭证)
+/// 用户标识
 @property (nonatomic, copy) NSString *id;
 /// 用户名称
 @property (nonatomic, copy) NSString *name;
 /// 用户头像
 @property (nonatomic, copy, nullable) NSString *avatar;
-/// SDKNO
-@property (nonatomic, copy) NSString *sdkNo;
-/// 会话标识
-@property (nonatomic, copy) NSString *sessionId;
+/// 连接标识
+@property (nonatomic, copy) NSString *linkid;
+/// 会话令牌
+@property (nonatomic, copy) NSString *sessionKey;
 
 /// 成员角色，默认 RTCUserRoleTypeDefault
 @property (nonatomic, assign) RTCUserRoleType role;
@@ -92,7 +92,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 码流信息
 @interface RTCEngineStreamModel : NSObject
 
-/// 码流ID
+/// 码流标识
 @property (nonatomic, assign) NSInteger id;
 /// 码流类型
 @property (nonatomic, assign) NSInteger type;
@@ -118,16 +118,16 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 房间信息
 @interface RTCEngineRoomModel : NSObject
 
-/// 房间ID
+/// 房间标识
 @property (nonatomic, copy) NSString *id;
 /// 最大音频路数
 @property (nonatomic, assign) NSInteger maxAudios;
 /// 最大成员路数
 @property (nonatomic, assign) NSInteger maxUsers;
-/// SDKNO
-@property (nonatomic, copy) NSString *sdkNo;
-/// 会话标识
-@property (nonatomic, copy) NSString *sessionId;
+/// 连接标识
+@property (nonatomic, copy) NSString *linkid;
+/// 会话令牌
+@property (nonatomic, copy) NSString *sessionKey;
 /// 更新时间
 @property (nonatomic, assign) NSInteger updatedAt;
 
@@ -151,7 +151,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 消息内容
 @property (nonatomic, copy) NSString *message;
-/// 房间ID
+/// 房间标识
 @property (nonatomic, copy) NSString *roomId;
 /// 用户信息
 @property (nonatomic, strong) RTCEngineUserModel *sender;
@@ -186,11 +186,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 电子画板配置参数
 @interface RTCDrawingConfig : NSObject
 
-/// 房间ID
+/// 房间标识
 @property (nonatomic, copy) NSString *roomId;
 /// 图片地址
 @property (nonatomic, copy) NSString *picUrl;
-/// 用户ID
+/// 用户标识
 @property (nonatomic, copy) NSString *userId;
 
 /// 画板权限，默认 RTCDrawingPrivilegesAdmin

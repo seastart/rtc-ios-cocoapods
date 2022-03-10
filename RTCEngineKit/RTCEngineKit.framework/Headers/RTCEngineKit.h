@@ -46,13 +46,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - ------------ Core Service ------------
 
-#pragma mark RTC服务代理
-/// RTC服务代理
-@property (nonatomic, weak) id <RTCEngineDelegate> delegate;
-
-#pragma mark 获取RTC实例
-/// 获取RTC实例
+#pragma mark 获取RTC单例实例
+/// 获取RTC单例实例
 + (RTCEngineKit *)sharedEngine;
+
+#pragma mark 类方法初始化RTC服务
+/// 类方法初始化RTC服务
+/// @param engineConfig 配置参数
+/// @param delegate 代理回调
++ (nullable instancetype)sharedEngineWithConfig:(RTCEngineConfig *)engineConfig delegate:(nullable id <RTCEngineDelegate>)delegate;
+
+#pragma mark 实例方法初始化RTC服务
+/// 实例方法初始化RTC服务
+/// @param engineConfig 配置参数
+/// @param delegate 代理回调
+- (BOOL)initializeWithConfig:(RTCEngineConfig *)engineConfig delegate:(nullable id <RTCEngineDelegate>)delegate;
 
 #pragma mark RTC服务版本
 ///  RTC服务版本
@@ -61,11 +69,6 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark RTC服务版本信息
 /// RTC服务版本信息
 - (NSString *)versionInfo;
-
-#pragma mark 初始化RTC服务
-/// 初始化RTC服务
-/// @param engineConfig 配置参数
-- (BOOL)initializeWithConfig:(RTCEngineConfig *)engineConfig;
 
 #pragma mark 加入房间
 /// 加入房间
