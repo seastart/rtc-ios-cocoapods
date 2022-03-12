@@ -51,6 +51,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 服务分组标识
 @property (nonatomic, copy, nullable) NSString *groupId;
 
+/// 终端类型，默认 RTCTerminalTypeIOS
+@property (nonatomic, assign) RTCTerminalType terminalType;
+/// 终端描述
+@property (nonatomic, copy, nullable) NSString *terminateDesc;
+
 @end
 
 

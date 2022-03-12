@@ -102,8 +102,13 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark 变更用户信息
 /// 变更用户信息
 /// @param userModel 用户信息
+- (nullable RTCEngineUserModel *)changeWithUserModel:(RTCEngineUserModel *)userModel;
+
+#pragma mark 变更码流信息
+/// 变更码流信息
+/// @param streams 码流信息列表
 /// @param changeType 变更操作类型
-- (nullable RTCEngineUserModel *)changeWithUserModel:(RTCEngineUserModel *)userModel changeType:(RTCChangeType)changeType;
+- (nullable RTCEngineUserModel *)changeWithStreams:(NSArray <RTCEngineStreamModel *> *)streams changeType:(RTCChangeType)changeType;
 
 #pragma mark 变更房间信息
 /// 变更房间信息

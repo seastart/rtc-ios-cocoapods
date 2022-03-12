@@ -24,6 +24,8 @@ FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameJoin;
 FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameRoomEvent;
 /// 成员事件
 FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameUserEvent;
+/// 码流事件
+FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameStreamsEvent;
 /// 退出事件
 FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameUserLeave;
 /// 消息事件
@@ -76,6 +78,30 @@ typedef enum : NSInteger {
     RTCEngineResultThirdPartyRefused = 12,
     RTCEngineResultTPNetError = 13
 } RTCEngineResult;
+
+
+#pragma mark - 终端类型
+/**
+ 终端类型
+ 
+ - RTCTerminalTypeUnknown: 未知终端
+ - RTCTerminalTypeWindows: Windows端
+ - RTCTerminalTypeMacOS: Mac端
+ - RTCTerminalTypeAndroid: 安卓端
+ - RTCTerminalTypeAndroidTV: 安卓TV端
+ - RTCTerminalTypeIOS: iOS端
+ - RTCTerminalTypeEmbeddedDev: 嵌入式终端
+ */
+typedef enum : NSUInteger {
+    
+    RTCTerminalTypeUnknown = 0,
+    RTCTerminalTypeWindows = 1000,
+    RTCTerminalTypeMacOS = 1001,
+    RTCTerminalTypeAndroid = 2000,
+    RTCTerminalTypeAndroidTV = 2001,
+    RTCTerminalTypeIOS = 2002,
+    RTCTerminalTypeEmbeddedDev = 3000
+} RTCTerminalType;
 
 
 #pragma mark - 成员角色类型
