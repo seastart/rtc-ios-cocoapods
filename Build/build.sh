@@ -75,14 +75,14 @@ echo "#################### Push完成 ####################"
 
 # 发布组件版本
 echo "#################### 正在发布 ####################"
-pod repo push freewindSpecs ${PODSPEC_PATH} --skip-import-validation --allow-warnings --use-libraries --verbose | tee ${ISSUE_LOG_FILE}
+pod trunk push ${PODSPEC_PATH} --skip-import-validation --allow-warnings --use-libraries --verbose | tee ${ISSUE_LOG_FILE}
 
 COUNT=0
 TOTAL_COUNT=3
 
 while read LOG_LINE
 do
-	if [[ ${LOG_LINE} == "Updating the \`freewindSpecs' repo" || ${LOG_LINE} == "Adding the spec to the \`freewindSpecs' repo" || ${LOG_LINE} == "Pushing the \`freewindSpecs' repo" ]]; then
+	if [[ ${LOG_LINE} == "Updating the \`trunk' repo" || ${LOG_LINE} == "Adding the spec to the \`trunk' repo" || ${LOG_LINE} == "Pushing the \`trunk' repo" ]]; then
 		COUNT=`expr ${COUNT} + 1`
 	fi
 done < $ISSUE_LOG_FILE

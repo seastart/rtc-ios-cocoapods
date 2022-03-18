@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RTCEngineKit'
-  s.version          = '1.0.3'
+  s.version          = '1.0.0'
   s.summary          = 'RTC服务引擎.'
   
 # This description is used to generate tags and improve search results.
@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
                        
-  s.homepage         = 'http://code.zaoing.com/meeting/RTCEngineKit'
+  s.homepage         = 'https://github.com/seastart/RTCEngineKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'SailorGa' => 'ljia789@gmail.com' }
-  s.source           = { :git => 'http://code.zaoing.com/meeting/RTCEngineKit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/seastart/RTCEngineKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   
   # 指定支持平台
