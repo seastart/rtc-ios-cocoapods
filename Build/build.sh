@@ -6,8 +6,11 @@ DERIVED_DATA_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # 获取工程文件目录
 PROJECT_PATH="$( cd "$( dirname "$PWD" )" && pwd )"
 
+# 项目名字
+LIBRARY_NAME="RTCEngineKit"
+
 # 项目Podspec名字
-PODSPEC_NAME="RTCEngineKit.podspec"
+PODSPEC_NAME="${LIBRARY_NAME}.podspec"
 
 # podspec文件路径
 PODSPEC_PATH=${PROJECT_PATH}/${PODSPEC_NAME}
@@ -82,7 +85,7 @@ TOTAL_COUNT=3
 
 while read LOG_LINE
 do
-	if [[ ${LOG_LINE} == "Updating the \`trunk' repo" || ${LOG_LINE} == "Adding the spec to the \`trunk' repo" || ${LOG_LINE} == "Pushing the \`trunk' repo" ]]; then
+	if [[ ${LOG_LINE} == "Push for \`${LIBRARY_NAME} ${OID_VERSION}' has been pushed" ]]; then
 		COUNT=`expr ${COUNT} + 1`
 	fi
 done < $ISSUE_LOG_FILE
