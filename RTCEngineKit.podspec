@@ -32,9 +32,9 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '9.0'
   
   # 依赖系统Frameworks库
-  s.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreFoundation', 'CoreMedia', 'CoreVideo', 'Foundation', 'QuartzCore', 'Metal'
+  s.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreFoundation', 'CoreMedia', 'CoreVideo', 'Foundation', 'QuartzCore', 'Metal', 'MetalPerformanceShaders', 'Security', 'OpenGLES', 'Accelerate', 'CoreML', 'CoreGraphics'
   # 依赖系统Librarie库
-  s.ios.library = 'c++'
+  s.ios.library = 'c++', 'z', 'iconv'
   
   # 依赖本地Frameworks库
   s.vendored_frameworks = 'RTCEngineKit/RTCEngineKit.framework'
