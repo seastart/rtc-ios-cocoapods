@@ -32,7 +32,7 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '10.0'
   
   # 依赖系统Frameworks库
-  s.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreFoundation', 'CoreMedia', 'CoreVideo', 'Foundation', 'QuartzCore', 'Metal', 'MetalPerformanceShaders', 'Security', 'OpenGLES', 'Accelerate', 'CoreML', 'CoreGraphics', 'ReplayKit'
+  s.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreFoundation', 'CoreMedia', 'CoreVideo', 'Foundation', 'QuartzCore', 'Metal', 'MetalPerformanceShaders', 'Security', 'OpenGLES', 'Accelerate', 'CoreML', 'CoreGraphics', 'ReplayKit', 'SystemConfiguration'
   # 依赖系统Librarie库
   s.ios.library = 'c++', 'z', 'iconv'
   
