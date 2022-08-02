@@ -10,40 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#pragma mark - ------- RTC服务事件名称枚举类型 -------
-typedef NSString *RTCEngineKitEventName NS_STRING_ENUM;
-
-#pragma mark RTC服务事件
-/// 错误事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameError;
-/// 登录事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameLogin;
-/// 加入事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameJoin;
-/// 房间事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameRoomEvent;
-/// 成员事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameUserEvent;
-/// 码流事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameStreamsEvent;
-/// 退出事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameUserLeave;
-/// 消息事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameMessage;
-
-#pragma mark 电子画板事件
-/// 电子画板加入事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameDrawingJoin;
-/// 电子画板绘制事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameDrawingDraw;
-/// 电子画板撤销事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameDrawingBack;
-/// 电子画板清空事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameDrawingClean;
-/// 电子画板重置事件
-FOUNDATION_EXPORT RTCEngineKitEventName const RTCEngineKitEventNameDrawingReset;
-
-
 #pragma mark - RTC错误码
 /**
  RTC错误码
@@ -134,6 +100,206 @@ typedef enum : NSUInteger {
     RTCCodecTypeAAC = 0x0f,
     RTCCodecTypeOPUS = 0x5355504f
 } RTCCodecType;
+
+
+#pragma mark - 码流轨道掩码
+/**
+ 码流轨道掩码
+ 
+ - RTCTrackMaskFlags0: 轨道0掩码
+ - RTCTrackMaskFlags1: 轨道1掩码
+ - RTCTrackMaskFlags2: 轨道2掩码
+ - RTCTrackMaskFlags3: 轨道3掩码
+ - RTCTrackMaskFlags4: 轨道4掩码
+ - RTCTrackMaskFlags5: 轨道5掩码
+ - RTCTrackMaskFlags6: 轨道6掩码
+ */
+typedef enum : NSUInteger {
+    
+    RTCTrackMaskFlags0 = 1 << 0,
+    RTCTrackMaskFlags1 = 1 << 1,
+    RTCTrackMaskFlags2 = 1 << 2,
+    RTCTrackMaskFlags3 = 1 << 3,
+    RTCTrackMaskFlags4 = 1 << 4,
+    RTCTrackMaskFlags5 = 1 << 5,
+    RTCTrackMaskFlags6 = 1 << 6,
+} RTCTrackMaskFlags;
+
+
+#pragma mark - 码流轨道标识
+/**
+ 码流轨道标识
+ 
+ - RTCTrackIdentifierFlags0: 轨道0标识(子码流)
+ - RTCTrackIdentifierFlags1: 轨道1标识(主码流)
+ - RTCTrackIdentifierFlags2: 轨道2标识(共享码流)
+ - RTCTrackIdentifierFlags3: 轨道3标识(可自定义码流)
+ - RTCTrackIdentifierFlags4: 轨道4标识(可自定义码流)
+ - RTCTrackIdentifierFlags5: 轨道5标识(可自定义码流)
+ - RTCTrackIdentifierFlags6: 轨道6标识(可自定义码流)
+ */
+typedef enum : NSInteger {
+    
+    RTCTrackIdentifierFlags0 = 0,
+    RTCTrackIdentifierFlags1 = 1,
+    RTCTrackIdentifierFlags2 = 2,
+    RTCTrackIdentifierFlags3 = 3,
+    RTCTrackIdentifierFlags4 = 4,
+    RTCTrackIdentifierFlags5 = 5,
+    RTCTrackIdentifierFlags6 = 6
+} RTCTrackIdentifierFlags;
+
+
+#pragma mark - 屏幕共享状态
+/**
+ 屏幕共享状态
+ 
+ - RTCScreenRecordStatusError: 屏幕共享连接错误
+ - RTCScreenRecordStatusStop: 屏幕共享已经停止
+ - RTCScreenRecordStatusStart: 屏幕共享已经开始
+ */
+typedef enum : NSInteger {
+    
+    RTCScreenRecordStatusError = -1,
+    RTCScreenRecordStatusStop = 0,
+    RTCScreenRecordStatusStart = 1
+} RTCScreenRecordStatus;
+
+
+#pragma mark - 网络延时抗抖动等级
+/**
+ 网络延时抗抖动等级
+ 
+ - RTCNetworkQosShakeLevelUltraShort: 超短(0) 单向延迟120ms左右 这种模式下没有丢包补偿机制 并且编码关闭了B帧 一般不建议实际使用
+ - RTCNetworkQosShakeLevelShort: 短(1) 单向延迟200ms左右 单次丢包补偿 B帧为1 双向对讲环境下可以使用
+ - RTCNetworkQosShakeLevelMedium: 中(2) 单向延迟350ms左右 两次丢包补偿 B帧为1 双向对讲环境下推荐使用
+ - RTCNetworkQosShakeLevelLong: 长(3) 单向延迟600ms左右 三次丢包补偿 B帧为3 这种模式仅用于单向收看 双向对讲环境下不建议使用 该参数无法动态设置
+ */
+typedef enum : NSInteger {
+    
+    RTCNetworkQosShakeLevelUltraShort = 0,
+    RTCNetworkQosShakeLevelShort = 1,
+    RTCNetworkQosShakeLevelMedium = 2,
+    RTCNetworkQosShakeLevelLong = 3
+} RTCNetworkQosShakeLevel;
+
+
+#pragma mark - 音频路由类型
+/**
+ 音频路由类型
+ 
+ - RTCAudioRouteUnknown: 无效(未知原因)
+ - RTCAudioRouteSpeaker: 扬声器(免提模式)
+ - RTCAudioRouteReceiver: 听筒(听筒模式)
+ - RTCAudioRouteBluetooth: 蓝牙设备(蓝牙模式)
+ - RTCAudioRouteHeadset: 有线耳机设备(有线耳机模式)
+ */
+typedef enum : NSInteger {
+    
+    RTCAudioRouteUnknown = 0,
+    RTCAudioRouteSpeaker = 1,
+    RTCAudioRouteReceiver = 2,
+    RTCAudioRouteBluetooth = 3,
+    RTCAudioRouteHeadset = 4
+} RTCAudioRoute;
+
+
+#pragma mark - 网络状况
+/**
+ 网络状况
+ 
+ - RTCNetworkStateNormal: 良好
+ - RTCNetworkStatePoor: 不佳
+ - RTCNetworkStateBad:  较差
+ - RTCNetworkStateVeryBad: 极差
+ */
+typedef enum : NSInteger {
+    
+    RTCNetworkStateNormal = 0,
+    RTCNetworkStatePoor = 1,
+    RTCNetworkStateBad = 2,
+    RTCNetworkStateVeryBad = 3
+} RTCNetworkState;
+
+
+#pragma mark - 订阅远程流类型
+/**
+ 订阅远程流类型
+ 
+ - RTCPickerStateClose: 关闭订阅
+ - RTCPickerStateAudio: 订阅音频流
+ - RTCPickerStateVideo: 订阅视频流
+ - RTCPickerStateAudioAndVideo: 订阅音视频流
+ - RTCPickerStateBesides: 订阅除某个人的流
+ */
+typedef enum : NSInteger {
+    
+    RTCPickerStateClose = 0,
+    RTCPickerStateAudio = 1,
+    RTCPickerStateVideo = 2,
+    RTCPickerStateAudioAndVideo = 3,
+    RTCPickerStateBesides = 0x2000
+} RTCPickerState;
+
+
+#pragma mark - 下行码率自适应状态
+/**
+ 下行码率自适应状态
+ 
+ - RTCDownBitrateAdaptiveStateNormal: 正常
+ - RTCDownBitrateAdaptiveStatePoor: 较差
+ - RTCDownBitrateAdaptiveStateBad: 很差
+ - RTCDownBitrateAdaptiveStateVeryBad: 极差
+ - RTCDownBitrateAdaptiveStateLose: 下行链路状态不存在
+ */
+typedef enum : NSInteger {
+    
+    RTCDownBitrateAdaptiveStateNormal = 0,
+    RTCDownBitrateAdaptiveStatePoor = -1,
+    RTCDownBitrateAdaptiveStateBad = -2,
+    RTCDownBitrateAdaptiveStateVeryBad = -3,
+    RTCDownBitrateAdaptiveStateLose = -4
+} RTCDownBitrateAdaptiveState;
+
+
+#pragma mark - 下行平均丢包档位
+/**
+ 下行平均丢包档位
+ 
+ - RTCDownLossLevelStateInvalid: 无效
+ - RTCDownLossLevelStateNormal: 正常
+ - RTCDownLossLevelStatePoor: 较差
+ - RTCDownLossLevelStateBad:  很差
+ - RTCDownLossLevelStateVeryBad: 极差
+ */
+typedef enum : NSInteger {
+    
+    RTCDownLossLevelStateInvalid = -1,
+    RTCDownLossLevelStateNormal = 0,
+    RTCDownLossLevelStatePoor = 1,
+    RTCDownLossLevelStateBad = 2,
+    RTCDownLossLevelStateVeryBad = 3
+} RTCDownLossLevelState;
+
+
+#pragma mark - 上行码率自适应状态
+/**
+ 上行码率自适应状态
+ 
+ - RTCUploadBitrateAdaptiveStateStart: 码率自适应开始工作
+ - RTCUploadBitrateAdaptiveStateNormal: 码率恢复到最初设置
+ - RTCUploadBitrateAdaptiveStateHalf:  码率变为原来的一半
+ - RTCUploadBitrateAdaptiveStateQuarter: 码率变为原来的四分之一
+ - RTCUploadBitrateAdaptiveStateVeryBad: 当前网络环境及其差劲情况
+ */
+typedef enum : NSInteger {
+    
+    RTCUploadBitrateAdaptiveStateStart = 1000,
+    RTCUploadBitrateAdaptiveStateNormal = 0,
+    RTCUploadBitrateAdaptiveStateHalf = -1,
+    RTCUploadBitrateAdaptiveStateQuarter = -2,
+    RTCUploadBitrateAdaptiveStateVeryBad = -3,
+} RTCUploadBitrateAdaptiveState;
 
 
 #pragma mark - 变更操作类型
