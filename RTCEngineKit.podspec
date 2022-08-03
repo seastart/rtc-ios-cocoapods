@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RTCEngineKit'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'RTC服务引擎.'
   
 # This description is used to generate tags and improve search results.
@@ -36,6 +36,9 @@ TODO: Add long description of the pod here.
   # 依赖系统Librarie库
   s.ios.library = 'c++', 'z', 'iconv'
   
-  # 依赖本地Frameworks库
-  s.vendored_frameworks = 'RTCEngineKit/RTCEngineKit.framework'
+  # 依赖本地库文件
+  s.vendored_frameworks = 'RTCEngineKit/Depend/*.framework'
+  
+  # 依赖本地资源文件
+  s.resource = 'RTCEngineKit/Resources/*.bundle'
 end

@@ -1,0 +1,6 @@
+framework module RTCEngineKit {
+  umbrella header "RTCEngineKit.h"
+
+  export *
+  module * { export * }
+}
