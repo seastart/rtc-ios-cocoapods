@@ -2,7 +2,7 @@
 
 Updating spec repo `trunk`
   CDN: trunk Relative path: deprecated_podspecs.txt, has ETag? W/"62f07385-95bcc"
-  CDN: trunk Relative path not modified: deprecated_podspecs.txt
+  CDN: trunk Relative path downloaded: deprecated_podspecs.txt, save ETag: W/"62f07eb2-95bcc"
   CDN: trunk Going to update 68 files
   CDN: trunk Relative path: all_pods_versions_a_7_e.txt, has ETag? W/"62f07385-2bb"
   CDN: trunk Relative path: all_pods_versions_c_0_0.txt, has ETag? W/"62f07385-5f3"
@@ -72,40 +72,57 @@ Updating spec repo `trunk`
   CDN: trunk Relative path: Specs/f/e/9/CocoaMQTT/1.0.8/CocoaMQTT.podspec.json, has ETag? W/"2b4-U7PWF8JATpP178Ajf+LOVVwsKn4"
   CDN: trunk Relative path: Specs/f/e/9/CocoaMQTT/1.0.9/CocoaMQTT.podspec.json, has ETag? W/"2b4-5xwfexKUw4xXlKAhru25cXeem5A"
   CDN: trunk Relative path: Specs/f/e/9/CocoaMQTT/1.1.0/CocoaMQTT.podspec.json, has ETag? W/"313-HTBl43RlKMNWXZFDAHcCGEG52qg"
-  CDN: trunk Relative path not modified: all_pods_versions_a_7_e.txt
-  CDN: trunk Relative path not modified: all_pods_versions_a_7_5.txt
-  CDN: trunk Relative path not modified: all_pods_versions_1_d_9.txt
-  CDN: trunk Relative path not modified: all_pods_versions_b_2_1.txt
-  CDN: trunk Relative path not modified: all_pods_versions_6_c_4.txt
-  CDN: trunk Relative path not modified: all_pods_versions_a_8_8.txt
-  CDN: trunk Relative path not modified: all_pods_versions_d_8_c.txt
-  CDN: trunk Relative path not modified: CocoaPods-version.yml
-  CDN: trunk Relative path not modified: all_pods_versions_f_4_e.txt
-  CDN: trunk Relative path not modified: all_pods_versions_5_3_d.txt
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.16/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.16/CocoaMQTT.podspec.json
+  CDN: trunk Relative path downloaded: all_pods_versions_a_7_e.txt, save ETag: W/"62f07eb2-2bb"
+  CDN: trunk Relative path downloaded: all_pods_versions_c_0_0.txt, save ETag: W/"62f07eb2-5f3"
+  CDN: trunk Relative path downloaded: all_pods_versions_c_3_d.txt, save ETag: W/"62f07eb2-52d"
   CDN: trunk Relative path not modified: all_pods_versions_4_b_e.txt
-  CDN: trunk Relative path not modified: all_pods_versions_0_2_a.txt
-  CDN: trunk Relative path not modified: all_pods_versions_a_0_e.txt
-  CDN: trunk Relative path not modified: all_pods_versions_8_a_0.txt
-  CDN: trunk Relative path not modified: all_pods_versions_8_a_a.txt
-  CDN: trunk Relative path not modified: all_pods_versions_f_1_e.txt
-  CDN: trunk Relative path not modified: all_pods_versions_a_a_4.txt
-  CDN: trunk Relative path not modified: all_pods_versions_4_5_a.txt
-  CDN: trunk Relative path not modified: all_pods_versions_1_d_4.txt
-  CDN: trunk Relative path not modified: all_pods_versions_c_8_7.txt
-  CDN: trunk Relative path not modified: all_pods_versions_0_f_b.txt
-  CDN: trunk Relative path not modified: all_pods_versions_d_7_3.txt
-  CDN: trunk Relative path not modified: all_pods_versions_d_7_e.txt
-  CDN: trunk Relative path not modified: all_pods_versions_0_d_7.txt
-  CDN: trunk Relative path not modified: all_pods_versions_c_8_4.txt
+  CDN: trunk Relative path downloaded: all_pods_versions_e_c_d.txt, save ETag: W/"62f07eb2-b81"
+  CDN: trunk Relative path downloaded: all_pods_versions_a_0_e.txt, save ETag: W/"62f07eb2-313"
+  CDN: trunk Relative path downloaded: all_pods_versions_1_1_7.txt, save ETag: W/"62f07eb2-ac3"
+  CDN: trunk Relative path downloaded: all_pods_versions_0_2_a.txt, save ETag: W/"62f07eb2-541"
+  CDN: trunk Relative path downloaded: all_pods_versions_8_a_0.txt, save ETag: W/"62f07eb2-768"
+  CDN: trunk Relative path downloaded: all_pods_versions_f_1_e.txt, save ETag: W/"62f07eb2-519"
+  CDN: trunk Relative path downloaded: all_pods_versions_f_4_e.txt, save ETag: W/"62f07eb2-591"
+  CDN: trunk Relative path not modified: all_pods_versions_2_7_4.txt
+  CDN: trunk Relative path downloaded: all_pods_versions_a_a_4.txt, save ETag: W/"62f07eb2-4a7"
+  CDN: trunk Relative path downloaded: CocoaPods-version.yml, save ETag: "62f07eb2-38"
+  CDN: trunk Relative path downloaded: all_pods_versions_8_a_5.txt, save ETag: W/"62f07eb2-220"
+  CDN: trunk Relative path downloaded: all_pods_versions_a_c_3.txt, save ETag: W/"62f07eb2-353"
+  CDN: trunk Relative path downloaded: all_pods_versions_8_a_a.txt, save ETag: W/"62f07eb2-c5f"
+  CDN: trunk Relative path downloaded: all_pods_versions_d_8_c.txt, save ETag: W/"62f07eb2-4e8"
+  CDN: trunk Relative path downloaded: all_pods_versions_a_7_5.txt, save ETag: W/"62f07eb2-582"
+  CDN: trunk Relative path downloaded: all_pods_versions_6_1_3.txt, save ETag: W/"62f07eb2-46c"
+  CDN: trunk Relative path downloaded: all_pods_versions_2_1_2.txt, save ETag: W/"62f07eb2-3bb"
+  CDN: trunk Relative path downloaded: all_pods_versions_7_2_d.txt, save ETag: W/"62f07eb2-765"
+  CDN: trunk Relative path downloaded: all_pods_versions_d_6_3.txt, save ETag: W/"62f07eb2-659"
+  CDN: trunk Relative path downloaded: all_pods_versions_e_9_0.txt, save ETag: W/"62f07eb2-5bf"
+  CDN: trunk Relative path downloaded: all_pods_versions_1_d_9.txt, save ETag: W/"62f07eb2-96b"
+  CDN: trunk Relative path downloaded: all_pods_versions_7_e_c.txt, save ETag: W/"62f07eb2-b72"
+  CDN: trunk Relative path downloaded: all_pods_versions_7_3_b.txt, save ETag: W/"62f07eb2-b66"
+  CDN: trunk Relative path downloaded: all_pods_versions_a_5_3.txt, save ETag: W/"62f07eb2-539"
+  CDN: trunk Relative path downloaded: all_pods_versions_6_c_4.txt, save ETag: W/"62f07eb2-3fa"
+  CDN: trunk Relative path downloaded: all_pods_versions_4_6_3.txt, save ETag: W/"62f07eb2-4dd"
+  CDN: trunk Relative path downloaded: all_pods_versions_7_4_9.txt, save ETag: W/"62f07eb2-6e1"
+  CDN: trunk Relative path downloaded: all_pods_versions_9_5_4.txt, save ETag: W/"62f07eb2-17b"
+  CDN: trunk Relative path downloaded: all_pods_versions_d_c_a.txt, save ETag: W/"62f07eb2-82e"
+  CDN: trunk Relative path downloaded: all_pods_versions_b_2_1.txt, save ETag: W/"62f07eb2-593"
+  CDN: trunk Relative path downloaded: all_pods_versions_d_b_4.txt, save ETag: W/"62f07eb2-381"
+  CDN: trunk Relative path downloaded: all_pods_versions_9_c_9.txt, save ETag: W/"62f07eb2-355"
+  CDN: trunk Relative path downloaded: all_pods_versions_c_f_0.txt, save ETag: W/"62f07eb2-602"
+  CDN: trunk Relative path downloaded: all_pods_versions_a_8_8.txt, save ETag: W/"62f07eb2-4ff"
+  CDN: trunk Relative path downloaded: all_pods_versions_c_8_7.txt, save ETag: W/"62f07eb2-5aa"
+  CDN: trunk Relative path downloaded: all_pods_versions_0_f_b.txt, save ETag: W/"62f07eb2-4cb"
+  CDN: trunk Relative path downloaded: all_pods_versions_d_7_3.txt, save ETag: W/"62f07eb2-494"
+  CDN: trunk Relative path downloaded: all_pods_versions_0_d_7.txt, save ETag: W/"62f07eb2-2f9"
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.0/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.0/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.1/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.1/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.10/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.10/CocoaMQTT.podspec.json
+  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.12/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.12/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.13/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.13/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.14/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.14/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.15/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.15/CocoaMQTT.podspec.json
+  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.16/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.16/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.17/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.17/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.18/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.18/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.19/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.19/CocoaMQTT.podspec.json
@@ -115,52 +132,35 @@ Updating spec repo `trunk`
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.8/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.8/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.9/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.9/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.1.0/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.1.0/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: all_pods_versions_2_1_2.txt
-  CDN: trunk Relative path not modified: all_pods_versions_c_f_0.txt
-  CDN: trunk Relative path not modified: all_pods_versions_d_c_a.txt
-  CDN: trunk Relative path not modified: all_pods_versions_7_3_b.txt
-  CDN: trunk Relative path not modified: all_pods_versions_2_7_4.txt
-  CDN: trunk Relative path not modified: all_pods_versions_c_3_d.txt
-  CDN: trunk Relative path not modified: all_pods_versions_1_1_7.txt
-  CDN: trunk Relative path not modified: all_pods_versions_d_b_4.txt
-  CDN: trunk Relative path not modified: all_pods_versions_7_e_c.txt
-  CDN: trunk Relative path not modified: all_pods_versions_a_5_3.txt
-  CDN: trunk Relative path not modified: all_pods_versions_9_5_4.txt
-  CDN: trunk Relative path not modified: all_pods_versions_7_4_9.txt
-  CDN: trunk Relative path not modified: all_pods_versions_9_c_9.txt
-  CDN: trunk Relative path not modified: all_pods_versions_c_0_0.txt
-  CDN: trunk Relative path not modified: all_pods_versions_e_9_0.txt
-  CDN: trunk Relative path not modified: all_pods_versions_e_c_d.txt
-  CDN: trunk Relative path not modified: all_pods_versions_a_c_3.txt
-  CDN: trunk Relative path not modified: all_pods_versions_7_2_d.txt
-  CDN: trunk Relative path not modified: all_pods_versions_f_e_9.txt
-  CDN: trunk Relative path not modified: all_pods_versions_4_6_3.txt
-  CDN: trunk Relative path not modified: all_pods_versions_d_6_3.txt
-  CDN: trunk Relative path not modified: all_pods_versions_4_3_f.txt
-  CDN: trunk Relative path not modified: all_pods_versions_a_9_1.txt
-  CDN: trunk Relative path not modified: all_pods_versions_6_1_3.txt
-  CDN: trunk Relative path not modified: all_pods_versions_8_a_5.txt
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.19/CocoaMQTT.podspec.json
+  CDN: trunk Relative path downloaded: all_pods_versions_5_3_d.txt, save ETag: W/"62f07eb2-60a"
+  CDN: trunk Relative path downloaded: all_pods_versions_4_5_a.txt, save ETag: W/"62f07eb2-42e"
+  CDN: trunk Relative path downloaded: all_pods_versions_a_9_1.txt, save ETag: W/"62f07eb2-425"
+  CDN: trunk Relative path downloaded: all_pods_versions_1_d_4.txt, save ETag: W/"62f07eb2-41e"
+  CDN: trunk Relative path downloaded: all_pods_versions_f_e_9.txt, save ETag: W/"62f07eb2-4c3"
+  CDN: trunk Relative path downloaded: all_pods_versions_d_7_e.txt, save ETag: W/"62f07eb2-455"
+  CDN: trunk Relative path downloaded: all_pods_versions_c_8_4.txt, save ETag: W/"62f07eb2-58c"
+  CDN: trunk Relative path downloaded: all_pods_versions_4_3_f.txt, save ETag: W/"62f07eb2-3e6"
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.12/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.13/CocoaMQTT.podspec.json
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.14/CocoaMQTT.podspec.json
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.15/CocoaMQTT.podspec.json
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.5/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.13/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.10/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.16/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.17/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.19/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.3/CocoaMQTT.podspec.json
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.7/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.18/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.8/CocoaMQTT.podspec.json
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.1.0/CocoaMQTT.podspec.json
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.1/CocoaMQTT.podspec.json
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.0/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.16/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.3/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.17/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.10/CocoaMQTT.podspec.json
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.9/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.12/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.8/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.18/CocoaMQTT.podspec.json
 Validating podspec
  -> RTCEngineKit  RTCEngineKit (1.0.2) - Analyzing on iOS 10.0 platform.
-  - Generating Info.plist file at `../../../../../../../../var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/CocoaPods-Lint-20220808-88999-1v31htw-RTCEngineKit/App/App-Info.plist`
+  - Generating Info.plist file at `../../../../../../../../var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/CocoaPods-Lint-20220808-94307-qn8oal-RTCEngineKit/App/App-Info.plist`
   Preparing
 
 Analyzing dependencies
@@ -181,14 +181,15 @@ Downloading dependencies
 -> Installing RTCEngineKit (1.0.2)
  > Git download
  > Git download
-     $ /usr/bin/git clone https://github.com/seastart/RTCEngineKit.git /var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/d20220808-88999-bsh2ny --template= --single-branch --depth 1 --branch 1.0.2
+     $ /usr/bin/git clone https://github.com/seastart/RTCEngineKit.git /var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/d20220808-94307-smcnp1 --template= --single-branch --depth 1 --branch 1.0.2
 
 [!] Error installing RTCEngineKit
  -> RTCEngineKit (1.0.2)
-    - ERROR | [iOS] unknown: Encountered an unknown error ([!] /usr/bin/git clone https://github.com/seastart/RTCEngineKit.git /var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/d20220808-88999-bsh2ny --template= --single-branch --depth 1 --branch 1.0.2
+    - WARN  | url: There was a problem validating the URL https://github.com/seastart/RTCEngineKit.
+    - ERROR | [iOS] unknown: Encountered an unknown error ([!] /usr/bin/git clone https://github.com/seastart/RTCEngineKit.git /var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/d20220808-94307-smcnp1 --template= --single-branch --depth 1 --branch 1.0.2
 
-Cloning into '/var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/d20220808-88999-bsh2ny'...
-fatal: unable to access 'https://github.com/seastart/RTCEngineKit.git/': Failed to connect to github.com port 443 after 75006 ms: Operation timed out
+Cloning into '/var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/d20220808-94307-smcnp1'...
+fatal: unable to access 'https://github.com/seastart/RTCEngineKit.git/': error:02FFF03C:system library:func(4095):Operation timed out
 
 /Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader.rb:144:in `rescue in execute_command'
 /Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader.rb:141:in `execute_command'
