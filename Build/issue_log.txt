@@ -73,90 +73,178 @@ Updating spec repo `trunk`
   CDN: trunk Relative path: Specs/f/e/9/CocoaMQTT/1.0.9/CocoaMQTT.podspec.json, has ETag? W/"2b4-5xwfexKUw4xXlKAhru25cXeem5A"
   CDN: trunk Relative path: Specs/f/e/9/CocoaMQTT/1.1.0/CocoaMQTT.podspec.json, has ETag? W/"313-HTBl43RlKMNWXZFDAHcCGEG52qg"
   CDN: trunk Relative path not modified: all_pods_versions_a_7_e.txt
-  CDN: trunk Relative path not modified: all_pods_versions_c_0_0.txt
-  CDN: trunk Relative path not modified: all_pods_versions_1_1_7.txt
-  CDN: trunk Relative path not modified: all_pods_versions_9_5_4.txt
   CDN: trunk Relative path not modified: all_pods_versions_a_7_5.txt
   CDN: trunk Relative path not modified: all_pods_versions_1_d_9.txt
-  CDN: trunk Relative path not modified: all_pods_versions_7_e_c.txt
+  CDN: trunk Relative path not modified: all_pods_versions_b_2_1.txt
   CDN: trunk Relative path not modified: all_pods_versions_6_c_4.txt
+  CDN: trunk Relative path not modified: all_pods_versions_a_8_8.txt
+  CDN: trunk Relative path not modified: all_pods_versions_d_8_c.txt
+  CDN: trunk Relative path not modified: CocoaPods-version.yml
+  CDN: trunk Relative path not modified: all_pods_versions_f_4_e.txt
+  CDN: trunk Relative path not modified: all_pods_versions_5_3_d.txt
+  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json
+  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.16/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.16/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: all_pods_versions_4_b_e.txt
+  CDN: trunk Relative path not modified: all_pods_versions_0_2_a.txt
+  CDN: trunk Relative path not modified: all_pods_versions_a_0_e.txt
+  CDN: trunk Relative path not modified: all_pods_versions_8_a_0.txt
+  CDN: trunk Relative path not modified: all_pods_versions_8_a_a.txt
   CDN: trunk Relative path not modified: all_pods_versions_f_1_e.txt
   CDN: trunk Relative path not modified: all_pods_versions_a_a_4.txt
-  CDN: trunk Relative path not modified: all_pods_versions_f_4_e.txt
-  CDN: trunk Relative path not modified: all_pods_versions_4_b_e.txt
-  CDN: trunk Relative path not modified: all_pods_versions_e_c_d.txt
-  CDN: trunk Relative path not modified: all_pods_versions_d_8_c.txt
-  CDN: trunk Relative path not modified: all_pods_versions_9_c_9.txt
-  CDN: trunk Relative path not modified: all_pods_versions_2_1_2.txt
-  CDN: trunk Relative path not modified: all_pods_versions_2_7_4.txt
-  CDN: trunk Relative path not modified: CocoaPods-version.yml
-  CDN: trunk Relative path not modified: all_pods_versions_d_6_3.txt
-  CDN: trunk Relative path not modified: all_pods_versions_8_a_5.txt
-  CDN: trunk Relative path not modified: all_pods_versions_8_a_a.txt
   CDN: trunk Relative path not modified: all_pods_versions_4_5_a.txt
   CDN: trunk Relative path not modified: all_pods_versions_1_d_4.txt
-  CDN: trunk Relative path not modified: all_pods_versions_4_3_f.txt
-  CDN: trunk Relative path not modified: all_pods_versions_f_e_9.txt
+  CDN: trunk Relative path not modified: all_pods_versions_c_8_7.txt
+  CDN: trunk Relative path not modified: all_pods_versions_0_f_b.txt
+  CDN: trunk Relative path not modified: all_pods_versions_d_7_3.txt
+  CDN: trunk Relative path not modified: all_pods_versions_d_7_e.txt
   CDN: trunk Relative path not modified: all_pods_versions_0_d_7.txt
+  CDN: trunk Relative path not modified: all_pods_versions_c_8_4.txt
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.0/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.0/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.1/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.1/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.10/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.10/CocoaMQTT.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.12/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.12/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.13/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.13/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.14/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.14/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.15/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.15/CocoaMQTT.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.16/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.16/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.17/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.17/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.18/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.18/CocoaMQTT.podspec.json
+  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.19/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.19/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.3/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.3/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.5/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.5/CocoaMQTT.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.9/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.9/CocoaMQTT.podspec.json
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.1.0/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.1.0/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: all_pods_versions_d_b_4.txt
-  CDN: trunk Relative path not modified: all_pods_versions_b_2_1.txt
-  CDN: trunk Relative path not modified: all_pods_versions_0_2_a.txt
-  CDN: trunk Relative path not modified: all_pods_versions_8_a_0.txt
-  CDN: trunk Relative path not modified: all_pods_versions_7_3_b.txt
-  CDN: trunk Relative path not modified: all_pods_versions_c_8_7.txt
-  CDN: trunk Relative path not modified: all_pods_versions_0_f_b.txt
-  CDN: trunk Relative path not modified: all_pods_versions_c_8_4.txt
-  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.19/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.19/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.7/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.7/CocoaMQTT.podspec.json
   CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.8/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.8/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: all_pods_versions_7_4_9.txt
-  CDN: trunk Relative path not modified: all_pods_versions_c_3_d.txt
-  CDN: trunk Relative path not modified: all_pods_versions_a_8_8.txt
-  CDN: trunk Relative path not modified: all_pods_versions_d_c_a.txt
-  CDN: trunk Relative path not modified: all_pods_versions_e_9_0.txt
-  CDN: trunk Relative path not modified: all_pods_versions_a_5_3.txt
-  CDN: trunk Relative path not modified: all_pods_versions_4_6_3.txt
-  CDN: trunk Relative path not modified: all_pods_versions_6_1_3.txt
-  CDN: trunk Relative path not modified: all_pods_versions_a_0_e.txt
-  CDN: trunk Relative path not modified: all_pods_versions_7_2_d.txt
-  CDN: trunk Relative path not modified: all_pods_versions_5_3_d.txt
-  CDN: trunk Relative path not modified: all_pods_versions_d_7_3.txt
-  CDN: trunk Relative path not modified: all_pods_versions_d_7_e.txt
-  CDN: trunk Relative path not modified: all_pods_versions_a_c_3.txt
+  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.0.9/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.0.9/CocoaMQTT.podspec.json
+  CDN: trunk Redirecting from https://cdn.cocoapods.org/Specs/f/e/9/CocoaMQTT/1.1.0/CocoaMQTT.podspec.json to https://cdn.jsdelivr.net/cocoa/Specs/f/e/9/CocoaMQTT/1.1.0/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: all_pods_versions_2_1_2.txt
   CDN: trunk Relative path not modified: all_pods_versions_c_f_0.txt
+  CDN: trunk Relative path not modified: all_pods_versions_d_c_a.txt
+  CDN: trunk Relative path not modified: all_pods_versions_7_3_b.txt
+  CDN: trunk Relative path not modified: all_pods_versions_2_7_4.txt
+  CDN: trunk Relative path not modified: all_pods_versions_c_3_d.txt
+  CDN: trunk Relative path not modified: all_pods_versions_1_1_7.txt
+  CDN: trunk Relative path not modified: all_pods_versions_d_b_4.txt
+  CDN: trunk Relative path not modified: all_pods_versions_7_e_c.txt
+  CDN: trunk Relative path not modified: all_pods_versions_a_5_3.txt
+  CDN: trunk Relative path not modified: all_pods_versions_9_5_4.txt
+  CDN: trunk Relative path not modified: all_pods_versions_7_4_9.txt
+  CDN: trunk Relative path not modified: all_pods_versions_9_c_9.txt
+  CDN: trunk Relative path not modified: all_pods_versions_c_0_0.txt
+  CDN: trunk Relative path not modified: all_pods_versions_e_9_0.txt
+  CDN: trunk Relative path not modified: all_pods_versions_e_c_d.txt
+  CDN: trunk Relative path not modified: all_pods_versions_a_c_3.txt
+  CDN: trunk Relative path not modified: all_pods_versions_7_2_d.txt
+  CDN: trunk Relative path not modified: all_pods_versions_f_e_9.txt
+  CDN: trunk Relative path not modified: all_pods_versions_4_6_3.txt
+  CDN: trunk Relative path not modified: all_pods_versions_d_6_3.txt
+  CDN: trunk Relative path not modified: all_pods_versions_4_3_f.txt
   CDN: trunk Relative path not modified: all_pods_versions_a_9_1.txt
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.14/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.17/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.15/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.3/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.18/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.5/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.7/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.9/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: all_pods_versions_6_1_3.txt
+  CDN: trunk Relative path not modified: all_pods_versions_8_a_5.txt
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.19/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.8/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.10/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.1/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.12/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.14/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.15/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.5/CocoaMQTT.podspec.json
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.13/CocoaMQTT.podspec.json
-  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.0/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.10/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.7/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.18/CocoaMQTT.podspec.json
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.1.0/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.1/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.0/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.11/CocoaMQTT.podspec.json
   CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.16/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.3/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.17/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.9/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.12/CocoaMQTT.podspec.json
+  CDN: trunk Relative path not modified: Specs/f/e/9/CocoaMQTT/1.0.8/CocoaMQTT.podspec.json
 Validating podspec
- -> RTCEngineKit
+ -> RTCEngineKit  RTCEngineKit (1.0.2) - Analyzing on iOS 10.0 platform.
+  - Generating Info.plist file at `../../../../../../../../var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/CocoaPods-Lint-20220808-88999-1v31htw-RTCEngineKit/App/App-Info.plist`
+  Preparing
+
+Analyzing dependencies
+
+Inspecting targets to integrate
+  Using `ARCHS` setting to build architectures of target `Pods-App`: (``)
+
+Fetching external sources
+-> Fetching podspec for `RTCEngineKit` from `/Users/SailorGa/SailorOS/Freewind/RTCEngineCore/Depend/RTCEngineKit/RTCEngineKit.podspec`
+
+Resolving dependencies of 
+
+Comparing resolved specification to the sandbox manifest
+  A RTCEngineKit
+
+Downloading dependencies
+
+-> Installing RTCEngineKit (1.0.2)
+ > Git download
+ > Git download
+     $ /usr/bin/git clone https://github.com/seastart/RTCEngineKit.git /var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/d20220808-88999-bsh2ny --template= --single-branch --depth 1 --branch 1.0.2
+
+[!] Error installing RTCEngineKit
+ -> RTCEngineKit (1.0.2)
+    - ERROR | [iOS] unknown: Encountered an unknown error ([!] /usr/bin/git clone https://github.com/seastart/RTCEngineKit.git /var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/d20220808-88999-bsh2ny --template= --single-branch --depth 1 --branch 1.0.2
+
+Cloning into '/var/folders/zf/71jr2cps0nz9jfv8p9m4h5cc0000gn/T/d20220808-88999-bsh2ny'...
+fatal: unable to access 'https://github.com/seastart/RTCEngineKit.git/': Failed to connect to github.com port 443 after 75006 ms: Operation timed out
+
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader.rb:144:in `rescue in execute_command'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader.rb:141:in `execute_command'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-downloader-1.5.1/lib/cocoapods-downloader/base.rb:166:in `block in executable'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-downloader-1.5.1/lib/cocoapods-downloader/git.rb:101:in `block in clone'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader.rb:175:in `block in ui_sub_action'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/user_interface.rb:64:in `section'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader.rb:174:in `ui_sub_action'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-downloader-1.5.1/lib/cocoapods-downloader/git.rb:99:in `clone'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-downloader-1.5.1/lib/cocoapods-downloader/git.rb:67:in `download!'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-downloader-1.5.1/lib/cocoapods-downloader/base.rb:82:in `block in download'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader.rb:159:in `block in ui_action'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/user_interface.rb:64:in `section'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader.rb:158:in `ui_action'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-downloader-1.5.1/lib/cocoapods-downloader/base.rb:80:in `download'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader.rb:110:in `download_source'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader.rb:77:in `download_request'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader/cache.rb:256:in `download'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader/cache.rb:239:in `block in uncached_pod'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader/cache.rb:266:in `in_tmpdir'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader/cache.rb:238:in `uncached_pod'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader/cache.rb:33:in `download_pod'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/downloader.rb:42:in `download'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/installer/pod_source_installer.rb:118:in `download_source'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/installer/pod_source_installer.rb:69:in `install!'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/installer.rb:563:in `install_source_of_pod'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/installer.rb:514:in `block (2 levels) in install_pod_sources'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/user_interface.rb:86:in `titled_section'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/installer.rb:513:in `block in install_pod_sources'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/installer.rb:496:in `each'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/installer.rb:496:in `install_pod_sources'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/installer.rb:255:in `block in download_dependencies'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/user_interface.rb:64:in `section'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/installer.rb:254:in `download_dependencies'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/validator.rb:577:in `block in download_pod'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/validator.rb:577:in `each'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/validator.rb:577:in `download_pod'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/validator.rb:399:in `block in perform_extensive_analysis'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/validator.rb:393:in `each'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/validator.rb:393:in `perform_extensive_analysis'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/validator.rb:130:in `validate'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-trunk-1.6.0/lib/pod/command/trunk/push.rb:136:in `validate_podspec'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-trunk-1.6.0/lib/pod/command/trunk/push.rb:72:in `run'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/claide-1.1.0/lib/claide/command.rb:334:in `run'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/command.rb:52:in `run'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/bin/pod:55:in `<top (required)>'
+/usr/local/bin/pod:23:in `load'
+/usr/local/bin/pod:23:in `<main>'
+) during validation.
+
+[!] The spec did not pass validation, due to 1 error.
+
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-trunk-1.6.0/lib/pod/command/trunk/push.rb:138:in `validate_podspec'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-trunk-1.6.0/lib/pod/command/trunk/push.rb:72:in `run'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/claide-1.1.0/lib/claide/command.rb:334:in `run'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/lib/cocoapods/command.rb:52:in `run'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.11.3/bin/pod:55:in `<top (required)>'
+/usr/local/bin/pod:23:in `load'
+/usr/local/bin/pod:23:in `<main>'
