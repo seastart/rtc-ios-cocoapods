@@ -24,14 +24,22 @@ NS_ASSUME_NONNULL_BEGIN
 /// 错误事件回调
 /// @param errCode 错误码
 /// @param errMsg 错误信息
-- (void)onError:(RTCEngineResult)errCode errMsg:(nullable NSString *)errMsg;
+- (void)onError:(RTCEngineError)errCode errMsg:(nullable NSString *)errMsg;
 
 
 #pragma mark - ------------ 通讯相关回调 ------------
-#pragma mark 连接(登录)成功事件回调
-/// 连接(登录)成功事件回调
+#pragma mark 连接事件回调
+/// 连接事件回调
+- (void)onConnected;
+
+#pragma mark 断开事件回调
+/// 断开事件回调
+- (void)onDisconnected;
+
+#pragma mark 登录事件回调
+/// 登录事件回调
 /// @param userId 当前用户ID
-- (void)onConnectSucceed:(NSString *)userId;
+- (void)onLogin:(NSString *)userId;
 
 #pragma mark 互动消息事件回调
 /// 互动消息事件回调
@@ -72,13 +80,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param roomId 房间ID
 /// @param userId 用户ID
 - (void)onRemoteUserLeaveRoom:(NSString *)roomId userId:(NSString *)userId;
-
-
-#pragma mark - ------------ 视频相关回调 ------------
-#pragma mark 视频采集数据回调
-/// 视频采集数据回调
-/// @param pixelbuffer 采集数据
-- (void)onCapturedRawVideoFrame:(CVPixelBufferRef)pixelbuffer;
 
 
 #pragma mark - ------------ 音频相关回调 ------------

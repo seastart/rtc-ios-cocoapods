@@ -11,39 +11,133 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - RTC错误码
-/**
- RTC错误码
- 
- - RTCEngineResultOK: 无错误
- - RTCEngineResultInternalError: 服务器内部错误
- - RTCEngineResultInvalidParams: 参数错误
- - RTCEngineResultInvalidSession: Session无效
- - RTCEngineResultNotFound: 查找资源不存在
- - RTCEngineResultConcLimit: 并发授权不足
- - RTCEngineResultServerLess: 没有服务器
- - RTCEngineResultServerLineLess: 没有服务器线路
- - RTCEngineResultInvalidAppId: 无效的AppID
- - RTCEngineResultTimeout: 超时
- - RTCEngineResultNetError: 网络错误
- - RTCEngineResultThirdPartyRefused: 第三方授权限制
- - RTCEngineResultTPNetError: 流媒体节点网络错误
- */
 typedef enum : NSInteger {
     
-    RTCEngineResultOK = 0,
-    RTCEngineResultInternalError = 1,
-    RTCEngineResultInvalidParams = 2,
-    RTCEngineResultInvalidSession = 3,
-    RTCEngineResultNotFound = 4,
-    RTCEngineResultConcLimit = 5,
-    RTCEngineResultServerLess = 7,
-    RTCEngineResultServerLineLess = 8,
-    RTCEngineResultInvalidAppId = 9,
-    RTCEngineResultTimeout = 10,
-    RTCEngineResultNetError = 11,
-    RTCEngineResultThirdPartyRefused = 12,
-    RTCEngineResultTPNetError = 13
-} RTCEngineResult;
+    /////////////////////////////////////////////////////////////////////////////////
+    ///
+    ///       基础错误码
+    ///
+    /////////////////////////////////////////////////////////////////////////////////
+    /// 无错误
+    RTCEngineErrorOK = 0,
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    ///
+    ///       系统级错误码
+    ///
+    /////////////////////////////////////////////////////////////////////////////////
+    /// 系统内部错误
+    RTCEngineErrorSystemFail = 1,
+    /// 未初始化
+    RTCEngineErrorNotInitialized = 2,
+    /// 媒体模块尚未初始化
+    RTCEngineErrorMediaNotInitialized = 3,
+    /// 外部视频设备错误
+    RTCEngineErrorVideoCapturerFail = 100,
+    /// 外部音频设备错误
+    RTCEngineErrorAudioCapturerFail = 101,
+    /// 外部扬声器错误
+    RTCEngineErrorAudioPlayerFail = 102,
+    /// 协议解析错误
+    RTCEngineErrorProtocolParsingFail = 200,
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    ///
+    ///       通用错误码
+    ///
+    /////////////////////////////////////////////////////////////////////////////////
+    /// 超时
+    RTCEngineErrorTimeout = 1000,
+    /// 参数错误
+    RTCEngineErrorInvalidArgs = 1001,
+    /// 重复操作
+    RTCEngineErrorConflict = 1002,
+    /// 查找的资源不存在
+    RTCEngineErrorNotFound = 1100,
+    /// 用户不存在
+    RTCEngineErrorUserNotFound = 1101,
+    /// 房间不存在
+    RTCEngineErrorRoomNotFound = 1102,
+    /// 码流不存在
+    RTCEngineErrorStreamNotFound = 1103,
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    ///
+    ///       网络类错误码
+    ///
+    /////////////////////////////////////////////////////////////////////////////////
+    /// 网络错误
+    RTCEngineErrorNetFail = 2000,
+    /// 媒体网络错误
+    RTCEngineErrorMediaNetFail = 2001,
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    ///
+    ///       应用相关错误码
+    ///
+    /////////////////////////////////////////////////////////////////////////////////
+    /// 无效的AppID
+    RTCEngineErrorInvalidAppId = 3001,
+    /// 签名错误
+    RTCEngineErrorApiSignatureFail = 3002,
+    /// Api请求时间戳错误
+    RTCEngineErrorApiTimestampeFail = 3003,
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    ///
+    ///       权限类错误码
+    ///
+    /////////////////////////////////////////////////////////////////////////////////
+    /// 操作未授权
+    RTCEngineErrorUnauthorized = 4000,
+    /// 操作不允许
+    RTCEngineErrorForbidden = 4001,
+    /// 并发不足
+    RTCEngineErrorConcLimit = 4002,
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    ///
+    ///       服务端错误码
+    ///
+    /////////////////////////////////////////////////////////////////////////////////
+    /// 服务器内部错误
+    RTCEngineErrorServerFail = 5000,
+    /// MQTT服务器资源不足
+    RTCEngineErrorMQTTServerLess = 5010,
+    /// MQTT没有服务器线路
+    RTCEngineErrorMQTTServerLineLess = 5011,
+    /// 流媒体服务器资源不足
+    RTCEngineErrorUploadServerLess = 5020,
+    /// 流媒体没有服务器线路
+    RTCEngineErrorUploadServerLineLess = 5021,
+    /// 流媒体服务器绑定的WebRTC网关不足
+    RTCEngineErrorUploadWebRtcLess = 5022,
+    /// 流媒体服务器绑定的RTMP网关不足
+    RTCEngineErrorUploadRtmpLess = 5023,
+    /// WebRTC服务器资源不足
+    RTCEngineErrorWebRtcServerLess = 5030,
+    /// WebRTC没有服务器线路
+    RTCEngineErrorWebRtcServerLineLess = 5031,
+    /// RTMP服务器资源不足
+    RTCEngineErrorRTMPServerLess = 5040,
+    /// RTMP没有服务器线路
+    RTCEngineErrorRTMPServerLineLess = 5041,
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    ///
+    ///       第三方自定义错误码
+    ///
+    /////////////////////////////////////////////////////////////////////////////////
+    /// 第三方平台鉴权错误
+    RTCEngineErrorThirdPartyRefused = 100000,
+} RTCEngineError;
 
 
 #pragma mark - 日志等级
