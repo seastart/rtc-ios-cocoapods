@@ -149,9 +149,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 480P---640x480
 /// 180P---320x180
 
-/// 视频分辨率宽，默认720
+/// 视频分辨率宽，默认480
 @property (nonatomic, assign) int videoWidth;
-/// 视频分辨率高，默认1280
+/// 视频分辨率高，默认640
 @property (nonatomic, assign) int videoHeight;
 /// 视频镜像，默认YES
 @property (nonatomic, assign) BOOL videoMirror;

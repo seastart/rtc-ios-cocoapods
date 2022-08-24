@@ -250,6 +250,28 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 - (void)sendSampleBufferServer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType;
 
 
+#pragma mark - ------------ 发布自定义流相关接口函数 ------------
+#pragma mark 启动自定义流
+/// 启动自定义流
+/// @param streamModel 自定义码流信息
+- (RTCEngineError)startCustomStreamWithStreamModel:(RTCEngineStreamModel *)streamModel;
+
+#pragma mark 关闭自定义流
+/// 关闭自定义流
+/// @param trackId 轨道ID
+- (RTCEngineError)stopCustomStreamWithTrackId:(RTCTrackIdentifierFlags)trackId;
+
+#pragma mark 发布自定义码流
+/// 发布自定义码流
+/// @param streamData 码流数据
+/// @param bitslen 数据长度
+/// @param pts 显示时间戳
+/// @param dts 解码时间戳
+/// @param trackId 轨道ID
+/// @param mediaType 媒体类型
+- (RTCEngineError)publishCustomStreamWithStreamData:(const unsigned char *)streamData bitslen:(int)bitslen pts:(uint32_t)pts dts:(uint32_t)dts trackId:(RTCTrackIdentifierFlags)trackId mediaType:(RTCMediaType)mediaType;
+
+
 #pragma mark - ------------ 网络测速相关接口函数 ------------
 #pragma mark 开始网络测速
 /// 开始网络测速

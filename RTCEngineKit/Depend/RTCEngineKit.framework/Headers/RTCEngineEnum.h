@@ -39,6 +39,10 @@ typedef enum : NSInteger {
     RTCEngineErrorAudioCapturerFail = 101,
     /// 外部扬声器错误
     RTCEngineErrorAudioPlayerFail = 102,
+    /// 设备访问无权限
+    RTCEngineErrorDeviceNoRights = 103,
+    /// 设备不存在
+    RTCEngineErrorDeviceNotfound = 104,
     /// 协议解析错误
     RTCEngineErrorProtocolParsingFail = 200,
     
@@ -52,8 +56,12 @@ typedef enum : NSInteger {
     RTCEngineErrorTimeout = 1000,
     /// 参数错误
     RTCEngineErrorInvalidArgs = 1001,
-    /// 重复操作
+    /// 重复操作冲突
     RTCEngineErrorConflict = 1002,
+    /// 尚未加入房间
+    RTCEngineErrorNotYetInRoom = 1003,
+    /// 网络测试时拒绝操作
+    RTCEngineErrorForbiddenInNetTesting = 1004,
     /// 查找的资源不存在
     RTCEngineErrorNotFound = 1100,
     /// 用户不存在
@@ -444,15 +452,13 @@ typedef enum : NSUInteger {
 /**
  媒体类型
  
- - RTCMediaTypeData: 数据类型
- - RTCMediaTypeVideo: 视频类型
  - RTCMediaTypeAudio: 音频类型
+ - RTCMediaTypeVideo: 视频类型
  */
 typedef enum : NSInteger {
     
-    RTCMediaTypeData = 0,
-    RTCMediaTypeVideo = 1,
-    RTCMediaTypeAudio = 2
+    RTCMediaTypeAudio = 0,
+    RTCMediaTypeVideo = 1
 } RTCMediaType;
 
 
