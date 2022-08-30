@@ -275,6 +275,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 流媒体音频信息
 @interface RTCStreamAudioModel : NSObject
 
+/// 用户标识
+@property (nonatomic, copy, readonly) NSString *userId;
+
 /// 流媒体标识
 @property (nonatomic, assign) NSInteger linkId;
 /// 功率
@@ -324,6 +327,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 流媒体接收状态信息
 @interface RTCStreamReceiveModel : NSObject
+
+/// 用户标识
+@property (nonatomic, copy, readonly) NSString *userId;
 
 /// 流媒体标识
 @property (nonatomic, assign) int linkid;
