@@ -44,15 +44,17 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 初始化RTC引擎
 /// @param engineConfig 配置参数
 /// @param userModel 用户信息
+/// @param appGroup 分组标识
 /// @param delegate 代理回调
-+ (instancetype)sharedEngineWithConfig:(RTCEngineConfig *)engineConfig userModel:(RTCEngineUserModel *)userModel delegate:(nullable id <RTCEngineDelegate>)delegate;
++ (instancetype)sharedEngineWithConfig:(RTCEngineConfig *)engineConfig userModel:(RTCEngineUserModel *)userModel appGroup:(NSString *)appGroup delegate:(nullable id <RTCEngineDelegate>)delegate;
 
 #pragma mark 初始化RTC引擎
 /// 初始化RTC引擎
 /// @param engineConfig 配置参数
 /// @param userModel 用户信息
+/// @param appGroup 分组标识
 /// @param delegate 代理回调
-- (RTCEngineError)initializeWithConfig:(RTCEngineConfig *)engineConfig userModel:(RTCEngineUserModel *)userModel delegate:(nullable id <RTCEngineDelegate>)delegate;
+- (RTCEngineError)initializeWithConfig:(RTCEngineConfig *)engineConfig userModel:(RTCEngineUserModel *)userModel appGroup:(NSString *)appGroup delegate:(nullable id <RTCEngineDelegate>)delegate;
 
 #pragma mark 资源销毁
 /// 资源销毁
@@ -67,9 +69,9 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 
 #pragma mark 加入房间
 /// 加入房间
-/// @param roomId 房间ID
-/// @param userRole 成员角色
-- (RTCEngineError)joinRoomWithRoomId:(NSString *)roomId userRole:(RTCUserRoleType)userRole;
+/// @param roomNo 房间号码
+/// @param userModel 用户信息
+- (RTCEngineError)joinRoomWithRoomNo:(NSString *)roomNo userModel:(nullable RTCEngineUserModel *)userModel;
 
 #pragma mark 退出房间
 /// 退出房间
@@ -88,7 +90,7 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 
 #pragma mark 发送房间外消息
 /// 发送房间外消息
-/// @param userIds 用户ID列表
+/// @param userIds 用户编号列表
 /// @param content 消息内容
 /// @param action 消息类型
 - (RTCEngineError)sendMessageWithUserIds:(NSArray <NSString *> *)userIds content:(NSString *)content action:(NSString *)action;
@@ -112,7 +114,7 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 
 #pragma mark 获取成员信息
 /// 获取成员信息
-/// @param userId  用户ID
+/// @param userId 用户编号
 - (RTCEngineUserModel *)findMemberWithUserId:(NSString *)userId;
 
 #pragma mark 获取成员列表
@@ -232,25 +234,45 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// @param audioRoute 音频路由
 - (RTCEngineError)switchAudioRoute:(RTCAudioRoute)audioRoute;
 
+#pragma mark 获取当前音频路由
+/// 获取当前音频路由
+- (RTCAudioRoute)currentAudioRoute;
+
+#pragma mark 是否存在有线耳机设备
+/// 是否存在有线耳机设备
+- (BOOL)headphoneDeviceAvailable;
+
+#pragma mark 是否存在蓝牙耳机设备
+/// 是否存在蓝牙耳机设备
+- (BOOL)bluetoothDeviceAvailable;
+
 
 #pragma mark - ------------ 屏幕共享相关接口函数 ------------
-#pragma mark 关闭屏幕共享
-/// 关闭屏幕共享
-- (void)closeScreenServer;
 
-#pragma mark 开启屏幕共享客户端
-/// 开启屏幕共享客户端
-/// @param delegate 代理回调
-- (void)startScreenRecordingClient:(nullable id <RTCScreenDelegate>)delegate;
+#pragma mark 关闭屏幕录制
+/// 关闭屏幕录制
+- (void)stopScreenRecord;
 
-#pragma mark 发送共享屏幕帧数据
-/// 发送共享屏幕帧数据
-/// @param sampleBuffer 帧数据
-/// @param sampleBufferType 帧数据类型
-- (void)sendSampleBufferServer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType;
+#pragma mark 录屏启动方法
+/// 录屏启动方法
+/// 需要在 RPBroadcastSampleHandler 的实现类中的 broadcastStartedWithSetupInfo 方法中调用
+/// - Parameters:
+///   - appGroup: Application Group Identifier
+///   - delegate: 回调对象
+- (void)broadcastStartedWithAppGroup:(NSString *)appGroup delegate:(id<RTCScreenDelegate>)delegate;
+
+#pragma mark 媒体数据(音视频)发送方法
+/// 媒体数据(音视频)发送方法
+/// - Parameters:
+///   - sampleBuffer: 系统回调的视频或音频帧
+///   - sampleBufferType: 媒体输入类型
+/// 注释：sampleBufferType 当前支持 RPSampleBufferTypeVideo 和 RPSampleBufferTypeAudioApp 类型的数据帧处理；
+/// RPSampleBufferTypeAudioMic 不支持，可以在宿主 App 处理麦克风采集数据。
+- (void)sendSampleBuffer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType;
 
 
 #pragma mark - ------------ 发布自定义流相关接口函数 ------------
+
 #pragma mark 启动自定义流
 /// 启动自定义流
 /// @param streamModel 自定义码流信息
@@ -268,11 +290,12 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// @param pts 显示时间戳
 /// @param dts 解码时间戳
 /// @param trackId 轨道ID
-/// @param mediaType 媒体类型
-- (RTCEngineError)publishCustomStreamWithStreamData:(const unsigned char *)streamData bitslen:(int)bitslen pts:(uint32_t)pts dts:(uint32_t)dts trackId:(RTCTrackIdentifierFlags)trackId mediaType:(RTCMediaType)mediaType;
+/// @param streamType 媒体流类型
+- (RTCEngineError)publishCustomStreamWithStreamData:(const unsigned char *)streamData bitslen:(int)bitslen pts:(uint32_t)pts dts:(uint32_t)dts trackId:(RTCTrackIdentifierFlags)trackId streamType:(RTCStreamType)streamType;
 
 
 #pragma mark - ------------ 网络测速相关接口函数 ------------
+
 #pragma mark 开始网络测速
 /// 开始网络测速
 /// @param params 测速参数
@@ -283,78 +306,6 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 #pragma mark 停止网络测速
 /// 停止网络测速
 - (void)stopSpeedTest;
-
-
-#pragma mark - ------------ 视频渲染相关接口函数 ------------
-#pragma mark 装载视频渲染组件
-/// 装载视频渲染组件
-/// @param authData 密钥
-/// @param authDataSize 密钥长度
-/// @param logLevel 日志等级
-- (RTCEngineError)installRenderModule:(char *)authData authDataSize:(int)authDataSize logLevel:(RTCEngineLogLevel)logLevel;
-
-#pragma mark 卸载视频渲染组件
-/// 卸载视频渲染组件
-- (void)uninstallRenderModule;
-
-#pragma mark 美颜功能开关
-/// 美颜功能开关
-/// @param enabled YES-开启美颜 NO-关闭美颜
-- (RTCEngineError)enabledBeauty:(BOOL)enabled;
-
-#pragma mark 磨皮等级
-/// 磨皮等级
-/// @param blurLevel 磨皮等级，取值范围 0.0-1.0，默认0.5
-- (void)setBlurLevel:(float)blurLevel;
-
-#pragma mark 获取当前磨皮等级
-/// 获取当前磨皮等级
-- (float)getBlurLevel;
-
-#pragma mark 美白等级
-/// 美白等级
-/// @param whiteLevel 美白等级，取值范围 0.0-1.0，默认值0.3
-- (void)setWhiteLevel:(float)whiteLevel;
-
-#pragma mark 获取当前美白等级
-/// 获取当前美白等级
-- (float)getWhiteLevel;
-
-#pragma mark 红润等级
-/// 红润等级
-/// @param redLevel 红润等级，取值范围 0.0-1.0，默认值0.3
-- (void)setRedLevel:(float)redLevel;
-
-#pragma mark 获取当前红润等级
-/// 获取当前红润等级
-- (float)getRedLevel;
-
-#pragma mark 锐化等级
-/// 锐化等级
-/// @param sharpenLevel 锐化等级，取值范围 0.0-1.0，默认值0.3
-- (void)setSharpenLevel:(float)sharpenLevel;
-
-#pragma mark 获取当前锐化等级
-/// 获取当前锐化等级
-- (float)getSharpenLevel;
-
-#pragma mark 滤镜等级
-/// 滤镜等级
-/// @param filterLevel 滤镜等级，取值范围 0.0-1.0，默认值0.8
-- (void)setFilterLevel:(float)filterLevel;
-
-#pragma mark 获取当前滤镜等级
-/// 获取当前滤镜等级
-- (float)getFilterLevel;
-
-#pragma mark 滤镜效果
-/// 滤镜效果
-/// @param filterName 滤镜效果，默认值为 “origin” ，origin即为使用原图效果
-- (void)setFilterName:(NSString *)filterName;
-
-#pragma mark 获取当前滤镜效果
-/// 获取当前滤镜效果
-- (NSString *)getFilterName;
 
 @end
 

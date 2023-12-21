@@ -30,39 +30,41 @@ NS_ASSUME_NONNULL_BEGIN
 /// 初始化RTC配置参数
 @interface RTCEngineConfig : NSObject
 
-/// AppID
-@property (nonatomic, copy) NSString *appId;
-/// AppKey
-@property (nonatomic, copy) NSString *appKey;
+/// 用户签名
+@property (nonatomic, copy) NSString *userSig;
 /// 服务器地址
 @property (nonatomic, copy) NSString *domain;
+
 /// 日志文件路径
 @property (nonatomic, copy, nullable) NSString *logPath;
 /// 日志等级，默认 RTCEngineLogLevelDebug
 @property (nonatomic, assign) RTCEngineLogLevel logLevel;
-/// 服务线路标识
-@property (nonatomic, copy, nullable) NSString *lineId;
+
+/// 服务网络标识
+@property (nonatomic, copy, nullable) NSString *networkId;
 /// 服务分组标识
 @property (nonatomic, copy, nullable) NSString *groupId;
 
-/// 平台透传参数
-@property (nonatomic, copy, nullable) NSString *args;
-
 @end
+
 
 #pragma mark - 用户信息
 @interface RTCEngineUserModel : NSObject
 
 /// 用户标识
-@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy, nullable) NSString *uid;
+/// 会话标识
+@property (nonatomic, copy, nullable) NSString *sid;
 /// 用户名称
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy, nullable) NSString *name;
 /// 用户头像
 @property (nonatomic, copy, nullable) NSString *avatar;
 /// 连接标识
-@property (nonatomic, copy) NSString *linkId;
+@property (nonatomic, copy, nullable) NSString *linkId;
 /// 会话令牌
-@property (nonatomic, copy) NSString *sessionKey;
+@property (nonatomic, copy, nullable) NSString *sessionKey;
+/// 房间标识
+@property (nonatomic, copy, nullable) NSString *roomId;
 
 /// 成员角色，默认 RTCUserRoleTypeDefault
 @property (nonatomic, assign) RTCUserRoleType role;
@@ -73,10 +75,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *terminalDesc;
 
 /// 码流信息
-@property (nonatomic, strong) NSMutableArray <RTCEngineStreamModel *> *streams;
+@property (nonatomic, strong, nullable) NSMutableArray <RTCEngineStreamModel *> *streams;
 
 /// 扩展字段
-@property (nonatomic, assign) id props;
+@property (nonatomic, assign, nullable) id props;
 
 @end
 
@@ -90,6 +92,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger type;
 /// 编码类型
 @property (nonatomic, assign) RTCCodecType codecType;
+/// 媒体类型
+@property (nonatomic, assign) RTCMediaType mediaType;
 /// 画面宽
 @property (nonatomic, assign) NSInteger width;
 /// 画面高
@@ -111,11 +115,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RTCEngineRoomModel : NSObject
 
 /// 房间标识
-@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *roomId;
 /// 连接标识
 @property (nonatomic, copy) NSString *linkId;
-/// 会话令牌
-@property (nonatomic, copy) NSString *sessionKey;
 
 /// 扩展字段
 @property (nonatomic, assign) id props;
@@ -138,23 +140,25 @@ NS_ASSUME_NONNULL_BEGIN
 /// 音频编码格式，默认AAC
 @property (nonatomic, assign) RTCCodecType audioEncode;
 
-/// 视频帧率，默认25
-@property (nonatomic, assign) int fps;
-/// 视频码率，默认900*1024
-@property (nonatomic, assign) int bitrate;
-
 /// 视频分辨率宽必须是16的倍数 高必须是2的倍数 否则容易出现绿边等问题(已做了兼容)
 /// 1080P---1920x1080
 /// 720P---1280x720
 /// 480P---640x480
 /// 180P---320x180
-
 /// 视频分辨率宽，默认480
 @property (nonatomic, assign) int videoWidth;
 /// 视频分辨率高，默认640
 @property (nonatomic, assign) int videoHeight;
 /// 视频镜像，默认YES
 @property (nonatomic, assign) BOOL videoMirror;
+
+/// 视频帧率，默认25
+@property (nonatomic, assign) int fps;
+/// 视频码率，默认0.9*1024，单位kbps
+@property (nonatomic, assign) int bitrate;
+
+/// 是否启用媒体流加密 YES开启 NO关闭，默认 NO
+@property (nonatomic, assign) BOOL enableEncrypt;
 
 @end
 
@@ -209,10 +213,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RTCSpeedTestParams : NSObject
 
 /// 流媒体标识
-@property (nonatomic, assign) int linkId;
+@property (nonatomic, copy) NSString *linkId;
 
 /// 流媒体服务地址
-@property (nonatomic, copy, nonnull) NSString *streamHost;
+@property (nonatomic, copy) NSString *streamHost;
 /// 流媒体服务端口
 @property (nonatomic, assign) int streamPort;
 
@@ -279,7 +283,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *userId;
 
 /// 流媒体标识
-@property (nonatomic, assign) NSInteger linkId;
+@property (nonatomic, copy) NSString *linkId;
 /// 功率
 @property (nonatomic, assign) NSInteger power;
 /// 分贝值
@@ -332,7 +336,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *userId;
 
 /// 流媒体标识
-@property (nonatomic, assign) int linkid;
+@property (nonatomic, copy) NSString *linkId;
 /// 接收包数
 @property (nonatomic, assign) int recv;
 /// 补偿包数

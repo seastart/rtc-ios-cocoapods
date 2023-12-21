@@ -38,56 +38,56 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark 登录事件回调
 /// 登录事件回调
-/// @param userId 当前用户ID
+/// @param userId 当前用户编号
 - (void)onLogin:(NSString *)userId;
 
 #pragma mark 互动消息事件回调
 /// 互动消息事件回调
 /// @param content 消息内容
 /// @param action 消息标识
-/// @param userId 发送成员ID
-- (void)onRemoteMessage:(NSString *)content action:(NSString *)action userId:(NSString *)userId;
+/// @param userModel 发送成员信息
+- (void)onRemoteMessage:(NSString *)content action:(NSString *)action userModel:(RTCEngineUserModel *)userModel;
 
 
 #pragma mark - ------------ 房间相关回调 ------------
 #pragma mark 进入房间事件回调
 /// 进入房间事件回调
-/// @param roomId 房间ID
-/// @param userId 用户ID
+/// @param roomId 房间号码
+/// @param userId 用户编号
 - (void)onEnterRoom:(NSString *)roomId userId:(NSString *)userId;
 
 #pragma mark 房间更新事件回调
 /// 房间更新事件回调
-/// @param roomId 房间ID
+/// @param roomId 房间号码
 - (void)onRoomUpdate:(NSString *)roomId;
 
 
 #pragma mark - ------------ 用户相关回调 ------------
 #pragma mark 用户加入当前房间回调
 /// 用户加入当前房间回调
-/// @param roomId 房间ID
-/// @param userId 用户ID
+/// @param roomId 房间号码
+/// @param userId 用户编号
 - (void)onRemoteUserEnterRoom:(NSString *)roomId userId:(NSString *)userId;
 
 #pragma mark 成员信息更新事件回调
 /// 成员信息更新事件回调
-/// @param roomId 房间ID
-/// @param userId 用户ID
+/// @param roomId 房间号码
+/// @param userId 用户编号
 - (void)onRemoteUserUpdate:(NSString *)roomId userId:(NSString *)userId;
 
 #pragma mark 用户离开当前房间回调
 /// 用户离开当前房间回调
-/// @param roomId 房间ID
-/// @param userId 用户ID
+/// @param roomId 房间号码
+/// @param userId 用户编号
 - (void)onRemoteUserLeaveRoom:(NSString *)roomId userId:(NSString *)userId;
 
 
 #pragma mark - ------------ 音频相关回调 ------------
-#pragma mark 音频播放路由变化回调
-/// 音频播放路由变化回调
-/// @param state 路由类型
-/// @param deviceName 路由信息
-- (void)onAudioRouteChange:(RTCAudioRoute)state deviceName:(NSString *)deviceName;
+#pragma mark 音频路由变更回调
+/// 音频路由变更回调
+/// @param route 音频路由
+/// @param previousRoute 变更前的音频路由
+- (void)onAudioRouteChange:(RTCAudioRoute)route previousRoute:(RTCAudioRoute)previousRoute;
 
 #pragma mark 远程成员音频状态回调
 /// 远程成员音频状态回调

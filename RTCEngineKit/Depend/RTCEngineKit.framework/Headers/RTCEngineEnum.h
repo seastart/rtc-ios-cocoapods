@@ -70,7 +70,12 @@ typedef enum : NSInteger {
     RTCEngineErrorRoomNotFound = 1102,
     /// 码流不存在
     RTCEngineErrorStreamNotFound = 1103,
-    
+    /// 会话不存在
+    RTCEngineErrorSessionNotFound = 1104,
+    /// 被踢出
+    RTCEngineErrorSessionKickout = 1105,
+    /// 用户签名失效
+    RTCEngineErrorUserSigInvalid = 1106,
     
     /////////////////////////////////////////////////////////////////////////////////
     ///
@@ -228,6 +233,36 @@ typedef enum : NSUInteger {
 } RTCCodecType;
 
 
+#pragma mark - 媒体流类型
+/**
+ 媒体流类型
+ 
+ - RTCStreamTypeAudio: 音频流类型
+ - RTCStreamTypeVideo: 视频流类型
+ */
+typedef enum : NSInteger {
+    
+    RTCStreamTypeAudio = 0,
+    RTCStreamTypeVideo = 1
+} RTCStreamType;
+
+
+#pragma mark - 媒体类型
+/**
+ 媒体类型
+
+ - RTCMediaTypeData: 数据类型
+ - RTCMediaTypeVideo: 视频类型
+ - RTCMediaTypeAudio: 音频类型
+ */
+typedef enum : NSInteger {
+    
+    RTCMediaTypeData = 0,
+    RTCMediaTypeVideo = 1,
+    RTCMediaTypeAudio = 2
+} RTCMediaType;
+
+
 #pragma mark - 码流轨道掩码
 /**
  码流轨道掩码
@@ -263,6 +298,7 @@ typedef enum : NSUInteger {
  - RTCTrackIdentifierFlags4: 轨道4标识(可自定义码流)
  - RTCTrackIdentifierFlags5: 轨道5标识(可自定义码流)
  - RTCTrackIdentifierFlags6: 轨道6标识(可自定义码流)
+ - RTCTrackIdentifierFlagsAudio: 音频轨道标识
  */
 typedef enum : NSInteger {
     
@@ -272,7 +308,8 @@ typedef enum : NSInteger {
     RTCTrackIdentifierFlags3 = 3,
     RTCTrackIdentifierFlags4 = 4,
     RTCTrackIdentifierFlags5 = 5,
-    RTCTrackIdentifierFlags6 = 6
+    RTCTrackIdentifierFlags6 = 6,
+    RTCTrackIdentifierFlagsAudio = -1
 } RTCTrackIdentifierFlags;
 
 
@@ -280,12 +317,14 @@ typedef enum : NSInteger {
 /**
  屏幕共享状态
  
+ - RTCScreenRecordStatusNormal: 屏幕共享常规状态
  - RTCScreenRecordStatusError: 屏幕共享连接错误
  - RTCScreenRecordStatusStop: 屏幕共享已经停止
  - RTCScreenRecordStatusStart: 屏幕共享已经开始
  */
 typedef enum : NSInteger {
     
+    RTCScreenRecordStatusNormal = 1000,
     RTCScreenRecordStatusError = -1,
     RTCScreenRecordStatusStop = 0,
     RTCScreenRecordStatusStart = 1
@@ -314,11 +353,11 @@ typedef enum : NSInteger {
 /**
  音频路由类型
  
- - RTCAudioRouteUnknown: 无效(未知原因)
- - RTCAudioRouteSpeaker: 扬声器(免提模式)
- - RTCAudioRouteReceiver: 听筒(听筒模式)
- - RTCAudioRouteBluetooth: 蓝牙设备(蓝牙模式)
- - RTCAudioRouteHeadset: 有线耳机设备(有线耳机模式)
+ - RTCAudioRouteUnknown: 未知
+ - RTCAudioRouteSpeaker: 扬声器
+ - RTCAudioRouteReceiver: 听筒
+ - RTCAudioRouteBluetooth: 蓝牙耳机
+ - RTCAudioRouteHeadset: 有线耳机
  */
 typedef enum : NSInteger {
     
@@ -446,20 +485,6 @@ typedef enum : NSUInteger {
     RTCChangeTypeRemove = 3,
     RTCChangeTypeClear = 4
 } RTCChangeType;
-
-
-#pragma mark - 媒体类型
-/**
- 媒体类型
- 
- - RTCMediaTypeAudio: 音频类型
- - RTCMediaTypeVideo: 视频类型
- */
-typedef enum : NSInteger {
-    
-    RTCMediaTypeAudio = 0,
-    RTCMediaTypeVideo = 1
-} RTCMediaType;
 
 
 #pragma mark - 数据帧类型
