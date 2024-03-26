@@ -307,6 +307,78 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 停止网络测速
 - (void)stopSpeedTest;
 
+
+#pragma mark - ------------ 视频渲染相关接口函数 ------------
+#pragma mark 装载视频渲染组件
+/// 装载视频渲染组件
+/// @param authData 密钥
+/// @param authDataSize 密钥长度
+/// @param logLevel 日志等级
+- (RTCEngineError)installRenderModule:(char *)authData authDataSize:(int)authDataSize logLevel:(RTCEngineLogLevel)logLevel;
+
+#pragma mark 卸载视频渲染组件
+/// 卸载视频渲染组件
+- (void)uninstallRenderModule;
+
+#pragma mark 美颜功能开关
+/// 美颜功能开关
+/// @param enabled YES-开启美颜 NO-关闭美颜
+- (RTCEngineError)enabledBeauty:(BOOL)enabled;
+
+#pragma mark 磨皮等级
+/// 磨皮等级
+/// @param blurLevel 磨皮等级，取值范围 0.0-1.0，默认0.5
+- (void)setBlurLevel:(float)blurLevel;
+
+#pragma mark 获取当前磨皮等级
+/// 获取当前磨皮等级
+- (float)getBlurLevel;
+
+#pragma mark 美白等级
+/// 美白等级
+/// @param whiteLevel 美白等级，取值范围 0.0-1.0，默认值0.3
+- (void)setWhiteLevel:(float)whiteLevel;
+
+#pragma mark 获取当前美白等级
+/// 获取当前美白等级
+- (float)getWhiteLevel;
+
+#pragma mark 红润等级
+/// 红润等级
+/// @param redLevel 红润等级，取值范围 0.0-1.0，默认值0.3
+- (void)setRedLevel:(float)redLevel;
+
+#pragma mark 获取当前红润等级
+/// 获取当前红润等级
+- (float)getRedLevel;
+
+#pragma mark 锐化等级
+/// 锐化等级
+/// @param sharpenLevel 锐化等级，取值范围 0.0-1.0，默认值0.3
+- (void)setSharpenLevel:(float)sharpenLevel;
+
+#pragma mark 获取当前锐化等级
+/// 获取当前锐化等级
+- (float)getSharpenLevel;
+
+#pragma mark 滤镜等级
+/// 滤镜等级
+/// @param filterLevel 滤镜等级，取值范围 0.0-1.0，默认值0.8
+- (void)setFilterLevel:(float)filterLevel;
+
+#pragma mark 获取当前滤镜等级
+/// 获取当前滤镜等级
+- (float)getFilterLevel;
+
+#pragma mark 滤镜效果
+/// 滤镜效果
+/// @param filterName 滤镜效果，默认值为 “origin” ，origin即为使用原图效果
+- (void)setFilterName:(NSString *)filterName;
+
+#pragma mark 获取当前滤镜效果
+/// 获取当前滤镜效果
+- (NSString *)getFilterName;
+
 @end
 
 NS_ASSUME_NONNULL_END

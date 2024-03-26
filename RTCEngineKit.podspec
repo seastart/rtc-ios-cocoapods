@@ -38,7 +38,9 @@ TODO: Add long description of the pod here.
   
   # 依赖本地库文件
   s.vendored_frameworks = 'RTCEngineKit/Depend/*.framework'
-  
   # 依赖本地资源文件
   s.resource = 'RTCEngineKit/Resources/*.bundle'
+  
+  # 依赖远程Socket组件库
+  s.dependency 'CocoaAsyncSocket'
 end

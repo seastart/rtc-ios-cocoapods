@@ -6,11 +6,27 @@
 	<dict>
 		<key>Info.plist</key>
 		<data>
-		047He9cEoDJyD77IKZ4+8CrhibY=
+		BVG6fuJ7NPGIH9DokdsuflOFekQ=
+		</data>
+		<key>face_beautification.bundle</key>
+		<data>
+		QuvyjIhpqADYq+xeFf4+kzEKqyc=
 		</data>
 	</dict>
 	<key>files2</key>
-	<dict/>
+	<dict>
+		<key>face_beautification.bundle</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QuvyjIhpqADYq+xeFf4+kzEKqyc=
+			</data>
+			<key>hash2</key>
+			<data>
+			Aj1ugCD0GmONxnTPq6ti8ILbTFdwYlXz1dnMMzswyLg=
+			</data>
+		</dict>
+	</dict>
 	<key>rules</key>
 	<dict>
 		<key>^.*</key>
