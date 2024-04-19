@@ -40,6 +40,11 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 获取RTC引擎实例
 + (RTCEngineKit *)sharedEngine;
 
+#pragma mark 解密字符串
+/// 解密字符串
+/// - Parameter value: 加密字符串
++ (nullable NSString *)decrypt:(nullable NSString *)value;
+
 #pragma mark 初始化RTC引擎
 /// 初始化RTC引擎
 /// @param engineConfig 配置参数
