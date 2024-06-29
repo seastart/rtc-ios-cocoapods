@@ -10,623 +10,557 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#pragma mark - RTC错误码
+
+#pragma mark - 错误码
+/// 错误码
 typedef enum : NSInteger {
     
-    /////////////////////////////////////////////////////////////////////////////////
-    ///
-    ///       基础错误码
-    ///
-    /////////////////////////////////////////////////////////////////////////////////
     /// 无错误
     RTCEngineErrorOK = 0,
     
-    
-    /////////////////////////////////////////////////////////////////////////////////
-    ///
-    ///       系统级错误码
-    ///
-    /////////////////////////////////////////////////////////////////////////////////
     /// 系统内部错误
-    RTCEngineErrorSystemFail = 1,
+    RTCEngineErrorSystemError = 100001,
     /// 未初始化
-    RTCEngineErrorNotInitialized = 2,
+    RTCEngineErrorNotInitialized = 100002,
     /// 媒体模块尚未初始化
-    RTCEngineErrorMediaNotInitialized = 3,
-    /// 外部视频设备错误
-    RTCEngineErrorVideoCapturerFail = 100,
-    /// 外部音频设备错误
-    RTCEngineErrorAudioCapturerFail = 101,
-    /// 外部扬声器错误
-    RTCEngineErrorAudioPlayerFail = 102,
-    /// 设备访问无权限
-    RTCEngineErrorDeviceNoRights = 103,
-    /// 设备不存在
-    RTCEngineErrorDeviceNotfound = 104,
+    RTCEngineErrorMediaNotInitialized = 100003,
     /// 协议解析错误
-    RTCEngineErrorProtocolParsingFail = 200,
+    RTCEngineErrorProtocolParsingError = 100004,
     
-    
-    /////////////////////////////////////////////////////////////////////////////////
-    ///
-    ///       通用错误码
-    ///
-    /////////////////////////////////////////////////////////////////////////////////
     /// 超时
-    RTCEngineErrorTimeout = 1000,
+    RTCEngineErrorTimeout = 100005,
     /// 参数错误
-    RTCEngineErrorInvalidArgs = 1001,
+    RTCEngineErrorInvalidArgs = 100006,
     /// 重复操作冲突
-    RTCEngineErrorConflict = 1002,
-    /// 尚未加入房间
-    RTCEngineErrorNotYetInRoom = 1003,
-    /// 网络测试时拒绝操作
-    RTCEngineErrorForbiddenInNetTesting = 1004,
-    /// 查找的资源不存在
-    RTCEngineErrorNotFound = 1100,
-    /// 用户不存在
-    RTCEngineErrorUserNotFound = 1101,
-    /// 房间不存在
-    RTCEngineErrorRoomNotFound = 1102,
-    /// 码流不存在
-    RTCEngineErrorStreamNotFound = 1103,
-    /// 会话不存在
-    RTCEngineErrorSessionNotFound = 1104,
-    /// 被踢出
-    RTCEngineErrorSessionKickout = 1105,
-    /// 用户签名失效
-    RTCEngineErrorUserSigInvalid = 1106,
+    RTCEngineErrorConflict = 100007,
+    /// 令牌失效
+    RTCEngineErrorSdkTokenInvalid = 100008,
     
-    /////////////////////////////////////////////////////////////////////////////////
-    ///
-    ///       网络类错误码
-    ///
-    /////////////////////////////////////////////////////////////////////////////////
     /// 网络错误
-    RTCEngineErrorNetFail = 2000,
+    RTCEngineErrorNetError = 100009,
     /// 媒体网络错误
-    RTCEngineErrorMediaNetFail = 2001,
+    RTCEngineErrorMediaNetError = 100010,
+    /// 目标不存在
+    RTCEngineErrorNotFound = 100011,
     
-    
-    /////////////////////////////////////////////////////////////////////////////////
-    ///
-    ///       应用相关错误码
-    ///
-    /////////////////////////////////////////////////////////////////////////////////
-    /// 无效的AppID
-    RTCEngineErrorInvalidAppId = 3001,
-    /// 签名错误
-    RTCEngineErrorApiSignatureFail = 3002,
-    /// Api请求时间戳错误
-    RTCEngineErrorApiTimestampeFail = 3003,
-    
-    
-    /////////////////////////////////////////////////////////////////////////////////
-    ///
-    ///       权限类错误码
-    ///
-    /////////////////////////////////////////////////////////////////////////////////
-    /// 操作未授权
-    RTCEngineErrorUnauthorized = 4000,
-    /// 操作不允许
-    RTCEngineErrorForbidden = 4001,
-    /// 并发不足
-    RTCEngineErrorConcLimit = 4002,
-    
-    
-    /////////////////////////////////////////////////////////////////////////////////
-    ///
-    ///       服务端错误码
-    ///
-    /////////////////////////////////////////////////////////////////////////////////
-    /// 服务器内部错误
-    RTCEngineErrorServerFail = 5000,
-    /// MQTT服务器资源不足
-    RTCEngineErrorMQTTServerLess = 5010,
-    /// MQTT没有服务器线路
-    RTCEngineErrorMQTTServerLineLess = 5011,
-    /// 流媒体服务器资源不足
-    RTCEngineErrorUploadServerLess = 5020,
-    /// 流媒体没有服务器线路
-    RTCEngineErrorUploadServerLineLess = 5021,
-    /// 流媒体服务器绑定的WebRTC网关不足
-    RTCEngineErrorUploadWebRtcLess = 5022,
-    /// 流媒体服务器绑定的RTMP网关不足
-    RTCEngineErrorUploadRtmpLess = 5023,
-    /// WebRTC服务器资源不足
-    RTCEngineErrorWebRtcServerLess = 5030,
-    /// WebRTC没有服务器线路
-    RTCEngineErrorWebRtcServerLineLess = 5031,
-    /// RTMP服务器资源不足
-    RTCEngineErrorRTMPServerLess = 5040,
-    /// RTMP没有服务器线路
-    RTCEngineErrorRTMPServerLineLess = 5041,
-    
-    
-    /////////////////////////////////////////////////////////////////////////////////
-    ///
-    ///       第三方自定义错误码
-    ///
-    /////////////////////////////////////////////////////////////////////////////////
-    /// 第三方平台鉴权错误
-    RTCEngineErrorThirdPartyRefused = 100000,
+    /// 设备访问无权限
+    RTCEngineErrorDeviceNoAuthorized = 103001,
+    /// 未加入频道
+    RTCEngineErrorNotJoinedChannel = 103002,
+    /// 操作不被允许
+    RTCEngineErrorForbidden = 103003,
+    /// 码流不存在
+    RTCEngineErrorStreamNotFound = 103004
 } RTCEngineError;
 
 
-#pragma mark - 日志等级
-/**
- 日志等级
-
- - RTCEngineLogLevelTrace: TRACE
- - RTCEngineLogLevelDebug: DEBUG
- - RTCEngineLogLevelInfo: INFO
- - RTCEngineLogLevelWarn: WARN
- - RTCEngineLogLevelError: ERROR
- - RTCEngineLogLevelCritical: CRITICAL
- - RTCEngineLogLevelOff: OFF
-*/
+#pragma mark - 设备类型
+/// 设备类型
 typedef enum : NSUInteger {
     
-    RTCEngineLogLevelTrace = 0,
-    RTCEngineLogLevelDebug = 1,
-    RTCEngineLogLevelInfo = 2,
-    RTCEngineLogLevelWarn = 3,
-    RTCEngineLogLevelError = 4,
-    RTCEngineLogLevelCritical = 5,
-    RTCEngineLogLevelOff = 6,
-} RTCEngineLogLevel;
-
-
-#pragma mark - 终端类型
-/**
- 终端类型
- 
- - RTCTerminalTypeUnknown: 未知终端
- - RTCTerminalTypeWindows: Windows端
- - RTCTerminalTypeMacOS: Mac端
- - RTCTerminalTypeAndroid: 安卓端
- - RTCTerminalTypeAndroidTV: 安卓TV端
- - RTCTerminalTypeIOS: iOS端
- - RTCTerminalTypeEmbeddedDev: 嵌入式终端
- */
-typedef enum : NSUInteger {
+    /// 未知设备
+    RTCDeviceTypeUnknown = 0,
     
-    RTCTerminalTypeUnknown = 0,
-    RTCTerminalTypeWindows = 1000,
-    RTCTerminalTypeMacOS = 1001,
-    RTCTerminalTypeAndroid = 2000,
-    RTCTerminalTypeAndroidTV = 2001,
-    RTCTerminalTypeIOS = 2002,
-    RTCTerminalTypeEmbeddedDev = 3000
-} RTCTerminalType;
+    /// Windows
+    RTCDeviceTypeWindows = 1,
+    /// Android
+    RTCDeviceTypeAndroid = 2,
+    /// iOS
+    RTCDeviceTypeIOS = 3,
+    /// Linux
+    RTCDeviceTypeLinux = 4,
+    /// MacOS
+    RTCDeviceTypeMacOS = 5,
+    
+    /// WebRTC
+    RTCDeviceTypeWebRTC = 6,
+    /// RTMP
+    RTCDeviceTypeRtmp = 7
+} RTCDeviceType;
 
 
-#pragma mark - 成员角色类型
-/**
- 成员角色类型
- 
- - RTCUserRoleTypeDefault: 普通成员
- - RTCUserRoleTypeAudience: 听众, 听众的信息不会公布给房间内的其他成员
- */
+#pragma mark - 成员角色
+/// 成员角色
 typedef enum : NSInteger {
     
-    RTCUserRoleTypeDefault = 0,
-    RTCUserRoleTypeAudience = 1
-} RTCUserRoleType;
+    /// 普通成员
+    RTCUserRoleDefault = 0,
+    /// 听众, 听众的信息不会公布给房间内的其他成员
+    RTCUserRoleAudience = 1
+} RTCUserRole;
 
 
 #pragma mark - 编码类型
-/**
- 编码类型
- 
- - RTCCodecTypeH264: H264
- - RTCCodecTypeH265: H265
- - RTCCodecTypeAAC: AAC
- - RTCCodecTypeOPUS: OPUS
- */
+/// 编码类型
 typedef enum : NSUInteger {
     
+    /// 未知类型
+    RTCCodecTypeUnknown = 0,
+    /// H264
     RTCCodecTypeH264 = 0x1b,
+    /// H265
     RTCCodecTypeH265 = 0x24,
+    /// AAC
     RTCCodecTypeAAC = 0x0f,
+    /// OPUS
     RTCCodecTypeOPUS = 0x5355504f
 } RTCCodecType;
 
 
-#pragma mark - 媒体流类型
-/**
- 媒体流类型
- 
- - RTCStreamTypeAudio: 音频流类型
- - RTCStreamTypeVideo: 视频流类型
- */
+#pragma mark - 线路类型
+/// 线路类型
 typedef enum : NSInteger {
     
-    RTCStreamTypeAudio = 0,
-    RTCStreamTypeVideo = 1
-} RTCStreamType;
+    /// 默认
+    RTCLineTypeDefault = 0,
+    /// 正常
+    RTCLineTypeNormal = 1
+} RTCLineType;
 
 
-#pragma mark - 媒体类型
-/**
- 媒体类型
-
- - RTCMediaTypeData: 数据类型
- - RTCMediaTypeVideo: 视频类型
- - RTCMediaTypeAudio: 音频类型
- */
+#pragma mark - 服务类型
+/// 服务类型
 typedef enum : NSInteger {
     
-    RTCMediaTypeData = 0,
-    RTCMediaTypeVideo = 1,
-    RTCMediaTypeAudio = 2
-} RTCMediaType;
-
-
-#pragma mark - 码流轨道掩码
-/**
- 码流轨道掩码
- 
- - RTCTrackMaskFlags0: 轨道0掩码
- - RTCTrackMaskFlags1: 轨道1掩码
- - RTCTrackMaskFlags2: 轨道2掩码
- - RTCTrackMaskFlags3: 轨道3掩码
- - RTCTrackMaskFlags4: 轨道4掩码
- - RTCTrackMaskFlags5: 轨道5掩码
- - RTCTrackMaskFlags6: 轨道6掩码
- */
-typedef enum : NSUInteger {
-    
-    RTCTrackMaskFlags0 = 1 << 0,
-    RTCTrackMaskFlags1 = 1 << 1,
-    RTCTrackMaskFlags2 = 1 << 2,
-    RTCTrackMaskFlags3 = 1 << 3,
-    RTCTrackMaskFlags4 = 1 << 4,
-    RTCTrackMaskFlags5 = 1 << 5,
-    RTCTrackMaskFlags6 = 1 << 6,
-} RTCTrackMaskFlags;
-
-
-#pragma mark - 码流轨道标识
-/**
- 码流轨道标识
- 
- - RTCTrackIdentifierFlags0: 轨道0标识(子码流)
- - RTCTrackIdentifierFlags1: 轨道1标识(主码流)
- - RTCTrackIdentifierFlags2: 轨道2标识(共享码流)
- - RTCTrackIdentifierFlags3: 轨道3标识(可自定义码流)
- - RTCTrackIdentifierFlags4: 轨道4标识(可自定义码流)
- - RTCTrackIdentifierFlags5: 轨道5标识(可自定义码流)
- - RTCTrackIdentifierFlags6: 轨道6标识(可自定义码流)
- - RTCTrackIdentifierFlagsAudio: 音频轨道标识
- */
-typedef enum : NSInteger {
-    
-    RTCTrackIdentifierFlags0 = 0,
-    RTCTrackIdentifierFlags1 = 1,
-    RTCTrackIdentifierFlags2 = 2,
-    RTCTrackIdentifierFlags3 = 3,
-    RTCTrackIdentifierFlags4 = 4,
-    RTCTrackIdentifierFlags5 = 5,
-    RTCTrackIdentifierFlags6 = 6,
-    RTCTrackIdentifierFlagsAudio = -1
-} RTCTrackIdentifierFlags;
-
-
-#pragma mark - 屏幕共享状态
-/**
- 屏幕共享状态
- 
- - RTCScreenRecordStatusNormal: 屏幕共享常规状态
- - RTCScreenRecordStatusError: 屏幕共享连接错误
- - RTCScreenRecordStatusStop: 屏幕共享已经停止
- - RTCScreenRecordStatusStart: 屏幕共享已经开始
- */
-typedef enum : NSInteger {
-    
-    RTCScreenRecordStatusNormal = 1000,
-    RTCScreenRecordStatusError = -1,
-    RTCScreenRecordStatusStop = 0,
-    RTCScreenRecordStatusStart = 1
-} RTCScreenRecordStatus;
-
-
-#pragma mark - 网络延时抗抖动等级
-/**
- 网络延时抗抖动等级
- 
- - RTCNetworkQosShakeLevelUltraShort: 超短(0) 单向延迟120ms左右 这种模式下没有丢包补偿机制 并且编码关闭了B帧 一般不建议实际使用
- - RTCNetworkQosShakeLevelShort: 短(1) 单向延迟200ms左右 单次丢包补偿 B帧为1 双向对讲环境下可以使用
- - RTCNetworkQosShakeLevelMedium: 中(2) 单向延迟350ms左右 两次丢包补偿 B帧为1 双向对讲环境下推荐使用
- - RTCNetworkQosShakeLevelLong: 长(3) 单向延迟600ms左右 三次丢包补偿 B帧为3 这种模式仅用于单向收看 双向对讲环境下不建议使用 该参数无法动态设置
- */
-typedef enum : NSInteger {
-    
-    RTCNetworkQosShakeLevelUltraShort = 0,
-    RTCNetworkQosShakeLevelShort = 1,
-    RTCNetworkQosShakeLevelMedium = 2,
-    RTCNetworkQosShakeLevelLong = 3
-} RTCNetworkQosShakeLevel;
-
-
-#pragma mark - 音频路由类型
-/**
- 音频路由类型
- 
- - RTCAudioRouteUnknown: 未知
- - RTCAudioRouteSpeaker: 扬声器
- - RTCAudioRouteReceiver: 听筒
- - RTCAudioRouteBluetooth: 蓝牙耳机
- - RTCAudioRouteHeadset: 有线耳机
- */
-typedef enum : NSInteger {
-    
-    RTCAudioRouteUnknown = 0,
-    RTCAudioRouteSpeaker = 1,
-    RTCAudioRouteReceiver = 2,
-    RTCAudioRouteBluetooth = 3,
-    RTCAudioRouteHeadset = 4
-} RTCAudioRoute;
-
-
-#pragma mark - 网络状况
-/**
- 网络状况
- 
- - RTCNetworkStateNormal: 良好
- - RTCNetworkStatePoor: 不佳
- - RTCNetworkStateBad:  较差
- - RTCNetworkStateVeryBad: 极差
- */
-typedef enum : NSInteger {
-    
-    RTCNetworkStateNormal = 0,
-    RTCNetworkStatePoor = 1,
-    RTCNetworkStateBad = 2,
-    RTCNetworkStateVeryBad = 3
-} RTCNetworkState;
-
-
-#pragma mark - 订阅远程流类型
-/**
- 订阅远程流类型
- 
- - RTCPickerStateClose: 关闭订阅
- - RTCPickerStateAudio: 订阅音频流
- - RTCPickerStateVideo: 订阅视频流
- - RTCPickerStateAudioAndVideo: 订阅音视频流
- - RTCPickerStateBesides: 订阅除某个人的流
- */
-typedef enum : NSInteger {
-    
-    RTCPickerStateClose = 0,
-    RTCPickerStateAudio = 1,
-    RTCPickerStateVideo = 2,
-    RTCPickerStateAudioAndVideo = 3,
-    RTCPickerStateBesides = 0x2000
-} RTCPickerState;
-
-
-#pragma mark - 下行码率自适应状态
-/**
- 下行码率自适应状态
- 
- - RTCDownBitrateAdaptiveStateNormal: 正常
- - RTCDownBitrateAdaptiveStatePoor: 较差
- - RTCDownBitrateAdaptiveStateBad: 很差
- - RTCDownBitrateAdaptiveStateVeryBad: 极差
- - RTCDownBitrateAdaptiveStateLose: 下行链路状态不存在
- */
-typedef enum : NSInteger {
-    
-    RTCDownBitrateAdaptiveStateNormal = 0,
-    RTCDownBitrateAdaptiveStatePoor = -1,
-    RTCDownBitrateAdaptiveStateBad = -2,
-    RTCDownBitrateAdaptiveStateVeryBad = -3,
-    RTCDownBitrateAdaptiveStateLose = -4
-} RTCDownBitrateAdaptiveState;
-
-
-#pragma mark - 下行平均丢包档位
-/**
- 下行平均丢包档位
- 
- - RTCDownLossLevelStateInvalid: 无效
- - RTCDownLossLevelStateNormal: 正常
- - RTCDownLossLevelStatePoor: 较差
- - RTCDownLossLevelStateBad:  很差
- - RTCDownLossLevelStateVeryBad: 极差
- */
-typedef enum : NSInteger {
-    
-    RTCDownLossLevelStateInvalid = -1,
-    RTCDownLossLevelStateNormal = 0,
-    RTCDownLossLevelStatePoor = 1,
-    RTCDownLossLevelStateBad = 2,
-    RTCDownLossLevelStateVeryBad = 3
-} RTCDownLossLevelState;
-
-
-#pragma mark - 上行码率自适应状态
-/**
- 上行码率自适应状态
- 
- - RTCUploadBitrateAdaptiveStateStart: 码率自适应开始工作
- - RTCUploadBitrateAdaptiveStateNormal: 码率恢复到最初设置
- - RTCUploadBitrateAdaptiveStateHalf:  码率变为原来的一半
- - RTCUploadBitrateAdaptiveStateQuarter: 码率变为原来的四分之一
- - RTCUploadBitrateAdaptiveStateVeryBad: 当前网络环境及其差劲情况
- */
-typedef enum : NSInteger {
-    
-    RTCUploadBitrateAdaptiveStateStart = 1000,
-    RTCUploadBitrateAdaptiveStateNormal = 0,
-    RTCUploadBitrateAdaptiveStateHalf = -1,
-    RTCUploadBitrateAdaptiveStateQuarter = -2,
-    RTCUploadBitrateAdaptiveStateVeryBad = -3,
-} RTCUploadBitrateAdaptiveState;
+    RTCServerTypeMQ = 0,
+    RTCServerTypeUpload = 1,
+    RTCServerTypeWebRTC = 2,
+    RTCServerTypeRTMP = 3,
+    RTCServerTypeStorage = 4
+} RTCServerType;
 
 
 #pragma mark - 变更操作类型
-/**
- 变更操作类型
- 
- - RTCChangeTypeNone: 无操作
- - RTCChangeTypeSet: 替换
- - RTCChangeTypeAppend: 新增
- - RTCChangeTypeRemove: 移除
- - RTCChangeTypeClear: 清空
- */
+/// 变更操作类型
 typedef enum : NSUInteger {
     
+    /// 无操作
     RTCChangeTypeNone = 0,
-    RTCChangeTypeSet = 1,
+    /// 更新
+    RTCChangeTypeUpdate = 1,
+    /// 新增
     RTCChangeTypeAppend = 2,
+    /// 移除
     RTCChangeTypeRemove = 3,
+    /// 清空
     RTCChangeTypeClear = 4
 } RTCChangeType;
 
 
-#pragma mark - 数据帧类型
-/**
- 数据帧类型
- 
- - RTCFrameTypeUnknown: 未知类型
- - RTCFrameTypeIDR: IDR帧
- - RTCFrameTypeIFrame: I帧
- - RTCFrameTypePFrame: P帧
- */
+#pragma mark - 媒体类型
+/// 媒体类型
 typedef enum : NSInteger {
     
+    /// 数据类型
+    RTCMediaTypeData = 0,
+    /// 视频类型
+    RTCMediaTypeVideo = 1,
+    /// 音频类型
+    RTCMediaTypeAudio = 2
+} RTCMediaType;
+
+
+#pragma mark - 媒体流类型
+/// 媒体流类型
+typedef enum : NSInteger {
+    
+    /// 音频流类型
+    RTCStreamTypeAudio = 0,
+    /// 视频流类型
+    RTCStreamTypeVideo = 1
+} RTCStreamType;
+
+
+#pragma mark - 数据帧类型
+/// 数据帧类型
+typedef enum : NSInteger {
+    
+    /// 未知类型
     RTCFrameTypeUnknown = -1,
+    /// IDR帧
     RTCFrameTypeIDR = 0,
+    /// I帧
     RTCFrameTypeIFrame = 1,
-    RTCFrameTypePFrame = 2,
+    /// P帧
+    RTCFrameTypePFrame = 2
 } RTCFrameType;
 
 
 #pragma mark - 像素格式类型
-/**
- 像素格式类型
- 
- - RTCColorFormatUnknown: 未知类型
- - RTCColorFormatRGB: RGB
- - RTCColorFormatRGBA: RGBA
- - RTCColorFormatYUV444p: YUV444p
- - RTCColorFormatYUV422p: YUV422p
- - RTCColorFormatYUV420p: YUV420p
- - RTCColorFormatMJPEG: MJPEG
- */
+/// 像素格式类型
 typedef enum : NSInteger {
     
+    /// 未知类型
     RTCColorFormatUnknown = 0,
+    /// RGB
     RTCColorFormatRGB = 1,
+    /// RGBA
     RTCColorFormatRGBA = 2,
+    /// YUV444p
     RTCColorFormatYUV444p = 3,
+    /// YUV422p
     RTCColorFormatYUV422p = 4,
+    /// YUV420p
     RTCColorFormatYUV420p = 5,
+    /// MJPEG
     RTCColorFormatMJPEG = 100
 } RTCColorFormat;
 
 
 #pragma mark - 电子画板权限
-/**
- 电子画板权限
- 
- - RTCDrawingPrivilegesDefault: 默认，只读权限
- - RTCDrawingPrivilegesWrite: 可写权限
- - RTCDrawingPrivilegesAdmin: 管理权限
- */
+/// 电子画板权限
 typedef enum : NSInteger {
     
+    /// 默认，只读权限
     RTCDrawingPrivilegesDefault = 0,
+    /// 可写权限
     RTCDrawingPrivilegesWrite = 1,
+    /// 管理权限
     RTCDrawingPrivilegesAdmin = 3
 } RTCDrawingPrivileges;
 
 
-#pragma mark - 电子画板绘制状态
-/**
- 电子画板绘制状态
- 
- - RTCDrawingTypeBegin: 开始绘制
- - RTCDrawingTypeDrawing: 绘制中
- - RTCDrawingTypeEnd: 结束绘制
- */
-typedef enum : NSInteger {
-    
-    RTCDrawingTypeBegin = 0,
-    RTCDrawingTypeDrawing = 1,
-    RTCDrawingTypeEnd = 2
-} RTCDrawingType;
-
-
 #pragma mark - 电子画板图形类型
-/**
- 电子画板图形类型
- 
- - RTCDrawingTypeRubber: 橡皮擦
- - RTCDrawingTypePen: 画笔
- - RTCDrawingTypeLine: 线条
- - RTCDrawingTypeRect: 矩形
- - RTCDrawingTypeEllipse: 椭圆
- - RTCDrawingTypeArrow: 箭头
- - RTCDrawingTypeText: 文本
- */
+/// 电子画板图形类型
 typedef enum : NSInteger {
     
+    /// 橡皮擦
     RTCDrawingTypeRubber = 0,
+    /// 画笔
     RTCDrawingTypePen = 1,
+    /// 线条
     RTCDrawingTypeLine = 2,
+    /// 矩形
     RTCDrawingTypeRect = 3,
+    /// 椭圆
     RTCDrawingTypeEllipse = 4,
+    /// 箭头
     RTCDrawingTypeArrow = 5,
+    /// 文本
     RTCDrawingTypeText = 6
 } RTCDrawingShapeType;
 
 
-#pragma mark - 电子画板指令
-/**
- 电子画板指令
- 
- - RTCDrawingCommandEnterRequest: 进入请求
- - RTCDrawingCommandEnterResponse: 进入响应
- - RTCDrawingCommandHeartbeatRequest: 心跳请求
- - RTCDrawingCommandHeartbeatResponse: 心跳响应
- - RTCDrawingCommandExitRequest: 退出请求
- - RTCDrawingCommandExitResponse: 退出响应
- - RTCDrawingCommandDraw: 绘制请求
- - RTCDrawingCommandDrawEvent: 绘制响应
- - RTCDrawingCommandBack: 撤销请求
- - RTCDrawingCommandBackEvent: 撤销响应
- - RTCDrawingCommandClean: 清除请求
- - RTCDrawingCommandCleanEvent: 清除响应
- - RTCDrawingCommandReset: 重置画布请求
- - RTCDrawingCommandResetEvent: 重置画布响应
- */
+#pragma mark - 电子画板绘制状态
+/// 电子画板绘制状态
 typedef enum : NSInteger {
     
+    /// 开始绘制
+    RTCDrawingTypeBegin = 0,
+    /// 绘制中
+    RTCDrawingTypeDrawing = 1,
+    /// 结束绘制
+    RTCDrawingTypeEnd = 2
+} RTCDrawingType;
+
+
+#pragma mark - 电子画板指令
+/// 电子画板指令
+typedef enum : NSInteger {
+    
+    /// 进入请求
     RTCDrawingCommandEnterRequest = 1,
+    /// 进入响应
     RTCDrawingCommandEnterResponse = 2,
     
+    /// 心跳请求
     RTCDrawingCommandHeartbeatRequest = 3,
+    /// 心跳响应
     RTCDrawingCommandHeartbeatResponse = 4,
     
+    /// 退出请求
     RTCDrawingCommandExitRequest = 5,
+    /// 退出响应
     RTCDrawingCommandExitResponse = 6,
     
+    /// 绘制请求
     RTCDrawingCommandDraw = 7,
+    /// 绘制响应
     RTCDrawingCommandDrawEvent = 8,
     
+    /// 撤销请求
     RTCDrawingCommandBack = 9,
+    /// 撤销响应
     RTCDrawingCommandBackEvent = 10,
     
+    /// 清除请求
     RTCDrawingCommandClean = 11,
+    /// 清除响应
     RTCDrawingCommandCleanEvent = 12,
     
+    /// 重置画布请求
     RTCDrawingCommandReset = 13,
-    RTCDrawingCommandResetEvent = 14,
-    
+    /// 重置画布响应
+    RTCDrawingCommandResetEvent = 14
 } RTCDrawingCommand;
+
+
+#pragma mark - 日志等级
+/// 日志等级
+typedef enum : NSUInteger {
+    
+    /// TRACE
+    RTCEngineLogLevelTrace = 0,
+    /// DEBUG
+    RTCEngineLogLevelDebug = 1,
+    /// INFO
+    RTCEngineLogLevelInfo = 2,
+    /// WARN
+    RTCEngineLogLevelWarn = 3,
+    /// ERROR
+    RTCEngineLogLevelError = 4,
+    /// CRITICAL
+    RTCEngineLogLevelCritical = 5,
+    /// OFF
+    RTCEngineLogLevelOff = 6
+} RTCEngineLogLevel;
+
+
+#pragma mark - 离开频道原因
+/// 离开频道原因
+typedef enum : NSUInteger {
+    
+    /// 主动离开
+    RTCLeaveChannelReasonNormal = 1,
+    /// 被踢离开
+    RTCLeaveChannelReasonKickout = 2,
+    /// 被顶号
+    RTCLeaveChannelReasonReplaced = 3,
+    /// 心跳超时离开
+    RTCLeaveChannelReasonTimeout = 4,
+    /// 频道销毁离开
+    RTCLeaveChannelReasonDestroy = 5
+} RTCLeaveChannelReason;
+
+
+#pragma mark - 码流轨道掩码
+/// 码流轨道掩码
+typedef enum : NSUInteger {
+    
+    /// 轨道0掩码
+    RTCTrackMaskFlags0 = 1 << 0,
+    /// 轨道1掩码
+    RTCTrackMaskFlags1 = 1 << 1,
+    /// 轨道2掩码
+    RTCTrackMaskFlags2 = 1 << 2,
+    /// 轨道3掩码
+    RTCTrackMaskFlags3 = 1 << 3,
+    /// 轨道4掩码
+    RTCTrackMaskFlags4 = 1 << 4,
+    /// 轨道5掩码
+    RTCTrackMaskFlags5 = 1 << 5,
+    /// 轨道6掩码
+    RTCTrackMaskFlags6 = 1 << 6,
+} RTCTrackMaskFlags;
+
+
+#pragma mark - 码流轨道标识
+/// 码流轨道标识
+typedef enum : NSInteger {
+    
+    /// 轨道0标识(子码流)
+    RTCTrackIdentifierFlags0 = 0,
+    /// 轨道1标识(主码流)
+    RTCTrackIdentifierFlags1 = 1,
+    /// 轨道2标识(共享码流)
+    RTCTrackIdentifierFlags2 = 2,
+    /// 轨道3标识(可自定义码流)
+    RTCTrackIdentifierFlags3 = 3,
+    /// 轨道4标识(可自定义码流)
+    RTCTrackIdentifierFlags4 = 4,
+    /// 轨道5标识(可自定义码流)
+    RTCTrackIdentifierFlags5 = 5,
+    /// 轨道6标识(可自定义码流)
+    RTCTrackIdentifierFlags6 = 6,
+    /// 音频轨道标识
+    RTCTrackIdentifierFlagsAudio = 7
+} RTCTrackIdentifierFlags;
+
+
+#pragma mark - 屏幕共享状态
+/// 屏幕共享状态
+typedef enum : NSInteger {
+    
+    /// 屏幕共享常规状态
+    RTCScreenRecordStatusNormal = 1000,
+    /// 屏幕共享连接错误
+    RTCScreenRecordStatusError = -1,
+    /// 屏幕共享已经停止
+    RTCScreenRecordStatusStop = 0,
+    /// 屏幕共享已经开始
+    RTCScreenRecordStatusStart = 1
+} RTCScreenRecordStatus;
+
+
+#pragma mark - 网络延时抗抖动等级
+/// 网络延时抗抖动等级
+typedef enum : NSInteger {
+    
+    /// 超短(0) 单向延迟120ms左右 这种模式下没有丢包补偿机制 并且编码关闭了B帧 一般不建议实际使用
+    RTCNetworkQosShakeLevelUltraShort = 0,
+    /// 短(1) 单向延迟200ms左右 单次丢包补偿 B帧为1 双向对讲环境下可以使用
+    RTCNetworkQosShakeLevelShort = 1,
+    /// 中(2) 单向延迟350ms左右 两次丢包补偿 B帧为1 双向对讲环境下推荐使用
+    RTCNetworkQosShakeLevelMedium = 2,
+    /// 长(3) 单向延迟600ms左右 三次丢包补偿 B帧为3 这种模式仅用于单向收看 双向对讲环境下不建议使用 该参数无法动态设置
+    RTCNetworkQosShakeLevelLong = 3
+} RTCNetworkQosShakeLevel;
+
+
+#pragma mark - 音频路由类型
+/// 音频路由类型
+typedef enum : NSInteger {
+    
+    /// 未知
+    RTCAudioRouteUnknown = 0,
+    /// 扬声器
+    RTCAudioRouteSpeaker = 1,
+    /// 听筒
+    RTCAudioRouteReceiver = 2,
+    /// 蓝牙耳机
+    RTCAudioRouteBluetooth = 3,
+    /// 有线耳机
+    RTCAudioRouteHeadset = 4
+} RTCAudioRoute;
+
+
+#pragma mark - 网络状况
+/// 网络状况
+typedef enum : NSInteger {
+    
+    /// 良好
+    RTCNetworkStateNormal = 0,
+    /// 不佳
+    RTCNetworkStatePoor = 1,
+    /// 较差
+    RTCNetworkStateBad = 2,
+    /// 极差
+    RTCNetworkStateVeryBad = 3
+} RTCNetworkState;
+
+
+#pragma mark - 订阅远程流类型
+/// 订阅远程流类型
+typedef enum : NSInteger {
+    
+    /// 关闭订阅
+    RTCPickerStateClose = 0,
+    /// 订阅音频流
+    RTCPickerStateAudio = 1,
+    /// 订阅视频流
+    RTCPickerStateVideo = 2,
+    /// 订阅音视频流
+    RTCPickerStateAudioAndVideo = 3,
+    /// 订阅除某个人的流
+    RTCPickerStateBesides = 0x2000
+} RTCPickerState;
+
+
+#pragma mark - 下行码率自适应状态
+/// 下行码率自适应状态
+typedef enum : NSInteger {
+    
+    /// 正常
+    RTCDownBitrateAdaptiveStateNormal = 0,
+    /// 较差
+    RTCDownBitrateAdaptiveStatePoor = -1,
+    /// 很差
+    RTCDownBitrateAdaptiveStateBad = -2,
+    /// 极差
+    RTCDownBitrateAdaptiveStateVeryBad = -3,
+    /// 下行链路状态不存在
+    RTCDownBitrateAdaptiveStateLose = -4
+} RTCDownBitrateAdaptiveState;
+
+
+#pragma mark - 下行平均丢包档位
+/// 下行平均丢包档位
+typedef enum : NSInteger {
+    
+    /// 无效
+    RTCDownLossLevelStateInvalid = -1,
+    /// 正常
+    RTCDownLossLevelStateNormal = 0,
+    /// 较差
+    RTCDownLossLevelStatePoor = 1,
+    /// 很差
+    RTCDownLossLevelStateBad = 2,
+    /// 极差
+    RTCDownLossLevelStateVeryBad = 3
+} RTCDownLossLevelState;
+
+
+#pragma mark - 上行码率自适应状态
+/// 上行码率自适应状态
+typedef enum : NSInteger {
+    
+    /// 码率自适应开始工作
+    RTCUploadBitrateAdaptiveStateStart = 1000,
+    /// 码率恢复到最初设置
+    RTCUploadBitrateAdaptiveStateNormal = 0,
+    /// 码率变为原来的一半
+    RTCUploadBitrateAdaptiveStateHalf = -1,
+    /// 码率变为原来的四分之一
+    RTCUploadBitrateAdaptiveStateQuarter = -2,
+    /// 当前网络环境及其差劲情况
+    RTCUploadBitrateAdaptiveStateVeryBad = -3,
+} RTCUploadBitrateAdaptiveState;
+
+
+#pragma mark - 码流轨道种类
+/// 码流轨道种类
+typedef NSString *RTCStreamTrackKind NS_STRING_ENUM;
+/// 视频类型
+FOUNDATION_EXPORT RTCStreamTrackKind const RTCStreamTrackKindVideo;
+/// 音频类型
+FOUNDATION_EXPORT RTCStreamTrackKind const RTCStreamTrackKindAudio;
+
+
+#pragma mark - 日志组件中的日志等级
+/// 日志组件中的日志等级
+typedef enum : NSUInteger {
+    
+    RTCLoggerLevelUndefined = 0,
+    RTCLoggerLevelTrace = 1,
+    RTCLoggerLevelDebug = 5,
+    RTCLoggerLevelInfo = 9,
+    RTCLoggerLevelWarn = 13,
+    RTCLoggerLevelError = 17,
+    RTCLoggerLevelFatal = 21
+} RTCLoggerLevel;
+
+
+#pragma mark - 日志组件中的日志种类
+/// 日志组件中的日志种类
+typedef NSString *RTCLoggerKind NS_STRING_ENUM;
+/// type=app.start
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindAppStart;
+/// type=app.resource
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindAppResource;
+/// type=app.network
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindAppNetwork;
+/// type=app.log
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindAppLog;
+/// type=rtc.event.audioinput
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcEventAudioInput;
+/// type=rtc.event.audiooutput
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcEventAudioOutput;
+/// type=rtc.event.videoinput
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcEventVideoInput;
+/// type=rtc.event.videooutput
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcEventVideoOutput;
+/// type=rtc.event.remotestream
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcEventRemoteStream;
+/// type=rtc.event.connection
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcEventConnection;
+/// type=rtc.config.mcu
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcConfigMcu;
+/// type=rtc.ook
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcOok;
+/// type=rtc.log
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcLog;
+/// type=rtc.marker
+FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcMarker;
+
 
 NS_ASSUME_NONNULL_END

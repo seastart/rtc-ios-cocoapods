@@ -48,18 +48,16 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 #pragma mark 初始化RTC引擎
 /// 初始化RTC引擎
 /// @param engineConfig 配置参数
-/// @param userModel 用户信息
 /// @param appGroup 分组标识
 /// @param delegate 代理回调
-+ (instancetype)sharedEngineWithConfig:(RTCEngineConfig *)engineConfig userModel:(RTCEngineUserModel *)userModel appGroup:(NSString *)appGroup delegate:(nullable id <RTCEngineDelegate>)delegate;
++ (instancetype)sharedEngineWithConfig:(RTCEngineConfig *)engineConfig appGroup:(NSString *)appGroup delegate:(nullable id <RTCEngineDelegate>)delegate;
 
 #pragma mark 初始化RTC引擎
 /// 初始化RTC引擎
 /// @param engineConfig 配置参数
-/// @param userModel 用户信息
 /// @param appGroup 分组标识
 /// @param delegate 代理回调
-- (RTCEngineError)initializeWithConfig:(RTCEngineConfig *)engineConfig userModel:(RTCEngineUserModel *)userModel appGroup:(NSString *)appGroup delegate:(nullable id <RTCEngineDelegate>)delegate;
+- (RTCEngineError)initializeWithConfig:(RTCEngineConfig *)engineConfig appGroup:(NSString *)appGroup delegate:(nullable id <RTCEngineDelegate>)delegate;
 
 #pragma mark 资源销毁
 /// 资源销毁
@@ -70,56 +68,32 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 - (NSString *)version;
 
 
-#pragma mark - ------------ 房间相关接口函数 ------------
+#pragma mark - ------------ 频道相关接口函数 ------------
 
-#pragma mark 加入房间
-/// 加入房间
-/// @param roomNo 房间号码
-/// @param userModel 用户信息
-- (RTCEngineError)joinRoomWithRoomNo:(NSString *)roomNo userModel:(nullable RTCEngineUserModel *)userModel;
+#pragma mark 加入频道
+/// 加入频道
+/// @param token 鉴权令牌
+- (RTCEngineError)joinChannelWithToken:(NSString *)token;
 
-#pragma mark 退出房间
-/// 退出房间
+#pragma mark 离开频道
+/// 离开频道
 /// @param finishBlock 完成回调
-- (void)leaveRoom:(nullable RTCEngineKitFinishBlock)finishBlock;
-
-#pragma mark 变更账户信息
-/// 变更账户信息
-/// @param userModel 账户信息
-- (RTCEngineError)changeWithUserModel:(RTCEngineUserModel *)userModel;
-
-#pragma mark 变更房间信息
-/// 变更房间信息
-/// @param roomModel 房间信息
-- (RTCEngineError)changeWithRoomModel:(RTCEngineRoomModel *)roomModel;
-
-#pragma mark 发送房间外消息
-/// 发送房间外消息
-/// @param userIds 用户编号列表
-/// @param content 消息内容
-/// @param action 消息类型
-- (RTCEngineError)sendMessageWithUserIds:(NSArray <NSString *> *)userIds content:(NSString *)content action:(NSString *)action;
-
-#pragma mark 发送房间内消息
-/// 发送房间内消息
-/// @param content 消息内容
-/// @param action 消息类型
-- (RTCEngineError)sendRoomMessageWithContent:(NSString *)content action:(NSString *)action;
+- (void)leaveChannel:(nullable RTCEngineKitFinishBlock)finishBlock;
 
 
 #pragma mark - ------------ 数据管理相关接口 ------------
 
-#pragma mark 获取当前账户信息
-/// 获取当前账户信息
+#pragma mark 获取当前账户数据
+/// 获取当前账户数据
 - (RTCEngineUserModel *)getMySelf;
 
-#pragma mark 获取当前房间信息
-/// 获取当前房间信息
-- (RTCEngineRoomModel *)getRoomObject;
+#pragma mark 获取当前频道数据
+/// 获取当前频道数据
+- (RTCEngineChannelModel *)getChannelDetails;
 
-#pragma mark 获取成员信息
-/// 获取成员信息
-/// @param userId 用户编号
+#pragma mark 获取成员数据
+/// 获取成员数据
+/// @param userId 用户标识
 - (RTCEngineUserModel *)findMemberWithUserId:(NSString *)userId;
 
 #pragma mark 获取成员列表
@@ -175,23 +149,28 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 
 #pragma mark 订阅远端用户的视频流
 /// 订阅远端用户的视频流
-/// @param userId 指定远端用户的ID
-/// @param trackId 指定要观看的轨道ID
+/// @param userId 指定远端用户标识
+/// @param trackId 指定要观看的轨道号
 /// @param view 承载视频画面的控件
 - (RTCEngineError)startRemoteView:(NSString *)userId trackId:(RTCTrackIdentifierFlags)trackId view:(VIEW_CLASS *)view;
 
 #pragma mark 更新远端用户的视频流
 /// 更新远端用户的视频流
-/// @param userId 指定远端用户的ID
-/// @param trackId 指定要观看的轨道ID
+/// @param userId 指定远端用户标识
+/// @param trackId 指定要观看的轨道号
 /// @param view 承载视频画面的控件
 - (RTCEngineError)updateRemoteView:(NSString *)userId trackId:(RTCTrackIdentifierFlags)trackId view:(VIEW_CLASS *)view;
 
 #pragma mark 停止订阅远端用户的视频流
 /// 停止订阅远端用户的视频流
-/// @param userId 指定远端用户的ID
-/// @param trackId 指定要观看的轨道ID
+/// @param userId 指定远端用户标识
+/// @param trackId 指定要观看的轨道号
 - (RTCEngineError)stopRemoteView:(NSString *)userId trackId:(RTCTrackIdentifierFlags)trackId;
+
+#pragma mark 停止订阅指定远端用户的所有视频流
+/// 停止订阅指定远端用户的所有视频流
+/// @param userId 指定远端用户标识
+- (RTCEngineError)stopAllRemoteViewWithUserId:(NSString *)userId;
 
 #pragma mark 停止订阅所有远端用户的视频流
 /// 停止订阅所有远端用户的视频流
@@ -225,7 +204,7 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 
 #pragma mark 设置音频优先策略
 /// 设置音频优先策略
-/// @param userId 指定远端用户的ID
+/// @param userId 指定远端用户标识
 /// @param enabled  YES-开启 NO-关闭
 - (RTCEngineError)setAudioPriorityWithUserId:(NSString *)userId enabled:(BOOL)enabled;
 
@@ -280,12 +259,12 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 
 #pragma mark 启动自定义流
 /// 启动自定义流
-/// @param streamModel 自定义码流信息
-- (RTCEngineError)startCustomStreamWithStreamModel:(RTCEngineStreamModel *)streamModel;
+/// @param streamTrackModel 自定义码流轨道信息
+- (RTCEngineError)startCustomStreamWithStreamTrackModel:(RTCEngineStreamTrackModel *)streamTrackModel;
 
 #pragma mark 关闭自定义流
 /// 关闭自定义流
-/// @param trackId 轨道ID
+/// @param trackId 轨道号码
 - (RTCEngineError)stopCustomStreamWithTrackId:(RTCTrackIdentifierFlags)trackId;
 
 #pragma mark 发布自定义码流
@@ -294,7 +273,7 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// @param bitslen 数据长度
 /// @param pts 显示时间戳
 /// @param dts 解码时间戳
-/// @param trackId 轨道ID
+/// @param trackId 轨道号码
 /// @param streamType 媒体流类型
 - (RTCEngineError)publishCustomStreamWithStreamData:(const unsigned char *)streamData bitslen:(int)bitslen pts:(uint32_t)pts dts:(uint32_t)dts trackId:(RTCTrackIdentifierFlags)trackId streamType:(RTCStreamType)streamType;
 
@@ -304,7 +283,7 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 #pragma mark 开始网络测速
 /// 开始网络测速
 /// @param params 测速参数
-/// 1、请在进入房间前进行网速测试，在房间中网速测试会影响正常的音视频传输效果，而且由于干扰过多，网速测试结果也不准确。
+/// 1、请在进入频道前进行网速测试，在频道中网速测试会影响正常的音视频传输效果，而且由于干扰过多，网速测试结果也不准确。
 /// 2、同一时间只允许一项网速测试任务运行。
 - (RTCEngineError)startSpeedTest:(RTCSpeedTestParams *)params;
 

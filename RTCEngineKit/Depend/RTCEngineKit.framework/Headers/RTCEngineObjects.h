@@ -20,7 +20,7 @@ typedef UIColor COLOR_CLASS;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class RTCEngineStreamModel;
+@class RTCEngineStreamTrackModel;
 @class RTCStreamAudioModel;
 @class RTCStreamSendModel;
 @class RTCStreamReceiveModel;
@@ -30,102 +30,127 @@ NS_ASSUME_NONNULL_BEGIN
 /// 初始化RTC配置参数
 @interface RTCEngineConfig : NSObject
 
-/// 用户签名
-@property (nonatomic, copy) NSString *userSig;
-/// 服务器地址
-@property (nonatomic, copy) NSString *domain;
-
-/// 日志文件路径
-@property (nonatomic, copy, nullable) NSString *logPath;
-/// 日志等级，默认 RTCEngineLogLevelDebug
-@property (nonatomic, assign) RTCEngineLogLevel logLevel;
-
-/// 服务网络标识
-@property (nonatomic, copy, nullable) NSString *networkId;
-/// 服务分组标识
-@property (nonatomic, copy, nullable) NSString *groupId;
+/// 日志文件路径，默认沙盒 Document 目录
+@property (nonatomic, copy) NSString *logPath;
+/// 是否启用本地日志，默认 NO
+/// 关闭后，必要日志会输出到控制台，建议 Debug 版本关闭
+/// 启用后，会保存控制台日志，建议 Release 版本开启
+@property (nonatomic, assign) BOOL enableLocalLog;
 
 @end
 
 
 #pragma mark - 用户信息
+/// 用户信息
 @interface RTCEngineUserModel : NSObject
 
+/// 应用标识
+@property (nonatomic, copy) NSString *appId;
 /// 用户标识
-@property (nonatomic, copy, nullable) NSString *uid;
+@property (nonatomic, copy) NSString *userId;
 /// 会话标识
-@property (nonatomic, copy, nullable) NSString *sid;
+@property (nonatomic, copy) NSString *sessionId;
 /// 用户名称
-@property (nonatomic, copy, nullable) NSString *name;
-/// 用户头像
-@property (nonatomic, copy, nullable) NSString *avatar;
-/// 连接标识
-@property (nonatomic, copy, nullable) NSString *linkId;
-/// 会话令牌
-@property (nonatomic, copy, nullable) NSString *sessionKey;
-/// 房间标识
-@property (nonatomic, copy, nullable) NSString *roomId;
+@property (nonatomic, copy) NSString *name;
+/// 设备类型，默认 RTCDeviceTypeIOS
+@property (nonatomic, assign) RTCDeviceType deviceType;
+/// 设备标识
+@property (nonatomic, copy) NSString *deviceId;
+/// 组件版本号
+@property (nonatomic, copy) NSString *version;
+/// 网络标识
+@property (nonatomic, copy) NSString *netid;
+/// 分组标识
+@property (nonatomic, copy) NSString *sgid;
+/// 频道标识
+@property (nonatomic, copy) NSString *channel;
+/// 连接标识(流媒体)
+@property (nonatomic, assign) int linkId;
+/// 会话令牌(流媒体)
+@property (nonatomic, copy) NSString *sessionKey;
+/// 流媒体服务标识
+@property (nonatomic, copy) NSString *uploadId;
+/// 是否为观众
+@property (nonatomic, assign) BOOL isAudience;
+/// 加入时间
+@property (nonatomic, assign) NSInteger joinAt;
+/// 更新时间
+@property (nonatomic, assign) NSInteger updatedAt;
+/// 离开时间
+@property (nonatomic, assign) NSInteger leaveAt;
+/// 码流轨道列表
+@property (nonatomic, strong) NSMutableArray <RTCEngineStreamTrackModel *> *streamTracks;
 
-/// 成员角色，默认 RTCUserRoleTypeDefault
-@property (nonatomic, assign) RTCUserRoleType role;
-
-/// 终端类型，默认 RTCTerminalTypeIOS
-@property (nonatomic, assign) RTCTerminalType terminalType;
-/// 终端描述
-@property (nonatomic, copy, nullable) NSString *terminalDesc;
-
-/// 码流信息
-@property (nonatomic, strong, nullable) NSMutableArray <RTCEngineStreamModel *> *streams;
-
-/// 扩展字段
-@property (nonatomic, assign, nullable) id props;
-
-@end
-
-
-#pragma mark - 码流信息
-@interface RTCEngineStreamModel : NSObject
-
-/// 码流标识
-@property (nonatomic, assign) RTCTrackIdentifierFlags id;
-/// 码流类型
-@property (nonatomic, assign) NSInteger type;
-/// 编码类型
-@property (nonatomic, assign) RTCCodecType codecType;
-/// 媒体类型
-@property (nonatomic, assign) RTCMediaType mediaType;
-/// 画面宽
-@property (nonatomic, assign) NSInteger width;
-/// 画面高
-@property (nonatomic, assign) NSInteger height;
-/// 帧率
-@property (nonatomic, assign) NSInteger fps;
-/// 码率
-@property (nonatomic, assign) NSInteger bitrate;
-/// 画面旋转角度
-@property (nonatomic, assign) NSInteger angle;
-
-/// 扩展字段
+/// 自定义属性
 @property (nonatomic, assign) id props;
 
 @end
 
 
-#pragma mark - 房间信息
-@interface RTCEngineRoomModel : NSObject
+#pragma mark - 码流轨道信息
+/// 码流轨道信息
+@interface RTCEngineStreamTrackModel : NSObject
 
-/// 房间标识
-@property (nonatomic, copy) NSString *roomId;
-/// 连接标识
-@property (nonatomic, copy) NSString *linkId;
+/// 码流标识
+@property (nonatomic, copy) NSString *streamId;
+/// 码流描述
+@property (nonatomic, copy) NSString *desc;
+/// 码流种类
+@property (nonatomic, copy) RTCStreamTrackKind kind;
+/// 编码类型
+@property (nonatomic, assign) RTCCodecType codecType;
+/// 画面宽
+@property (nonatomic, assign) int width;
+/// 画面高
+@property (nonatomic, assign) int height;
+/// 帧率
+@property (nonatomic, assign) int fps;
+/// 码率
+@property (nonatomic, assign) int bitrate;
+/// 画面旋转角度
+@property (nonatomic, assign) int angle;
+/// 音频采样率
+@property (nonatomic, assign) int sampleRate;
+/// 轨道号码
+@property (nonatomic, assign) RTCTrackIdentifierFlags track;
 
-/// 扩展字段
+/// 自定义属性
+@property (nonatomic, assign) id props;
+
+@end
+
+
+#pragma mark - 频道信息
+/// 频道信息
+@interface RTCEngineChannelModel : NSObject
+
+/// 应用标识
+@property (nonatomic, copy) NSString *appId;
+/// 频道标识
+@property (nonatomic, copy) NSString *channel;
+/// 连接标识(流媒体)
+@property (nonatomic, assign) int linkId;
+/// 频道最大用户数
+@property (nonatomic, assign) int maxUser;
+/// 频道音频最大转发数
+@property (nonatomic, assign) int maxAudio;
+/// 频道用户最大可转发数
+@property (nonatomic, assign) int maxPeer;
+/// 频道用户视频最大可转发数
+@property (nonatomic, assign) int maxVideo;
+/// 创建时间
+@property (nonatomic, assign) NSInteger createdAt;
+/// 更新时间
+@property (nonatomic, assign) NSInteger updatedAt;
+
+/// 自定义属性
 @property (nonatomic, assign) id props;
 
 @end
 
 
 #pragma mark - 流媒体配置参数
+/// 流媒体配置参数
 @interface RTCEngineMediaConfig : NSObject
 
 /// 获取默认配置对象
@@ -164,6 +189,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - 网络质量控制参数
+/// 网络质量控制参数
 @interface RTCEngineNetworkQosParam : NSObject
 
 /// 获取默认配置对象
@@ -191,6 +217,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - 调试模式参数
+/// 调试模式参数
 @interface RTCEngineDebugParam : NSObject
 
 /// 获取默认配置对象
@@ -210,10 +237,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - 测速参数
+/// 测速参数
 @interface RTCSpeedTestParams : NSObject
 
-/// 流媒体标识
-@property (nonatomic, copy) NSString *linkId;
+/// 连接标识(流媒体)
+@property (nonatomic, assign) int linkId;
 
 /// 流媒体服务地址
 @property (nonatomic, copy) NSString *streamHost;
@@ -231,6 +259,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - 测速结果
+/// 测速结果
 @interface RTCSpeedTestResult : NSObject
 
 /// 接收/发送包数
@@ -253,6 +282,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - 测速连接状态结果
+/// 测速连接状态结果
 @interface RTCSpeedTestConnectResult : NSObject
 
 /// 网络回环延迟
@@ -269,6 +299,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - 流媒体音频信息列表
+/// 流媒体音频信息列表
 @interface RTCStreamAudioStatus : NSObject
 
 @property (nonatomic, copy) NSArray <RTCStreamAudioModel *> *audioInfo;
@@ -277,13 +308,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - 流媒体音频信息
+/// 流媒体音频信息
 @interface RTCStreamAudioModel : NSObject
 
 /// 用户标识
 @property (nonatomic, copy, readonly) NSString *userId;
 
-/// 流媒体标识
-@property (nonatomic, copy) NSString *linkId;
+/// 连接标识(流媒体)
+@property (nonatomic, assign) int linkId;
 /// 功率
 @property (nonatomic, assign) NSInteger power;
 /// 分贝值
@@ -293,6 +325,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - 流媒体发送状态信息列表
+/// 流媒体发送状态信息列表
 @interface RTCStreamSendStatus : NSObject
 
 @property (nonatomic, copy) NSArray <RTCStreamSendModel *> *uploadinfo;
@@ -301,6 +334,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - 流媒体发送状态信息
+/// 流媒体发送状态信息
 @interface RTCStreamSendModel : NSObject
 
 /// 上传缓冲包数
@@ -309,8 +343,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) int delay;
 /// 溢出缓冲包数
 @property (nonatomic, assign) int overflow;
-/// 上传速率(单位kps)
+/// 视频上传速率(单位kps)
 @property (nonatomic, copy) NSString *speed;
+/// 音频上传速率(单位kps)
+@property (nonatomic, copy) NSString *audio_speed;
 /// 上传状态
 @property (nonatomic, assign) NSInteger status;
 /// 补偿前丢包率
@@ -322,6 +358,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - 流媒体接收状态信息列表
+/// 流媒体接收状态信息列表
 @interface RTCStreamReceiveStatus : NSObject
 
 @property (nonatomic, copy) NSArray <RTCStreamReceiveModel *> *recvinfo;
@@ -330,13 +367,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - 流媒体接收状态信息
+/// 流媒体接收状态信息
 @interface RTCStreamReceiveModel : NSObject
 
 /// 用户标识
 @property (nonatomic, copy, readonly) NSString *userId;
 
-/// 流媒体标识
-@property (nonatomic, copy) NSString *linkId;
+/// 连接标识(流媒体)
+@property (nonatomic, assign) int linkId;
 /// 接收包数
 @property (nonatomic, assign) int recv;
 /// 补偿包数
@@ -351,6 +389,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) int audio;
 /// 视频包数
 @property (nonatomic, assign) int video;
+
+/* ------ 传输码率 ------ */
+/// 总速率
+@property (nonatomic, assign) float total_speed;
+/// 音频速率
+@property (nonatomic, assign) float audio_speed;
+/// 视频速率
+@property (nonatomic, assign) float video_speed;
 
 @end
 
@@ -373,6 +419,27 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) int width;
 /// 画板高
 @property (nonatomic, assign) int height;
+
+@end
+
+
+#pragma mark - 音频路由对象
+/// 音频路由对象
+@interface RTCAudioRouteModel : NSObject
+
+/// 音频路由标识
+@property (nonatomic, copy, nullable) NSString *identifier;
+/// 音频路由
+@property (nonatomic, assign) RTCAudioRoute route;
+/// 音频路由名称
+@property (nonatomic, copy, nullable) NSString *routeName;
+
+/// 初始化音频路由对象
+/// - Parameters:
+///   - identifier: 音频路由标识
+///   - route: 音频路由类型
+///   - routeName: 音频路由名称
+- (instancetype)initWithIdentifier:(nullable NSString *)identifier route:(RTCAudioRoute)route routeName:(nullable NSString *)routeName;
 
 @end
 
