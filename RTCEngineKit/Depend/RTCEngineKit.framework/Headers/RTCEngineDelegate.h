@@ -20,78 +20,86 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - ----- Core Delegate Methods -----
 
 #pragma mark - ------------ 连接相关回调 ------------
-#pragma mark 连接成功回调
-/// 连接成功回调
-/// 首次连接或者断线重连成功后触发
-- (void)onConnected;
+#pragma mark 重连成功回调
+/// 重连成功回调
+- (void)onReconnected;
 
 #pragma mark 连接断开回调
 /// 连接断开回调
-/// 发生不可恢复的错误，这个事件触发需要重新登录
+/// 发生不可恢复的错误或者被动离开频道，这个事件触发需要重新获取令牌
+/// @param reason 离开原因
 /// @param errCode 错误码
 /// @param errMsg 错误信息
-- (void)onDisconnected:(RTCEngineError)errCode errMsg:(nullable NSString *)errMsg;
+- (void)onDisconnected:(RTCLeaveReason)reason errCode:(RTCEngineError)errCode errMsg:(nullable NSString *)errMsg;
 
 #pragma mark 开始重连回调
 /// 开始重连回调
-/// 连接断开并开始重连时触发
 - (void)onReconnecting;
 
-#pragma mark - ------------ 通讯相关回调 ------------
-#pragma mark 自定义消息回调
-/// 自定义消息回调
-/// @param content 消息内容
-/// @param action 消息标识
-/// @param userId 用户标识
-- (void)onCustomMessage:(NSString *)content action:(NSString *)action userId:(nullable NSString *)userId;
 
-
-#pragma mark - ------------ 频道相关回调 ------------
+#pragma mark - ------------ 我的相关回调 ------------
 #pragma mark 加入频道成功回调
 /// 加入频道成功回调
-/// @param channel 频道标识
+/// @param channel 频道名称
 /// @param userId 用户标识
 - (void)onJoinSucceed:(NSString *)channel userId:(NSString *)userId;
 
+#pragma mark 自己数据更新回调
+/// 自己数据更新回调
+/// @param channel 频道名称
+/// @param userId 用户标识
+- (void)onUserUpdate:(NSString *)channel userId:(NSString *)userId;
+
+
+#pragma mark - ------------ 频道相关回调 ------------
 #pragma mark 频道更新回调
 /// 频道更新回调
-/// @param channel 频道标识
+/// @param channel 频道名称
 /// @param props 自定义数据
 - (void)onChannelUpdate:(NSString *)channel props:(NSString *)props;
 
 #pragma mark 频道销毁回调
 /// 频道销毁回调
-/// @param channel 频道标识
+/// @param channel 频道名称
 - (void)onChannelDestroy:(NSString *)channel;
 
 
 #pragma mark - ------------ 用户相关回调 ------------
 #pragma mark 用户加入频道回调
 /// 用户加入频道回调
-/// @param channel 频道标识
+/// @param channel 频道名称
 /// @param userId 用户标识
 - (void)onRemoteUserJoinChannel:(NSString *)channel userId:(NSString *)userId;
 
-#pragma mark 成员数据更新回调
-/// 成员数据更新回调
-/// @param channel 频道标识
+#pragma mark 用户数据更新回调
+/// 用户数据更新回调
+/// @param channel 频道名称
 /// @param userId 用户标识
 - (void)onRemoteUserUpdate:(NSString *)channel userId:(NSString *)userId;
 
 #pragma mark 用户离开频道回调
 /// 用户离开频道回调
-/// @param channel 频道标识
+/// @param channel 频道名称
 /// @param userId 用户标识
 /// @param reason 离开原因
-- (void)onRemoteUserLeaveChannel:(NSString *)channel userId:(NSString *)userId reason:(RTCLeaveChannelReason)reason;
+- (void)onRemoteUserLeaveChannel:(NSString *)channel userId:(NSString *)userId reason:(RTCLeaveReason)reason;
 
 #pragma mark 用户码流数据变更回调
 /// 用户码流数据变更回调
-/// @param channel 频道标识
+/// @param channel 频道名称
 /// @param userId 用户标识
 /// @param streamTrackModel 码流轨道数据
 /// @param changeType 操作类型
 - (void)onRemoteStreamTrackChange:(NSString *)channel userId:(NSString *)userId streamTrackModel:(RTCEngineStreamTrackModel *)streamTrackModel changeType:(RTCChangeType)changeType;
+
+
+#pragma mark - ------------ 消息相关回调 ------------
+#pragma mark 自定义消息回调
+/// 自定义消息回调
+/// @param content 消息内容
+/// @param action 消息标识
+/// @param userId 用户标识
+- (void)onCustomMessage:(NSString *)content action:(NSString *)action userId:(nullable NSString *)userId;
 
 
 #pragma mark - ------------ 音频相关回调 ------------

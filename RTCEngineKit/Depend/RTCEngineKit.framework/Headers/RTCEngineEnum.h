@@ -318,19 +318,21 @@ typedef enum : NSUInteger {
 
 #pragma mark - 离开频道原因
 /// 离开频道原因
-typedef enum : NSUInteger {
+typedef enum : NSInteger {
     
+    /// 发生错误
+    RTCLeaveReasonError = -1,
     /// 主动离开
-    RTCLeaveChannelReasonNormal = 1,
+    RTCLeaveReasonNormal = 1,
     /// 被踢离开
-    RTCLeaveChannelReasonKickout = 2,
+    RTCLeaveReasonKickout = 2,
     /// 被顶号
-    RTCLeaveChannelReasonReplaced = 3,
+    RTCLeaveReasonReplaced = 3,
     /// 心跳超时离开
-    RTCLeaveChannelReasonTimeout = 4,
+    RTCLeaveReasonTimeout = 4,
     /// 频道销毁离开
-    RTCLeaveChannelReasonDestroy = 5
-} RTCLeaveChannelReason;
+    RTCLeaveReasonDestroy = 5
+} RTCLeaveReason;
 
 
 #pragma mark - 码流轨道掩码

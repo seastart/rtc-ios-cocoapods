@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *netid;
 /// 分组标识
 @property (nonatomic, copy) NSString *sgid;
-/// 频道标识
+/// 频道名称
 @property (nonatomic, copy) NSString *channel;
 /// 连接标识(流媒体)
 @property (nonatomic, assign) int linkId;
@@ -126,7 +126,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 应用标识
 @property (nonatomic, copy) NSString *appId;
-/// 频道标识
+/// 频道名称
 @property (nonatomic, copy) NSString *channel;
 /// 连接标识(流媒体)
 @property (nonatomic, assign) int linkId;
@@ -164,6 +164,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) int audioSampe;
 /// 音频编码格式，默认AAC
 @property (nonatomic, assign) RTCCodecType audioEncode;
+/// 音频路由，默认RTCAudioRouteSpeaker
+@property (nonatomic, assign) RTCAudioRoute audioRoute;
 
 /// 视频分辨率宽必须是16的倍数 高必须是2的倍数 否则容易出现绿边等问题(已做了兼容)
 /// 1080P---1920x1080
