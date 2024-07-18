@@ -100,6 +100,10 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 获取成员列表
 - (NSArray<RTCEngineUserModel *> *)getRemoteUsers;
 
+#pragma mark 获取画板地址
+/// 获取画板地址
+- (NSString *)getDrawingHost;
+
 
 #pragma mark - ------------ 视频相关接口函数 ------------
 

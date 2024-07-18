@@ -58,11 +58,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param props 自定义数据
 - (void)onChannelUpdate:(NSString *)channel props:(NSString *)props;
 
-#pragma mark 频道销毁回调
-/// 频道销毁回调
-/// @param channel 频道名称
-- (void)onChannelDestroy:(NSString *)channel;
-
 
 #pragma mark - ------------ 用户相关回调 ------------
 #pragma mark 用户加入频道回调
