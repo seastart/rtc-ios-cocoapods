@@ -518,6 +518,19 @@ FOUNDATION_EXPORT RTCStreamTrackKind const RTCStreamTrackKindVideo;
 FOUNDATION_EXPORT RTCStreamTrackKind const RTCStreamTrackKindAudio;
 
 
+#pragma mark - 码流轨道描述
+/// 码流轨道描述
+typedef NSString *RTCStreamTrackDesc NS_STRING_ENUM;
+/// 麦克风流描述
+FOUNDATION_EXPORT RTCStreamTrackDesc const RTCStreamTrackDescMic;
+/// 摄像头大流描述
+FOUNDATION_EXPORT RTCStreamTrackDesc const RTCStreamTrackDescCameraBig;
+/// 摄像头小流描述
+FOUNDATION_EXPORT RTCStreamTrackDesc const RTCStreamTrackDescCameraSmall;
+/// 桌面共享流描述
+FOUNDATION_EXPORT RTCStreamTrackDesc const RTCStreamTrackDescScreen;
+
+
 #pragma mark - 日志组件中的日志等级
 /// 日志组件中的日志等级
 typedef enum : NSUInteger {
