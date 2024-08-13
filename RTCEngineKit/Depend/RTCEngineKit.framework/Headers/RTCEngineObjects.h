@@ -94,7 +94,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 码流标识
 @property (nonatomic, copy) NSString *streamId;
 /// 码流描述
-@property (nonatomic, copy) RTCStreamTrackDesc desc;
+@property (nonatomic, copy) NSString *desc;
 /// 码流种类
 @property (nonatomic, copy) RTCStreamTrackKind kind;
 /// 编码类型
