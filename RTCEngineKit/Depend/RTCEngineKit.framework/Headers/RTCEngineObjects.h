@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 关闭后，必要日志会输出到控制台，建议 Debug 版本关闭
 /// 启用后，会保存控制台日志，建议 Release 版本开启
 @property (nonatomic, assign) BOOL enableLocalLog;
+/// 版本信息，例如：@"smeeting:0.0.1"，注意：如没有特殊业务场景可不传
+@property (nonatomic, copy, nullable) NSString *version;
 
 @end
 
@@ -172,9 +174,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 720P---1280x720
 /// 480P---640x480
 /// 180P---320x180
-/// 视频分辨率宽，默认480
+/// 视频分辨率宽，默认640
 @property (nonatomic, assign) int videoWidth;
-/// 视频分辨率高，默认640
+/// 视频分辨率高，默认480
 @property (nonatomic, assign) int videoHeight;
 /// 视频镜像，默认YES
 @property (nonatomic, assign) BOOL videoMirror;

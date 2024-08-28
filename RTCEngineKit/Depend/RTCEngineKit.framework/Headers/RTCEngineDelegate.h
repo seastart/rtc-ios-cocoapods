@@ -151,6 +151,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param receiveModel 流媒体接收状态数据
 - (void)onReceiveStreamModel:(RTCStreamReceiveModel *)receiveModel;
 
+#pragma mark 流媒体接收远端流状态变更
+/// 流媒体接收远端流状态变更
+/// @param userId 用户标识
+/// @param status 接收状态，YES-超时 NO-恢复
+- (void)onReceiveStreamStatusChange:(NSString *)userId status:(BOOL)status;
+
 
 #pragma mark - ------------ 屏幕共享相关回调 ------------
 #pragma mark 屏幕共享状态回调
