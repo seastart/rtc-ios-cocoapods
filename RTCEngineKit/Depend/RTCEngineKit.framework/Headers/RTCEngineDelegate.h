@@ -148,8 +148,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark 流媒体接收状态数据回调
 /// 流媒体接收状态数据回调
-/// @param receiveModel 流媒体接收状态数据
-- (void)onReceiveStreamModel:(RTCStreamReceiveModel *)receiveModel;
+/// @param receiveArray 流媒体接收状态数据
+- (void)onReceiveStreamModel:(NSArray <RTCStreamReceiveModel *> *)receiveArray;
 
 #pragma mark 流媒体接收远端流状态变更回调
 /// 流媒体接收远端流状态变更回调
