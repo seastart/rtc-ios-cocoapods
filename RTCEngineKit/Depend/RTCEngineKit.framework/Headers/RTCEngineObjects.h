@@ -36,6 +36,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 关闭后，必要日志会输出到控制台，建议 Debug 版本关闭
 /// 启用后，会保存控制台日志，建议 Release 版本开启
 @property (nonatomic, assign) BOOL enableLocalLog;
+
+/// 服务线路标识
+@property (nonatomic, copy, nullable) NSString *networkId;
+/// 服务分组标识
+@property (nonatomic, copy, nullable) NSString *groupId;
 /// 版本信息，例如：@"smeeting:0.0.1"，注意：如没有特殊业务场景可不传
 @property (nonatomic, copy, nullable) NSString *version;
 

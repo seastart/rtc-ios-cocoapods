@@ -14,10 +14,12 @@
 #import <RTCEngineKit/RTCEngineObjects.h>
 #import <RTCEngineKit/RTCEngineDelegate.h>
 #import <RTCEngineKit/RTCScreenDelegate.h>
+#import <RTCEngineKit/RTCEngineIMDelegate.h>
 #else
 #import "RTCEngineObjects.h"
 #import "RTCEngineDelegate.h"
 #import "RTCScreenDelegate.h"
+#import "RTCEngineIMDelegate.h"
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
@@ -35,6 +37,8 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 
 /// RTC事件代理
 @property (nonatomic, weak) id<RTCEngineDelegate> delegate;
+/// 即时通讯代理
+@property (nonatomic, weak) id<RTCEngineIMDelegate> imDelegate;
 
 #pragma mark 获取RTC引擎实例
 /// 获取RTC引擎实例
@@ -66,6 +70,19 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 #pragma mark RTC引擎版本
 ///  RTC引擎版本
 - (NSString *)version;
+
+
+#pragma mark - ------------ 即时通讯相关接口函数 ------------
+
+#pragma mark 启用即时通讯
+/// 启用即时通讯
+/// @param token 鉴权令牌
+/// @param delegate 回调对象
+- (RTCEngineError)enableImWithToken:(NSString *)token delegate:(nullable id<RTCEngineIMDelegate>)delegate;
+
+#pragma mark 停用即时通讯
+/// 停用即时通讯
+- (void)disableIm;
 
 
 #pragma mark - ------------ 频道相关接口函数 ------------

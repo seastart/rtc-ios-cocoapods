@@ -335,6 +335,21 @@ typedef enum : NSInteger {
 } RTCLeaveReason;
 
 
+#pragma mark - 即时通讯断开原因
+/// 即时通讯断开原因
+typedef enum : NSInteger {
+    
+    /// 发生错误
+    RTCImDisconnectReasonError = -1,
+    /// 主动离开
+    RTCImDisconnectReasonNormal = 1,
+    /// 被踢离开
+    RTCImDisconnectReasonKickout = 2,
+    /// 心跳超时离开
+    RTCImDisconnectReasonTimeout = 4
+} RTCImDisconnectReason;
+
+
 #pragma mark - 码流轨道掩码
 /// 码流轨道掩码
 typedef enum : NSUInteger {
