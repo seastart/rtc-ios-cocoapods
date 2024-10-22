@@ -197,6 +197,15 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 停止订阅所有远端用户的视频流
 - (RTCEngineError)stopAllRemoteView;
 
+#pragma mark 订阅远端合成画面视频流，并绑定视频渲染控件
+/// 订阅远端合成画面视频流，并绑定视频渲染控件
+/// @param view 承载视频画面的渲染控件
+- (RTCEngineError)startRemoteMixture:(VIEW_CLASS *)view;
+
+#pragma mark 停止订阅远端合成画面视频流，并释放渲染控件
+/// 停止订阅远端合成画面视频流，并释放渲染控件
+- (RTCEngineError)stopRemoteMixture;
+
 
 #pragma mark - ------------ 流媒体相关接口函数 ------------
 
