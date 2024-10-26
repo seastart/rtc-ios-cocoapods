@@ -141,9 +141,7 @@ typedef enum : NSUInteger {
     /// 新增
     RTCChangeTypeAppend = 2,
     /// 移除
-    RTCChangeTypeRemove = 3,
-    /// 清空
-    RTCChangeTypeClear = 4
+    RTCChangeTypeRemove = 3
 } RTCChangeType;
 
 
