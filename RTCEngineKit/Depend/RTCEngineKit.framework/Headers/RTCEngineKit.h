@@ -260,6 +260,10 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 是否存在蓝牙耳机设备
 - (BOOL)bluetoothDeviceAvailable;
 
+#pragma mark 重启音频会话
+/// 重启音频会话
+- (void)resetAudioSession;
+
 
 #pragma mark - ------------ 屏幕共享相关接口函数 ------------
 

@@ -42,6 +42,8 @@ typedef enum : NSInteger {
     RTCEngineErrorMediaNetError = 100010,
     /// 目标不存在
     RTCEngineErrorNotFound = 100011,
+    /// 用户取消了
+    RTCEngineErrorUserCancelled = 100012,
     
     /// 设备访问无权限
     RTCEngineErrorDeviceNoAuthorized = 103001,
@@ -50,7 +52,9 @@ typedef enum : NSInteger {
     /// 操作不被允许
     RTCEngineErrorForbidden = 103003,
     /// 码流不存在
-    RTCEngineErrorStreamNotFound = 103004
+    RTCEngineErrorStreamNotFound = 103004,
+    /// 音频路由切换失败
+    RTCEngineErrorSwitchAudioRouteFail = 103005
 } RTCEngineError;
 
 
@@ -589,6 +593,23 @@ FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcOok;
 FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcLog;
 /// type=rtc.marker
 FOUNDATION_EXPORT RTCLoggerKind const RTCLoggerKindRtcMarker;
+
+
+#pragma mark - 呼叫状态类型
+/// 呼叫状态类型
+typedef enum : NSInteger {
+    
+    /// 未知状态
+    RTCCallStateUnknow,
+    /// 呼叫拨号
+    RTCCallStateDialing,
+    /// 呼叫来电
+    RTCCallStateIncoming,
+    /// 呼叫接通
+    RTCCallStateConnected,
+    /// 通话结束
+    RTCCallStateDisconnected
+} RTCCallState;
 
 
 NS_ASSUME_NONNULL_END

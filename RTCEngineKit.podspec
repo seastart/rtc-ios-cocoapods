@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RTCEngineKit'
-  s.version          = '2.2.0-alpha.7+20241106'
+  s.version          = '2.2.0-alpha.8+20241221'
   s.summary          = 'RTC服务引擎.'
   
 # This description is used to generate tags and improve search results.
@@ -32,7 +32,7 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '10.0'
   
   # 依赖系统Frameworks库
-  s.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreFoundation', 'CoreMedia', 'CoreVideo', 'Foundation', 'QuartzCore', 'Metal', 'MetalPerformanceShaders', 'Security', 'OpenGLES', 'Accelerate', 'CoreML', 'CoreGraphics', 'ReplayKit', 'SystemConfiguration'
+  s.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreFoundation', 'CoreMedia', 'CoreVideo', 'Foundation', 'QuartzCore', 'Metal', 'MetalPerformanceShaders', 'Security', 'OpenGLES', 'Accelerate', 'CoreML', 'CoreGraphics', 'ReplayKit', 'SystemConfiguration', 'CallKit'
   # 依赖系统Librarie库
   s.ios.library = 'c++', 'z', 'iconv'
   

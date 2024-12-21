@@ -165,7 +165,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) int agc;
 /// 音频采样率，默认48000
 @property (nonatomic, assign) int audioSampe;
-/// 音频编码格式，默认AAC
+/// 音频编码格式，默认OPUS
 @property (nonatomic, assign) RTCCodecType audioEncode;
 /// 音频路由，默认RTCAudioRouteSpeaker
 @property (nonatomic, assign) RTCAudioRoute audioRoute;
