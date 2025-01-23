@@ -39,6 +39,8 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 @property (nonatomic, weak) id<RTCEngineDelegate> delegate;
 /// 即时通讯代理
 @property (nonatomic, weak) id<RTCEngineIMDelegate> imDelegate;
+/// 语音转写状态
+@property (nonatomic, assign, readonly) BOOL enabledTrans;
 
 #pragma mark 获取RTC引擎实例
 /// 获取RTC引擎实例
@@ -242,6 +244,11 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 设置扬声器状态
 /// @param enabled 是否开启扬声器(YES-开启 NO-关闭)
 - (RTCEngineError)enabledAudioSpeaker:(BOOL)enabled;
+
+#pragma mark 设置语音转写状态
+/// 设置语音转写状态
+/// @param enabled 是否开启语音转写(YES-开启 NO-关闭)
+- (RTCEngineError)enabledSpeechTrans:(BOOL)enabled;
 
 #pragma mark 切换音频路由
 /// 切换音频路由
