@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RTCEngineKit'
-  s.version          = '2.2.2-alpha.1+20250123'
+  s.version          = '2.2.2-alpha.2+20250218'
   s.summary          = 'RTC服务引擎.'
   
 # This description is used to generate tags and improve search results.
