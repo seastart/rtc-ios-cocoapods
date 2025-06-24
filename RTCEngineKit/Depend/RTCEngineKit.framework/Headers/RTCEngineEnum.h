@@ -63,24 +63,24 @@ typedef enum : NSInteger {
 typedef enum : NSUInteger {
     
     /// 未知设备
-    RTCDeviceTypeUnknown = 0,
+    SRTCDeviceTypeUnknown = 0,
     
     /// Windows
-    RTCDeviceTypeWindows = 1,
+    SRTCDeviceTypeWindows = 1,
     /// Android
-    RTCDeviceTypeAndroid = 2,
+    SRTCDeviceTypeAndroid = 2,
     /// iOS
-    RTCDeviceTypeIOS = 3,
+    SRTCDeviceTypeIOS = 3,
     /// Linux
-    RTCDeviceTypeLinux = 4,
+    SRTCDeviceTypeLinux = 4,
     /// MacOS
-    RTCDeviceTypeMacOS = 5,
+    SRTCDeviceTypeMacOS = 5,
     
     /// WebRTC
-    RTCDeviceTypeWebRTC = 6,
+    SRTCDeviceTypeWebRTC = 6,
     /// RTMP
-    RTCDeviceTypeRtmp = 7
-} RTCDeviceType;
+    SRTCDeviceTypeRtmp = 7
+} SRTCDeviceType;
 
 
 #pragma mark - 成员角色
@@ -178,14 +178,14 @@ typedef enum : NSInteger {
 typedef enum : NSInteger {
     
     /// 未知类型
-    RTCFrameTypeUnknown = -1,
+    RTCMediaFrameTypeUnknown = -1,
     /// IDR帧
-    RTCFrameTypeIDR = 0,
+    RTCMediaFrameTypeIDR = 0,
     /// I帧
-    RTCFrameTypeIFrame = 1,
+    RTCMediaFrameTypeIFrame = 1,
     /// P帧
-    RTCFrameTypePFrame = 2
-} RTCFrameType;
+    RTCMediaFrameTypePFrame = 2
+} RTCMediaFrameType;
 
 
 #pragma mark - 像素格式类型

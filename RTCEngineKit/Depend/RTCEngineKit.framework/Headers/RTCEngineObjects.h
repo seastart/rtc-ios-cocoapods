@@ -55,8 +55,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *sessionId;
 /// 用户名称
 @property (nonatomic, copy) NSString *name;
-/// 设备类型，默认 RTCDeviceTypeIOS
-@property (nonatomic, assign) RTCDeviceType deviceType;
+/// 设备类型，默认 SRTCDeviceTypeIOS
+@property (nonatomic, assign) SRTCDeviceType deviceType;
 /// 设备标识
 @property (nonatomic, copy) NSString *deviceId;
 /// 组件版本号
