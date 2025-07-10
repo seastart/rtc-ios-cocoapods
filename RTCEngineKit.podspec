@@ -41,6 +41,8 @@ TODO: Add long description of the pod here.
   # 依赖本地资源文件
   s.resource = 'RTCEngineKit/Resources/*.bundle'
   
+  # 依赖远程网络组件库
+  s.dependency 'AFNetworking', '>= 4.0.0'
   # 依赖远程Socket组件库
   s.dependency 'CocoaAsyncSocket'
 end
