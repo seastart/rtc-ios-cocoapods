@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RTCMacros.h"
+#import <WebRTC/RTCMacros.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,7 +28,7 @@ RTC_OBJC_EXPORT
 @property(nonatomic, assign) BOOL srtpEnableGcmCryptoSuites;
 /**
  * If set to true, the (potentially insecure) crypto cipher
- * SRTP_AES128_CM_SHA1_32 will be included in the list of supported ciphers
+ * kSrtpAes128CmSha1_32 will be included in the list of supported ciphers
  * during negotiation. It will only be used if both peers support it and no
  * other ciphers get preferred.
  */
@@ -50,10 +50,13 @@ RTC_OBJC_EXPORT
  * Initializes CryptoOptions with all possible options set explicitly. This
  * is done when converting from a native RTCConfiguration.crypto_options.
  */
-- (instancetype)initWithSrtpEnableGcmCryptoSuites:(BOOL)srtpEnableGcmCryptoSuites
-              srtpEnableAes128Sha1_32CryptoCipher:(BOOL)srtpEnableAes128Sha1_32CryptoCipher
-           srtpEnableEncryptedRtpHeaderExtensions:(BOOL)srtpEnableEncryptedRtpHeaderExtensions
-                     sframeRequireFrameEncryption:(BOOL)sframeRequireFrameEncryption
+- (instancetype)
+         initWithSrtpEnableGcmCryptoSuites:(BOOL)srtpEnableGcmCryptoSuites
+       srtpEnableAes128Sha1_32CryptoCipher:
+           (BOOL)srtpEnableAes128Sha1_32CryptoCipher
+    srtpEnableEncryptedRtpHeaderExtensions:
+        (BOOL)srtpEnableEncryptedRtpHeaderExtensions
+              sframeRequireFrameEncryption:(BOOL)sframeRequireFrameEncryption
     NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)init NS_UNAVAILABLE;

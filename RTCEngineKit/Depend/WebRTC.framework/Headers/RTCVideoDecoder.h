@@ -10,11 +10,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RTCCodecSpecificInfo.h"
-#import "RTCEncodedImage.h"
-#import "RTCMacros.h"
-#import "RTCVideoEncoderSettings.h"
-#import "RTCVideoFrame.h"
+#import <WebRTC/RTCCodecSpecificInfo.h>
+#import <WebRTC/RTCEncodedImage.h>
+#import <WebRTC/RTCVideoEncoderSettings.h>
+#import <WebRTC/RTCVideoFrame.h>
+#import <WebRTC/RTCMacros.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -29,6 +29,7 @@ RTC_OBJC_EXPORT
     - (void)setCallback : (RTCVideoDecoderCallback)callback;
 - (NSInteger)startDecodeWithNumberOfCores:(int)numberOfCores;
 - (NSInteger)releaseDecoder;
+// TODO(bugs.webrtc.org/15444): Remove obsolete missingFrames param.
 - (NSInteger)decode:(RTC_OBJC_TYPE(RTCEncodedImage) *)encodedImage
         missingFrames:(BOOL)missingFrames
     codecSpecificInfo:(nullable id<RTC_OBJC_TYPE(RTCCodecSpecificInfo)>)info

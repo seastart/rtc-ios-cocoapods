@@ -10,16 +10,16 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RTCMacros.h"
+#import <WebRTC/RTCMacros.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** Corresponds to webrtc::Priority. */
-typedef NS_ENUM(NSInteger, RTCPriority) {
-  RTCPriorityVeryLow,
-  RTCPriorityLow,
-  RTCPriorityMedium,
-  RTCPriorityHigh
+typedef NS_ENUM(NSInteger, RTC_OBJC_TYPE(RTCPriority)) {
+  RTC_OBJC_TYPE(RTCPriorityVeryLow),
+  RTC_OBJC_TYPE(RTCPriorityLow),
+  RTC_OBJC_TYPE(RTCPriorityMedium),
+  RTC_OBJC_TYPE(RTCPriorityHigh)
 };
 
 RTC_OBJC_EXPORT
@@ -63,9 +63,18 @@ RTC_OBJC_EXPORT
 @property(nonatomic, assign) double bitratePriority;
 
 /** The relative DiffServ Code Point priority. */
-@property(nonatomic, assign) RTCPriority networkPriority;
+@property(nonatomic, assign) RTC_OBJC_TYPE(RTCPriority) networkPriority;
 
-- (instancetype)init NS_DESIGNATED_INITIALIZER;
+/** Allow dynamic frame length changes for audio:
+ https://w3c.github.io/webrtc-extensions/#dom-rtcrtpencodingparameters-adaptiveptime
+ */
+@property(nonatomic, assign) BOOL adaptiveAudioPacketTime;
+
+/** A case-sensitive identifier of the scalability mode to be used for this stream.
+  https://w3c.github.io/webrtc-svc/#rtcrtpencodingparameters */
+@property(nonatomic, copy, nullable) NSString *scalabilityMode;
+
+- (instancetype)init;
 
 @end
 

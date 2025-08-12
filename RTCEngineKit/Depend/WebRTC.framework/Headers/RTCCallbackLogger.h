@@ -10,14 +10,14 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RTCLogging.h"
-#import "RTCMacros.h"
+#import <WebRTC/RTCLogging.h>
+#import <WebRTC/RTCMacros.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^RTCCallbackLoggerMessageHandler)(NSString *message);
-typedef void (^RTCCallbackLoggerMessageAndSeverityHandler)(NSString *message,
-                                                           RTCLoggingSeverity severity);
+typedef void (^RTCCallbackLoggerMessageAndSeverityHandler)(
+    NSString *message, RTC_OBJC_TYPE(RTCLoggingSeverity) severity);
 
 // This class intercepts WebRTC logs and forwards them to a registered block.
 // This class is not threadsafe.
@@ -25,14 +25,14 @@ RTC_OBJC_EXPORT
 @interface RTC_OBJC_TYPE (RTCCallbackLogger) : NSObject
 
 // The severity level to capture. The default is kRTCLoggingSeverityInfo.
-@property(nonatomic, assign) RTCLoggingSeverity severity;
+@property(nonatomic, assign) RTC_OBJC_TYPE(RTCLoggingSeverity) severity;
 
 // The callback handler will be called on the same thread that does the
 // logging, so if the logging callback can be slow it may be a good idea
 // to implement dispatching to some other queue.
 - (void)start:(nullable RTCCallbackLoggerMessageHandler)handler;
 - (void)startWithMessageAndSeverityHandler:
-        (nullable RTCCallbackLoggerMessageAndSeverityHandler)handler;
+    (nullable RTCCallbackLoggerMessageAndSeverityHandler)handler;
 
 - (void)stop;
 

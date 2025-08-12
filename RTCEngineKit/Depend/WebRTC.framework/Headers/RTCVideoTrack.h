@@ -8,9 +8,9 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#import "RTCMediaStreamTrack.h"
+#import <WebRTC/RTCMediaStreamTrack.h>
 
-#import "RTCMacros.h"
+#import <WebRTC/RTCMacros.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,6 +24,9 @@ RTC_OBJC_EXPORT
 
 /** The video source for this video track. */
 @property(nonatomic, readonly) RTC_OBJC_TYPE(RTCVideoSource) *source;
+
+/** The receive state, if this is a remote video track. */
+@property(nonatomic, assign) BOOL shouldReceive;
 
 - (instancetype)init NS_UNAVAILABLE;
 

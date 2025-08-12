@@ -10,7 +10,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RTCMacros.h"
+#import <WebRTC/RTCMacros.h>
 
-RTC_OBJC_EXPORT extern NSString* const kRTCVideoCodecVp8Name;
-RTC_OBJC_EXPORT extern NSString* const kRTCVideoCodecVp9Name;
+RTC_EXTERN NSString* const RTC_CONSTANT_TYPE(RTCVideoCodecVp8Name);
+RTC_EXTERN NSString* const RTC_CONSTANT_TYPE(RTCVideoCodecVp9Name);
+RTC_EXTERN NSString* const RTC_CONSTANT_TYPE(RTCVideoCodecAv1Name);

@@ -8,11 +8,12 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#import "RTCMacros.h"
-#import "RTCMediaStreamTrack.h"
+#import <WebRTC/RTCMediaStreamTrack.h>
+#import <WebRTC/RTCMacros.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol RTC_OBJC_TYPE (RTCAudioRenderer);
 @class RTC_OBJC_TYPE(RTCAudioSource);
 
 RTC_OBJC_EXPORT
@@ -22,6 +23,12 @@ RTC_OBJC_EXPORT
 
 /** The audio source for this audio track. */
 @property(nonatomic, readonly) RTC_OBJC_TYPE(RTCAudioSource) * source;
+
+- (void)addRenderer:(id<RTC_OBJC_TYPE(RTCAudioRenderer)>)renderer;
+
+- (void)removeRenderer:(id<RTC_OBJC_TYPE(RTCAudioRenderer)>)renderer;
+
+- (void)removeAllRenderers;
 
 @end
 

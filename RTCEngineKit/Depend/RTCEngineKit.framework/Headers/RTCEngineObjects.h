@@ -348,9 +348,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) int delay;
 /// 溢出缓冲包数
 @property (nonatomic, assign) int overflow;
-/// 视频上传速率(单位kps)
+/// 视频上传速率(单位kbps)
 @property (nonatomic, copy) NSString *speed;
-/// 音频上传速率(单位kps)
+/// 音频上传速率(单位kbps)
 @property (nonatomic, copy) NSString *audio_speed;
 /// 上传状态
 @property (nonatomic, assign) NSInteger status;
@@ -358,6 +358,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) float loss_r;
 /// 补偿后丢包率
 @property (nonatomic, assign) float loss_c;
+/// 抖动
+@property (nonatomic, assign) double jitter;
 
 @end
 
