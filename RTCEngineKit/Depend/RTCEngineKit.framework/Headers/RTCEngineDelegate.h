@@ -98,6 +98,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - ------------ 音频相关回调 ------------
+#pragma mark 音频采集数据回调
+/// 音频采集数据回调
+/// - Parameters:
+///   - samplerate: 采样率
+///   - channel: 声道数
+///   - stamp: 时间戳
+///   - dataSize: 数据大小
+///   - pcmData: 音频元数据
+- (void)onAudioCapture:(int)samplerate channel:(int)channel stamp:(unsigned int)stamp dataSize:(int)dataSize pcmData:(void *)pcmData;
+
+#pragma mark 音频采集重采样数据回调
+/// 音频采集重采样数据回调
+/// @param samplerate 采样率
+/// @param channel 声道数
+/// @param stamp 时间戳
+/// @param resampledData 音频重采样数据
+- (void)onAudioCaptureResampled:(int)samplerate channel:(int)channel stamp:(unsigned int)stamp resampledData:(NSData *)resampledData;
+
 #pragma mark 音频路由变更回调
 /// 音频路由变更回调
 /// @param route 音频路由
@@ -185,6 +203,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param memory 内存占用
 /// @param cpuUsage CUP使用率
 - (void)onApplicationPerformance:(CGFloat)memory cpuUsage:(CGFloat)cpuUsage;
+
+#pragma mark 流媒体平台变化回调
+/// 流媒体平台变化回调
+/// @param vendorName 平台名称
+- (void)onStreamChangedVendorName:(NSString *)vendorName;
 
 @end
 
