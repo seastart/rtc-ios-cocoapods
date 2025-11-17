@@ -94,7 +94,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param content 消息内容
 /// @param action 消息标识
 /// @param userId 用户标识
-- (void)onCustomMessage:(NSString *)content action:(NSString *)action userId:(nullable NSString *)userId;
+/// @param sessionId 会话标识
+/// @param nickname 用户昵称
+- (void)onCustomMessage:(NSString *)content action:(NSString *)action userId:(nullable NSString *)userId sessionId:(nullable NSString *)sessionId nickname:(nullable NSString *)nickname;
 
 
 #pragma mark - ------------ 音频相关回调 ------------
