@@ -333,7 +333,9 @@ typedef enum : NSInteger {
     /// 心跳超时离开
     RTCLeaveReasonTimeout = 4,
     /// 频道销毁离开
-    RTCLeaveReasonDestroy = 5
+    RTCLeaveReasonDestroy = 5,
+    /// 身份变成观众
+    RTCLeaveReasonAudience = 6
 } RTCLeaveReason;
 
 
