@@ -189,6 +189,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 是否启用媒体流加密 YES开启 NO关闭，默认 NO
 @property (nonatomic, assign) BOOL enableEncrypt;
+/// 是否强制横屏，默认 NO
+@property (nonatomic, assign) BOOL forceLandscape;
 
 @end
 
