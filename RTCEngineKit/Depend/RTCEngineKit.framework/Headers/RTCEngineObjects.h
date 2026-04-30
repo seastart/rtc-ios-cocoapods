@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 日志文件路径，默认沙盒 Document 目录
 @property (nonatomic, copy) NSString *logPath;
+
 /// 是否启用本地日志，默认 NO
 /// 关闭后，必要日志会输出到控制台，建议 Debug 版本关闭
 /// 启用后，会保存控制台日志，建议 Release 版本开启
@@ -116,6 +117,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) int sampleRate;
 /// 轨道号码
 @property (nonatomic, assign) RTCTrackIdentifierFlags track;
+
+/// 当前层可降级到的更低层 streamId 列表，不含自身，按画质从高到低
+/// 仅用于支持 simulcast 的引擎（如 Seastart SFU），其他引擎可忽略
+@property (nonatomic, copy, nullable) NSArray<NSString *> *fallbackIds;
+
+/// 是否为 simulcast 副层；主层不写或为 NO，副层为 YES
+/// 仅用于支持 simulcast 的引擎（如 Seastart SFU），其他引擎可忽略
+@property (nonatomic, assign) BOOL variant;
 
 /// 自定义属性
 @property (nonatomic, assign) id props;
@@ -406,6 +415,32 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) float audio_speed;
 /// 视频速率
 @property (nonatomic, assign) float video_speed;
+
+@end
+
+
+#pragma mark - 流媒体质量采样数据
+/// 流媒体质量采样数据（服务端下发的单方向 pub / sub 质量样本，含综合评分、等级、MOS 等服务端独有指标）
+@interface RTCStreamQualitySampleModel : NSObject
+
+/// 综合评分（0~100）
+@property (nonatomic, assign) NSInteger score;
+/// 质量等级
+@property (nonatomic, assign) RTCStreamQualityLevel level;
+/// 语音 MOS 值
+@property (nonatomic, assign) double mos;
+/// 丢包率（0~1）
+@property (nonatomic, assign) double loss;
+/// 往返时延（毫秒）
+@property (nonatomic, assign) double rtt;
+/// 抖动（毫秒）
+@property (nonatomic, assign) double jitter;
+/// 包数量
+@property (nonatomic, assign) NSInteger packets;
+/// 比特率（bps）
+@property (nonatomic, assign) NSInteger bitrate;
+/// 字节数
+@property (nonatomic, assign) NSInteger bytes;
 
 @end
 

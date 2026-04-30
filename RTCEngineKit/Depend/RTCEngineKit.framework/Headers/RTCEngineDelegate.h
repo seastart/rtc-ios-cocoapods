@@ -171,6 +171,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param receiveArray 流媒体接收状态数据
 - (void)onReceiveStreamModel:(NSArray <RTCStreamReceiveModel *> *)receiveArray;
 
+#pragma mark 服务端上行质量检测回调
+/// 服务端上行质量检测回调（Seastart SFU 26.4 起，由服务端通过 Signal DataChannel 下发，含 score/level/mos 等服务端独有指标，作为本地 onSendStreamModel: 的补充）
+/// @param sample 上行质量样本
+- (void)onSendQualitySample:(RTCStreamQualitySampleModel *)sample;
+
+#pragma mark 服务端下行质量检测回调
+/// 服务端下行质量检测回调（Seastart SFU 26.4 起，由服务端通过 Signal DataChannel 下发，为整体下行的聚合样本，与 onReceiveStreamModel: 的 per-stream 维度互补）
+/// @param sample 下行质量样本
+- (void)onReceiveQualitySample:(RTCStreamQualitySampleModel *)sample;
+
 #pragma mark 流媒体接收远端流状态变更回调
 /// 流媒体接收远端流状态变更回调
 /// @param userId 用户标识

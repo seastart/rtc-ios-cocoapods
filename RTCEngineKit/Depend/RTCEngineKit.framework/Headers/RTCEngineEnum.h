@@ -614,4 +614,21 @@ typedef enum : NSInteger {
 } RTCCallState;
 
 
+#pragma mark - 流媒体质量等级
+/// 流媒体质量等级（服务端下发的 level 字段映射）
+typedef enum : NSInteger {
+    
+    /// 未知/未上报
+    RTCStreamQualityLevelUnknown = 0,
+    /// 优秀（excellent）
+    RTCStreamQualityLevelExcellent = 1,
+    /// 良好（good）
+    RTCStreamQualityLevelGood = 2,
+    /// 较差（poor）
+    RTCStreamQualityLevelPoor = 3,
+    /// 已断流（lost）
+    RTCStreamQualityLevelLost = 4
+} RTCStreamQualityLevel;
+
+
 NS_ASSUME_NONNULL_END
