@@ -188,6 +188,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param status 接收状态，YES-超时 NO-恢复
 - (void)onReceiveStreamStatusChange:(NSString *)userId trackId:(RTCTrackIdentifierFlags)trackId status:(BOOL)status;
 
+#pragma mark 流媒体接收转推流状态变更回调
+/// 流媒体接收转推流状态变更回调
+/// 转推流不作为远端用户视频数据上报，单独通过本回调通知接收状态。
+/// @param streamName 转推流名
+/// @param status 接收状态，YES-超时 NO-恢复
+- (void)onReceiveRetweetStreamStatusChange:(NSString *)streamName status:(BOOL)status;
+
 
 #pragma mark - ------------ 屏幕共享相关回调 ------------
 #pragma mark 屏幕共享状态回调
