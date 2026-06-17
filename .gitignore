@@ -35,3 +35,9 @@ Carthage/Build
 # `pod install` in .travis.yml
 #
 Pods/
+
+# LLM
+.claude/
+.github/
+docs/
+CLAUDE.md
