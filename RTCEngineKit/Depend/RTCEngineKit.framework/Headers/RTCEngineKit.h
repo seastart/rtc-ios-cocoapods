@@ -150,6 +150,17 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 切换摄像头
 - (RTCEngineError)switchCamera;
 
+#pragma mark 设置本地预览镜像
+/// 设置本地预览镜像
+/// 仅作用于本地预览画面，按 mirror 取值设置镜像；是否区分前后置等策略由业务层决定
+/// @param mirror YES-开启镜像 NO-关闭镜像
+- (RTCEngineError)setLocalPreviewMirror:(BOOL)mirror;
+
+#pragma mark 获取当前摄像头方向
+/// 获取当前摄像头方向
+/// @return 摄像头方向，RTCEngineCameraDirectionFront-前置 RTCEngineCameraDirectionBack-后置
+- (RTCEngineCameraDirection)currentCameraDirection;
+
 #pragma mark 设置摄像头的缩放倍数
 /// 设置摄像头的缩放倍数
 /// @param zoomRatio 缩放系数(1.0~5.0)

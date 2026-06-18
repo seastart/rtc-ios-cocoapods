@@ -631,4 +631,15 @@ typedef enum : NSInteger {
 } RTCStreamQualityLevel;
 
 
+#pragma mark - 摄像头方向
+/// 摄像头方向
+typedef enum : NSInteger {
+    
+    /// 前置摄像头
+    RTCEngineCameraDirectionFront = 1,
+    /// 后置摄像头
+    RTCEngineCameraDirectionBack = 2
+} RTCEngineCameraDirection;
+
+
 NS_ASSUME_NONNULL_END
