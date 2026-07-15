@@ -1,0 +1,23 @@
+  CDN: trunk Relative path: CocoaPods-version.yml exists! Returning local because checking is only performed in repo update
+
+Updating spec repo `cocoapods`
+[!] Failed to connect to GitHub to update the CocoaPods/Specs specs repo - Please check if you are offline, or that GitHub is down
+
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.16.1/lib/cocoapods-core/github.rb:105:in `rescue in modified_since_commit'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.16.1/lib/cocoapods-core/github.rb:100:in `modified_since_commit'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.16.1/lib/cocoapods-core/source.rb:471:in `unchanged_github_repo?'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-core-1.16.1/lib/cocoapods-core/source.rb:352:in `update'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.16.1/lib/cocoapods/sources_manager.rb:144:in `block (3 levels) in update'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.16.1/lib/cocoapods/user_interface.rb:64:in `section'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.16.1/lib/cocoapods/sources_manager.rb:143:in `block (2 levels) in update'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.16.1/lib/cocoapods/sources_manager.rb:142:in `each'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.16.1/lib/cocoapods/sources_manager.rb:142:in `block in update'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.16.1/lib/cocoapods/sources_manager.rb:140:in `open'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.16.1/lib/cocoapods/sources_manager.rb:140:in `update'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-trunk-1.6.0/lib/pod/command/trunk/push.rb:156:in `update_master_repo'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-trunk-1.6.0/lib/pod/command/trunk/push.rb:71:in `run'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/claide-1.1.0/lib/claide/command.rb:334:in `run'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.16.1/lib/cocoapods/command.rb:52:in `run'
+/Users/SailorGa/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/cocoapods-1.16.1/bin/pod:55:in `<top (required)>'
+/usr/local/bin/pod:23:in `load'
+/usr/local/bin/pod:23:in `<main>'
