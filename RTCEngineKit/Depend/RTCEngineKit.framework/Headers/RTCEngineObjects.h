@@ -176,7 +176,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) int audioSampe;
 /// 音频编码格式，默认OPUS
 @property (nonatomic, assign) RTCCodecType audioEncode;
-/// 音频路由，默认RTCAudioRouteSpeaker
+/// 无外设时的默认内置音频路由，支持扬声器或听筒，默认RTCAudioRouteSpeaker
 @property (nonatomic, assign) RTCAudioRoute audioRoute;
 
 /// 视频分辨率宽必须是16的倍数 高必须是2的倍数 否则容易出现绿边等问题(已做了兼容)

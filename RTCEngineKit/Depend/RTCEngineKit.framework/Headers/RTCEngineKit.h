@@ -150,10 +150,10 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 切换摄像头
 - (RTCEngineError)switchCamera;
 
-#pragma mark 设置本地预览镜像
-/// 设置本地预览镜像
-/// 仅作用于本地预览画面，按 mirror 取值设置镜像；是否区分前后置等策略由业务层决定
-/// @param mirror YES-开启镜像 NO-关闭镜像
+#pragma mark 设置前置摄像头本地预览镜像偏好
+/// 设置前置摄像头本地预览镜像偏好
+/// 仅作用于本地预览画面，不影响推流数据；后置摄像头恒不镜像，切换摄像头后自动应用
+/// @param mirror YES-前置摄像头镜像 NO-前置摄像头不镜像
 - (RTCEngineError)setLocalPreviewMirror:(BOOL)mirror;
 
 #pragma mark 获取当前摄像头方向
@@ -262,9 +262,9 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// @param enabled  YES-开启 NO-关闭
 - (RTCEngineError)setAudioPriorityWithUserId:(NSString *)userId enabled:(BOOL)enabled;
 
-#pragma mark 设置扬声器状态
-/// 设置扬声器状态
-/// @param enabled 是否开启扬声器(YES-开启 NO-关闭)
+#pragma mark 设置声音播放状态
+/// 设置声音播放状态
+/// @param enabled 是否开启远端音频播放(YES-开启 NO-关闭)
 - (RTCEngineError)enabledAudioSpeaker:(BOOL)enabled;
 
 #pragma mark 设置语音转写状态
@@ -275,6 +275,7 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 #pragma mark 切换音频路由
 /// 切换音频路由
 /// @param audioRoute 音频路由
+/// @return 同步请求结果，最终实际路由以currentAudioRoute和onAudioRouteChange回调为准
 - (RTCEngineError)switchAudioRoute:(RTCAudioRoute)audioRoute;
 
 #pragma mark 获取当前音频路由
