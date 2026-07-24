@@ -267,6 +267,12 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// @param enabled 是否开启远端音频播放(YES-开启 NO-关闭)
 - (RTCEngineError)enabledAudioSpeaker:(BOOL)enabled;
 
+#pragma mark 设置本端音频单元启停
+/// 设置本端音频单元启停
+/// @discussion 录像直播等本端不采集、不接收 RTC 音频的纯本地播放场景，关闭音频单元可释放流媒体语音处理单元(VPIO)，避免本地 AVPlayer 播放音量被压低；返回该场景后需恢复
+/// @param enabled 是否启用本端音频单元(YES-由流媒体自动管理 NO-停止)
+- (RTCEngineError)enabledAudioModule:(BOOL)enabled;
+
 #pragma mark 设置语音转写状态
 /// 设置语音转写状态
 /// @param enabled 是否开启语音转写(YES-开启 NO-关闭)
