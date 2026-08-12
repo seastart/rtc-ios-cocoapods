@@ -8,202 +8,33 @@
 
 #import <Foundation/Foundation.h>
 
+#if __has_include(<RTCEngineKit/RTCEngineKit.h>)
+#import <RTCEngineKit/RTCEngineObjects.h>
+#else
+#import "RTCEngineObjects.h"
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class RTCEngineKit;
 
-#pragma mark - 会话事件回调
+#pragma mark - 进程级引擎事件回调
+/// 进程级引擎事件回调
+/// 本协议只承载 RTCEngineKit 单例范围内的共享能力事件，与具体频道无关
+/// 频道内的连接、成员、码流、音频、屏幕共享等事件请实现 RTCEngineChannelDelegate
 @protocol RTCEngineDelegate <NSObject>
 #pragma mark 可选实现代理方法
 @optional
 
 #pragma mark - ----- Core Delegate Methods -----
 
-#pragma mark - ------------ 连接相关回调 ------------
-#pragma mark 重连成功回调
-/// 重连成功回调
-- (void)onReconnected;
-
-#pragma mark 连接断开回调
-/// 连接断开回调
-/// 发生不可恢复的错误或者被动离开频道，这个事件触发需要重新获取令牌
-/// @param channel 频道名称
-/// @param reason 离开原因
-/// @param errCode 错误码
-/// @param errMsg 错误信息
-- (void)onDisconnected:(nullable NSString *)channel reason:(RTCLeaveReason)reason errCode:(RTCEngineError)errCode errMsg:(nullable NSString *)errMsg;
-
-#pragma mark 开始重连回调
-/// 开始重连回调
-/// @param channel 频道名称
-- (void)onReconnecting:(nullable NSString *)channel;
-
-
-#pragma mark - ------------ 我的相关回调 ------------
-#pragma mark 加入频道成功回调
-/// 加入频道成功回调
-/// @param channel 频道名称
-/// @param userId 用户标识
-- (void)onJoinSucceed:(NSString *)channel userId:(NSString *)userId;
-
-#pragma mark 自己数据更新回调
-/// 自己数据更新回调
-/// @param channel 频道名称
-/// @param userId 用户标识
-- (void)onUserUpdate:(NSString *)channel userId:(NSString *)userId;
-
-
-#pragma mark - ------------ 频道相关回调 ------------
-#pragma mark 频道更新回调
-/// 频道更新回调
-/// @param channel 频道名称
-/// @param props 自定义数据
-- (void)onChannelUpdate:(NSString *)channel props:(NSString *)props;
-
-
-#pragma mark - ------------ 用户相关回调 ------------
-#pragma mark 用户加入频道回调
-/// 用户加入频道回调
-/// @param channel 频道名称
-/// @param userId 用户标识
-- (void)onRemoteUserJoinChannel:(NSString *)channel userId:(NSString *)userId;
-
-#pragma mark 用户数据更新回调
-/// 用户数据更新回调
-/// @param channel 频道名称
-/// @param userId 用户标识
-- (void)onRemoteUserUpdate:(NSString *)channel userId:(NSString *)userId;
-
-#pragma mark 用户离开频道回调
-/// 用户离开频道回调
-/// @param channel 频道名称
-/// @param userId 用户标识
-/// @param reason 离开原因
-- (void)onRemoteUserLeaveChannel:(NSString *)channel userId:(NSString *)userId reason:(RTCLeaveReason)reason;
-
-#pragma mark 用户码流数据变更回调
-/// 用户码流数据变更回调
-/// @param channel 频道名称
-/// @param userId 用户标识
-/// @param streamTrackModel 码流轨道数据
-/// @param changeType 操作类型
-- (void)onRemoteStreamTrackChange:(NSString *)channel userId:(NSString *)userId streamTrackModel:(RTCEngineStreamTrackModel *)streamTrackModel changeType:(RTCChangeType)changeType;
-
-
-#pragma mark - ------------ 消息相关回调 ------------
-#pragma mark 自定义消息回调
-/// 自定义消息回调
-/// @param channel 频道名称
-/// @param content 消息内容
-/// @param action 消息标识
-/// @param userId 用户标识
-/// @param sessionId 会话标识
-/// @param nickname 用户昵称
-- (void)onCustomMessage:(nullable NSString *)channel content:(NSString *)content action:(NSString *)action userId:(nullable NSString *)userId sessionId:(nullable NSString *)sessionId nickname:(nullable NSString *)nickname;
-
-
 #pragma mark - ------------ 音频相关回调 ------------
-#pragma mark 音频采集数据回调
-/// 音频采集数据回调
-/// - Parameters:
-///   - samplerate: 采样率
-///   - channel: 声道数
-///   - stamp: 时间戳
-///   - dataSize: 数据大小
-///   - pcmData: 音频元数据
-- (void)onAudioCapture:(int)samplerate channel:(int)channel stamp:(unsigned int)stamp dataSize:(int)dataSize pcmData:(void *)pcmData;
-
-#pragma mark 音频采集重采样数据回调
-/// 音频采集重采样数据回调
-/// @param samplerate 采样率
-/// @param channel 声道数
-/// @param stamp 时间戳
-/// @param resampledData 音频重采样数据
-- (void)onAudioCaptureResampled:(int)samplerate channel:(int)channel stamp:(unsigned int)stamp resampledData:(NSData *)resampledData;
-
 #pragma mark 音频路由变更回调
 /// 音频路由变更回调
+/// 音频路由为进程级共享设备状态，变更对全部频道同时生效
 /// @param route 音频路由
 /// @param previousRoute 变更前的音频路由
 - (void)onAudioRouteChange:(RTCAudioRoute)route previousRoute:(RTCAudioRoute)previousRoute;
-
-#pragma mark 远程成员音频状态回调
-/// 远程成员音频状态回调
-/// @param audioArray 成员音频列表
-- (void)onRemoteMemberAudioStatus:(NSArray<RTCStreamAudioModel *> *)audioArray;
-
-#pragma mark 服务是否允许发言回调
-/// 服务是否允许发言回调
-/// @param enabled 是否允许发言，YES-允许发言 NO-不允许发言
-- (void)onServiceEnabledSpeak:(BOOL)enabled;
-
-
-#pragma mark - ------------ 流媒体相关回调 ------------
-#pragma mark 流媒体连接成功回调
-/// 流媒体连接成功回调
-- (void)onStreamMediaDidConnectSucceed;
-
-#pragma mark 下行码率自适应状态回调
-/// 下行码率自适应状态回调
-/// @param userId 用户标识
-/// @param state 下行码率自适应状态
-- (void)onDownBitrateAdaptiveUserId:(NSString *)userId state:(RTCDownBitrateAdaptiveState)state;
-
-#pragma mark 上行码率自适应状态回调
-/// 上行码率自适应状态回调
-/// @param state 上行码率自适应状态
-- (void)onUploadBitrateAdaptiveState:(RTCUploadBitrateAdaptiveState)state;
-
-#pragma mark 下行平均丢包档位变化回调
-/// 下行平均丢包档位变化回调
-/// @param state 下行平均丢包档位
-- (void)onDownLossLevelChangeState:(RTCDownLossLevelState)state;
-
-#pragma mark 下行平均丢包率回调
-/// 下行平均丢包率回调
-/// @param average 下行平均丢包率
-- (void)onDownLossRateAverage:(CGFloat)average;
-
-#pragma mark 流媒体发送状态数据回调
-/// 流媒体发送状态数据回调
-/// @param sendModel 流媒体发送状态数据
-- (void)onSendStreamModel:(RTCStreamSendModel *)sendModel;
-
-#pragma mark 流媒体接收状态数据回调
-/// 流媒体接收状态数据回调
-/// @param receiveArray 流媒体接收状态数据
-- (void)onReceiveStreamModel:(NSArray <RTCStreamReceiveModel *> *)receiveArray;
-
-#pragma mark 服务端上行质量检测回调
-/// 服务端上行质量检测回调（Seastart SFU 26.4 起，由服务端通过 Signal DataChannel 下发，含 score/level/mos 等服务端独有指标，作为本地 onSendStreamModel: 的补充）
-/// @param sample 上行质量样本
-- (void)onSendQualitySample:(RTCStreamQualitySampleModel *)sample;
-
-#pragma mark 服务端下行质量检测回调
-/// 服务端下行质量检测回调（Seastart SFU 26.4 起，由服务端通过 Signal DataChannel 下发，为整体下行的聚合样本，与 onReceiveStreamModel: 的 per-stream 维度互补）
-/// @param sample 下行质量样本
-- (void)onReceiveQualitySample:(RTCStreamQualitySampleModel *)sample;
-
-#pragma mark 流媒体接收远端流状态变更回调
-/// 流媒体接收远端流状态变更回调
-/// @param userId 用户标识
-/// @param trackId 轨道标识
-/// @param status 接收状态，YES-超时 NO-恢复
-- (void)onReceiveStreamStatusChange:(NSString *)userId trackId:(RTCTrackIdentifierFlags)trackId status:(BOOL)status;
-
-#pragma mark 流媒体接收转推流状态变更回调
-/// 流媒体接收转推流状态变更回调
-/// 转推流不作为远端用户视频数据上报，单独通过本回调通知接收状态。
-/// @param streamName 转推流名
-/// @param status 接收状态，YES-超时 NO-恢复
-- (void)onReceiveRetweetStreamStatusChange:(NSString *)streamName status:(BOOL)status;
-
-
-#pragma mark - ------------ 屏幕共享相关回调 ------------
-#pragma mark 屏幕共享状态回调
-/// 屏幕共享状态回调
-/// @param status 状态码
-- (void)onScreenRecordStatus:(RTCScreenRecordStatus)status;
 
 
 #pragma mark - ------------ 网络测速相关回调 ------------
@@ -222,17 +53,11 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - ------------ 其它相关回调 ------------
 #pragma mark 应用性能使用情况回调
 /// 应用性能使用情况回调
+/// 统计维度为当前应用进程，不区分频道
 /// @param memory 内存占用
 /// @param cpuUsage CUP使用率
 - (void)onApplicationPerformance:(CGFloat)memory cpuUsage:(CGFloat)cpuUsage;
 
-#pragma mark 流媒体平台变化回调
-/// 流媒体平台变化回调
-/// @param vendorName 平台名称
-- (void)onStreamChangedVendorName:(NSString *)vendorName;
-
 @end
 
 NS_ASSUME_NONNULL_END
-
-

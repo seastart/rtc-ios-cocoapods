@@ -15,11 +15,13 @@
 #import <RTCEngineKit/RTCEngineDelegate.h>
 #import <RTCEngineKit/RTCScreenDelegate.h>
 #import <RTCEngineKit/RTCEngineIMDelegate.h>
+#import <RTCEngineKit/RTCEngineChannel.h>
 #else
 #import "RTCEngineObjects.h"
 #import "RTCEngineDelegate.h"
 #import "RTCScreenDelegate.h"
 #import "RTCEngineIMDelegate.h"
+#import "RTCEngineChannel.h"
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
@@ -27,21 +29,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// 完成回调
 typedef void (^RTCEngineKitFinishBlock)(void);
 
+@class RTCEngineChannel;
+@protocol RTCEngineChannelDelegate;
+
 #pragma mark - RTCEngineKit
+/// RTC 进程级引擎
+/// 单例对象，一个进程只存在一个实例，承载账号级能力(即时通讯)、共享硬件(摄像头、音频路由、屏幕录制、视频渲染)与频道实例的生命周期
+/// 频道内的成员、码流、渲染等能力由 createChannelWithDelegate: 创建的 RTCEngineChannel 承载，同一进程可同时存在多个频道实例
 @interface RTCEngineKit : NSObject
 
 + (instancetype)new __attribute__((unavailable("Use +sharedEngine instead or +sharedEngineWithConfig")));
 - (instancetype)init __attribute__((unavailable("Use +sharedEngine instead or +sharedEngineWithConfig")));
 
-#pragma mark - ------------ Core Service ------------
+#pragma mark - ------------ 核心服务 ------------
 
 /// RTC事件代理
 @property (nonatomic, weak) id<RTCEngineDelegate> delegate;
 /// 即时通讯代理
 @property (nonatomic, weak) id<RTCEngineIMDelegate> imDelegate;
-/// 语音转写状态
-@property (nonatomic, assign, readonly) BOOL enabledTrans;
-
 #pragma mark 获取RTC引擎实例
 /// 获取RTC引擎实例
 + (RTCEngineKit *)sharedEngine;
@@ -67,11 +72,28 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 
 #pragma mark 资源销毁
 /// 资源销毁
+/// 内部会先销毁全部存活的频道实例，等待其离开完成后再释放进程级资源
 - (void)destroy;
 
 #pragma mark RTC引擎版本
 ///  RTC引擎版本
 - (NSString *)version;
+
+
+#pragma mark - ------------ 频道实例相关接口函数 ------------
+
+#pragma mark 创建频道实例
+/// 创建频道实例
+/// 每次调用返回一个独立的频道实例，可多次调用以同时加入多个频道
+/// 频道实例由引擎持有，业务侧使用完毕后需调用其 destroy 归还，否则实例不会被释放
+/// @param delegate 频道事件代理
+/// @return 频道实例，引擎正在销毁时返回 nil
+- (nullable RTCEngineChannel *)createChannelWithDelegate:(nullable id<RTCEngineChannelDelegate>)delegate;
+
+#pragma mark 获取活跃频道列表
+/// 获取活跃频道列表
+/// @return 当前已经加入频道的实例列表，未加入或已离开的实例不会出现在结果中
+- (NSArray<RTCEngineChannel *> *)getChannels;
 
 
 #pragma mark - ------------ 即时通讯相关接口函数 ------------
@@ -87,44 +109,8 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 - (void)disableIm;
 
 
-#pragma mark - ------------ 频道相关接口函数 ------------
-
-#pragma mark 加入频道
-/// 加入频道
-/// @param token 鉴权令牌
-- (RTCEngineError)joinChannelWithToken:(NSString *)token;
-
-#pragma mark 离开频道
-/// 离开频道
-/// @param finishBlock 完成回调
-- (void)leaveChannel:(nullable RTCEngineKitFinishBlock)finishBlock;
-
-
-#pragma mark - ------------ 数据管理相关接口 ------------
-
-#pragma mark 获取当前账户数据
-/// 获取当前账户数据
-- (RTCEngineUserModel *)getMySelf;
-
-#pragma mark 获取当前频道数据
-/// 获取当前频道数据
-- (RTCEngineChannelModel *)getChannelDetails;
-
-#pragma mark 获取成员数据
-/// 获取成员数据
-/// @param userId 用户标识
-- (RTCEngineUserModel *)findMemberWithUserId:(NSString *)userId;
-
-#pragma mark 获取成员列表
-/// 获取成员列表
-- (NSArray<RTCEngineUserModel *> *)getRemoteUsers;
-
-#pragma mark 获取画板地址
-/// 获取画板地址
-- (NSString *)getDrawingHost;
-
-
 #pragma mark - ------------ 视频相关接口函数 ------------
+/// 摄像头为进程级共享硬件，全部频道实例共用同一路采集数据
 
 #pragma mark 开启本地摄像头的预览画面
 /// 开启本地摄像头的预览画面
@@ -140,11 +126,6 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 #pragma mark 停止摄像头预览
 /// 停止摄像头预览
 - (RTCEngineError)stopLocalPreview;
-
-#pragma mark 恢复/暂停推流
-/// 恢复/暂停推流
-/// @param publish YES-恢复 NO-暂停
-- (RTCEngineError)publishLocalVideo:(BOOL)publish;
 
 #pragma mark 切换摄像头
 /// 切换摄像头
@@ -172,7 +153,7 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 - (RTCEngineError)setCameraFocusPosition:(CGPoint)position;
 
 #pragma mark 设置摄像头的曝光系数
-/// 设设置摄像头的曝光系数
+/// 设置摄像头的曝光系数
 /// @param exposureRatio 曝光系数(-8.0~8.0)
 - (RTCEngineError)setCameraExposureRatio:(CGFloat)exposureRatio;
 
@@ -181,102 +162,9 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// @param enabled 是否开启闪光灯(YES-开启 NO-关闭)
 - (RTCEngineError)enableCameraTorch:(BOOL)enabled;
 
-#pragma mark 订阅远端用户的视频流
-/// 订阅远端用户的视频流
-/// @param userId 指定远端用户标识
-/// @param trackId 指定要观看的轨道号
-/// @param view 承载视频画面的控件
-- (RTCEngineError)startRemoteView:(NSString *)userId trackId:(RTCTrackIdentifierFlags)trackId view:(VIEW_CLASS *)view;
-
-#pragma mark 更新远端用户的视频流
-/// 更新远端用户的视频流
-/// @param userId 指定远端用户标识
-/// @param trackId 指定要观看的轨道号
-/// @param view 承载视频画面的控件
-- (RTCEngineError)updateRemoteView:(NSString *)userId trackId:(RTCTrackIdentifierFlags)trackId view:(VIEW_CLASS *)view;
-
-#pragma mark 停止订阅远端用户的视频流
-/// 停止订阅远端用户的视频流
-/// @param userId 指定远端用户标识
-/// @param trackId 指定要观看的轨道号
-- (RTCEngineError)stopRemoteView:(NSString *)userId trackId:(RTCTrackIdentifierFlags)trackId;
-
-#pragma mark 停止订阅指定远端用户的所有视频流
-/// 停止订阅指定远端用户的所有视频流
-/// @param userId 指定远端用户标识
-- (RTCEngineError)stopAllRemoteViewWithUserId:(NSString *)userId;
-
-#pragma mark 停止订阅所有远端用户的视频流
-/// 停止订阅所有远端用户的视频流
-- (RTCEngineError)stopAllRemoteView;
-
-#pragma mark 订阅远端合成画面视频流，并绑定视频渲染控件
-/// 订阅远端合成画面视频流，并绑定视频渲染控件
-/// @param view 承载视频画面的渲染控件
-- (RTCEngineError)startRemoteMixture:(VIEW_CLASS *)view;
-
-#pragma mark 停止订阅远端合成画面视频流，并释放渲染控件
-/// 停止订阅远端合成画面视频流，并释放渲染控件
-- (RTCEngineError)stopRemoteMixture;
-
-#pragma mark 订阅远端转推音视频流，并绑定视频渲染控件
-/// 订阅远端转推音视频流，并绑定视频渲染控件
-/// @param streamName 需要订阅的远端流名(由外部传入)
-/// @param view 承载视频画面的渲染控件
-- (RTCEngineError)startRemoteRetweet:(NSString *)streamName view:(VIEW_CLASS *)view;
-
-#pragma mark 停止订阅远端转推音视频流，并释放渲染控件
-/// 停止订阅远端转推音视频流，并释放渲染控件
-/// @param streamName 需要停止订阅的远端流名(由外部传入)
-- (RTCEngineError)stopRemoteRetweet:(NSString *)streamName;
-
-
-#pragma mark - ------------ 流媒体相关接口函数 ------------
-
-#pragma mark 设置流媒体配置参数
-/// 设置流媒体配置参数
-/// @param config 流媒体配置参数
-- (void)setStreamMediaConfig:(RTCEngineMediaConfig *)config;
-
-#pragma mark 设置网络质量控制参数
-/// 设置网络质量控制参数
-/// @param param 质量控制参数
-- (void)setNetworkQosParam:(RTCEngineNetworkQosParam *)param;
-
-#pragma mark 设置远程调试参数
-/// 设置远程调试参数
-/// @param param 调试参数
-- (void)setRemoteDebugParam:(RTCEngineDebugParam *)param;
-
 
 #pragma mark - ------------ 音频相关接口函数 ------------
-
-#pragma mark 音频发送状态
-/// 音频发送状态
-/// @param enabled YES-开启 NO-关闭
-- (RTCEngineError)enabledSendAudio:(BOOL)enabled;
-
-#pragma mark 设置音频优先策略
-/// 设置音频优先策略
-/// @param userId 指定远端用户标识
-/// @param enabled  YES-开启 NO-关闭
-- (RTCEngineError)setAudioPriorityWithUserId:(NSString *)userId enabled:(BOOL)enabled;
-
-#pragma mark 设置声音播放状态
-/// 设置声音播放状态
-/// @param enabled 是否开启远端音频播放(YES-开启 NO-关闭)
-- (RTCEngineError)enabledAudioSpeaker:(BOOL)enabled;
-
-#pragma mark 设置本端音频单元启停
-/// 设置本端音频单元启停
-/// @discussion 录像直播等本端不采集、不接收 RTC 音频的纯本地播放场景，关闭音频单元可释放流媒体语音处理单元(VPIO)，避免本地 AVPlayer 播放音量被压低；返回该场景后需恢复
-/// @param enabled 是否启用本端音频单元(YES-由流媒体自动管理 NO-停止)
-- (RTCEngineError)enabledAudioModule:(BOOL)enabled;
-
-#pragma mark 设置语音转写状态
-/// 设置语音转写状态
-/// @param enabled 是否开启语音转写(YES-开启 NO-关闭)
-- (RTCEngineError)enabledSpeechTrans:(BOOL)enabled;
+/// 音频路由为进程级共享设备，切换结果对全部频道实例同时生效
 
 #pragma mark 切换音频路由
 /// 切换音频路由
@@ -296,15 +184,13 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 是否存在蓝牙耳机设备
 - (BOOL)bluetoothDeviceAvailable;
 
-#pragma mark 重启音频会话
-/// 重启音频会话
-- (void)resetAudioSession;
-
 
 #pragma mark - ------------ 屏幕共享相关接口函数 ------------
+/// ReplayKit 采集为进程级共享能力，采集数据按订阅关系分发给各个频道实例
 
 #pragma mark 关闭屏幕录制
 /// 关闭屏幕录制
+/// 关闭进程内全部频道实例的屏幕录制，仅需关闭单个频道时请调用该频道的 publishScreenRecord: 传入 NO
 - (void)stopScreenRecord;
 
 #pragma mark 录屏启动方法
@@ -324,48 +210,6 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// RPSampleBufferTypeAudioMic 不支持，可以在宿主 App 处理麦克风采集数据。
 - (void)sendSampleBuffer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType;
 
-#pragma mark 发布视图录制的屏幕共享流
-/// 发布视图录制的屏幕共享流
-/// 共用共享发布连接(publishScreenPeerConnection)，数据来源一般为UIView内容采集
-/// 与 publishScreenEncoderWithStreamData 互斥使用，由外部业务决定采用哪种方式送流
-/// - Parameters:
-///   - pixelBuffer: UIView采集的像素数据(CVPixelBufferRef)
-///   - displayAngle: 显示角度(0/90/180/270)
-- (void)publishScreenViewCaptureWithPixelBuffer:(CVPixelBufferRef)pixelBuffer displayAngle:(int)displayAngle;
-
-#pragma mark 设置视图采集共享
-/// 设置视图采集共享
-/// 视图采集为云录制的“保底画面源”，屏幕共享为“高优先级画面源”
-/// 两者共用屏幕共享通道，按优先级自动切换：
-/// - 开启时：若屏幕录制未进行，建立共享通道；若屏幕录制已在进行，通道已存在无需重复建立
-/// - 屏幕录制停止时：若视图采集已开启，通道不关闭，自动恢复推送视图采集数据
-/// - 关闭时：若屏幕录制未进行，拆除共享通道；若屏幕录制已在进行，通道保留给屏幕录制
-/// - Parameter enabled: 启用状态 YES-开启 NO-关闭
-- (RTCEngineError)enabledViewCaptureShare:(BOOL)enabled;
-
-
-#pragma mark - ------------ 发布自定义流相关接口函数 ------------
-
-#pragma mark 启动自定义流
-/// 启动自定义流
-/// @param streamTrackModel 自定义码流轨道信息
-- (RTCEngineError)startCustomStreamWithStreamTrackModel:(RTCEngineStreamTrackModel *)streamTrackModel;
-
-#pragma mark 关闭自定义流
-/// 关闭自定义流
-/// @param trackId 轨道号码
-- (RTCEngineError)stopCustomStreamWithTrackId:(RTCTrackIdentifierFlags)trackId;
-
-#pragma mark 发布自定义码流
-/// 发布自定义码流
-/// @param streamData 码流数据
-/// @param bitslen 数据长度
-/// @param pts 显示时间戳
-/// @param dts 解码时间戳
-/// @param trackId 轨道号码
-/// @param streamType 媒体流类型
-- (RTCEngineError)publishCustomStreamWithStreamData:(const unsigned char *)streamData bitslen:(int)bitslen pts:(uint32_t)pts dts:(uint32_t)dts trackId:(RTCTrackIdentifierFlags)trackId streamType:(RTCStreamType)streamType;
-
 
 #pragma mark - ------------ 网络测速相关接口函数 ------------
 
@@ -382,6 +226,8 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 
 
 #pragma mark - ------------ 视频渲染相关接口函数 ------------
+/// 视频渲染与美颜作用于共享摄像头采集链路，设置对全部频道实例同时生效
+
 #pragma mark 装载视频渲染组件
 /// 装载视频渲染组件
 /// @param authData 密钥

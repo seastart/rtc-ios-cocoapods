@@ -328,7 +328,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RTCStreamAudioModel : NSObject
 
 /// 用户标识
-@property (nonatomic, copy, readonly) NSString *userId;
+@property (nonatomic, copy, nullable) NSString *userId;
 
 /// 连接标识(流媒体)
 @property (nonatomic, assign) int linkId;
@@ -389,7 +389,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RTCStreamReceiveModel : NSObject
 
 /// 用户标识
-@property (nonatomic, copy, readonly) NSString *userId;
+@property (nonatomic, copy, nullable) NSString *userId;
 
 /// 连接标识(流媒体)
 @property (nonatomic, assign) int linkId;
