@@ -29,7 +29,9 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   
   # 指定支持平台
-  s.ios.deployment_target = '10.0'
+  # 注：虚拟背景版本起最低系统为 iOS 16.0，Framework 本身按 16.0 构建，
+  # 且 onnxruntime-c 1.24.x 的下限是 iOS 15.1，留在 10.0 会让该依赖无法参与解析
+  s.ios.deployment_target = '16.0'
   
   # 依赖系统Frameworks库
   s.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreFoundation', 'CoreMedia', 'CoreVideo', 'Foundation', 'QuartzCore', 'Metal', 'MetalPerformanceShaders', 'Security', 'OpenGLES', 'Accelerate', 'CoreML', 'CoreGraphics', 'ReplayKit', 'SystemConfiguration', 'CallKit'
@@ -45,4 +47,8 @@ TODO: Add long description of the pod here.
   s.dependency 'AFNetworking', '>= 4.0.0'
   # 依赖远程Socket组件库
   s.dependency 'CocoaAsyncSocket'
+  # 依赖远程人像分割推理引擎
+  # 内嵌的 libvisionkitvb.a 只保留 ORT 的 undefined 符号(_OrtGetApiBase 等)，
+  # 由接入 App 在链接期解决，所以这里必须把 onnxruntime 声明出来
+  s.dependency 'onnxruntime-c', '~> 1.24.0'
 end
