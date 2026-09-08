@@ -298,6 +298,56 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 获取当前滤镜效果
 - (NSString *)getFilterName;
 
+
+#pragma mark - ------------ 虚拟背景相关接口函数 ------------
+/// 虚拟背景与美颜作用于同一条共享摄像头采集链路，设置对全部频道实例同时生效。
+/// 两者同时开启时的顺序固定为**美颜在前、虚拟背景在后**：人像分割的输入是美颜后的图，
+/// 边缘才与最终画面一致；反过来先换背景再磨皮会把背景图也一起磨了。
+
+#pragma mark 装载虚拟背景组件
+/// 装载虚拟背景组件
+/// @param modelPath 人像分割模型(selfie_segmenter_fixed.onnx)文件路径，
+///        传 nil 使用 SDK 内置的那一份
+/// @note 虚拟背景是自研组件，与美颜不同，**不需要授权密钥**
+- (RTCEngineError)installVirtualBackground:(nullable NSString *)modelPath;
+
+#pragma mark 卸载虚拟背景组件
+/// 卸载虚拟背景组件
+- (void)uninstallVirtualBackground;
+
+#pragma mark 虚拟背景功能开关
+/// 虚拟背景功能开关
+/// @param enabled YES-开启 NO-关闭(关闭即零开销直通，不跑推理)
+- (RTCEngineError)enabledVirtualBackground:(BOOL)enabled;
+
+#pragma mark 设置背景虚化
+/// 设置背景虚化
+/// @param level 虚化等级，取值范围 1-10，默认 5
+/// @note 与 setVirtualBackgroundImage: 互斥，后调用的生效
+- (void)setVirtualBackgroundBlur:(NSInteger)level;
+
+#pragma mark 设置背景替换
+/// 设置背景替换
+/// @param image 背景图片，按 cover 裁剪不拉伸
+/// @note 与 setVirtualBackgroundBlur: 互斥，后调用的生效
+- (void)setVirtualBackgroundImage:(nullable UIImage *)image;
+
+#pragma mark 设置分割推理间隔
+/// 设置分割推理间隔
+/// @param interval 分割每 N 帧跑一次(合成仍每帧跑)，默认 1，低端机可调大保帧率
+- (void)setVirtualBackgroundInferenceInterval:(NSInteger)interval;
+
+#pragma mark 设置蒙版对齐
+/// 设置蒙版对齐
+/// @param enabled YES-开启 NO-关闭，默认 NO
+/// @note 消挥手时的错位拖影，代价是画面更新率降到蒙版率；
+///       `interval == 1` 时开与不开没有任何区别，它只在调大推理间隔后才起作用
+- (void)setVirtualBackgroundMaskSync:(BOOL)enabled;
+
+#pragma mark 获取虚拟背景开启状态
+/// 获取虚拟背景开启状态
+- (BOOL)isVirtualBackgroundEnabled;
+
 @end
 
 NS_ASSUME_NONNULL_END

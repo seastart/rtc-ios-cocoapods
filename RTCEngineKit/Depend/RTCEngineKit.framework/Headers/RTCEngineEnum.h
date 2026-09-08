@@ -79,7 +79,9 @@ typedef enum : NSUInteger {
     /// WebRTC
     SRTCDeviceTypeWebRTC = 6,
     /// RTMP
-    SRTCDeviceTypeRtmp = 7
+    SRTCDeviceTypeRtmp = 7,
+    /// HarmonyOS
+    SRTCDeviceTypeHarmonyOS = 8
 } SRTCDeviceType;
 
 
