@@ -11,50 +11,71 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-#pragma mark - 错误码
-/// 错误码
+#pragma mark - 错误码 / Error codes
+/// 错误码 / Error codes
+///
+/// 完整码 = iOS 端前缀 103 + 统一错误码表低 3 位（如 103006 = 103 + 006 ConnectionFailed）。请按码判断，不要依赖错误文案。
+/// Full code = iOS prefix 103 + 3-digit code from the unified SDK error table (e.g. 103006 = 103 + 006 ConnectionFailed).
+/// Always branch on the code, never on the message text.
+///
+/// - 0：成功 / success
+/// - 103000–103999：SDK 本地错误 / SDK local errors（librtc 返回的低 3 位由 SDK 统一加 103 前缀后对外）
+/// - 1000–99999：后端业务码，原样透传 / backend business codes, passed through unchanged
+///
+/// 3.1.2 之后的版本按统一码表重排（破坏性变更），括号内为旧值，完整对照见更新日志
+/// Renumbered after 3.1.2 to follow the unified table (breaking change); old values in parentheses, see the changelog for the full mapping.
 typedef enum : NSInteger {
     
-    /// 无错误
+    /// 无错误 / Success
     RTCEngineErrorOK = 0,
     
-    /// 系统内部错误
-    RTCEngineErrorSystemError = 100001,
-    /// 未初始化
-    RTCEngineErrorNotInitialized = 100002,
-    /// 媒体模块尚未初始化
-    RTCEngineErrorMediaNotInitialized = 100003,
-    /// 协议解析错误
-    RTCEngineErrorProtocolParsingError = 100004,
-    
-    /// 超时
-    RTCEngineErrorTimeout = 100005,
-    /// 参数错误
-    RTCEngineErrorInvalidArgs = 100006,
-    /// 重复操作冲突
-    RTCEngineErrorConflict = 100007,
-    /// 令牌失效
-    RTCEngineErrorSdkTokenInvalid = 100008,
-    
-    /// 网络错误
-    RTCEngineErrorNetError = 100009,
-    /// 媒体网络错误
-    RTCEngineErrorMediaNetError = 100010,
-    /// 目标不存在
-    RTCEngineErrorNotFound = 100011,
-    /// 用户取消了
-    RTCEngineErrorUserCancelled = 100012,
-    
-    /// 设备访问无权限
-    RTCEngineErrorDeviceNoAuthorized = 103001,
-    /// 未加入频道
-    RTCEngineErrorNotJoinedChannel = 103002,
-    /// 操作不被允许
-    RTCEngineErrorForbidden = 103003,
-    /// 码流不存在
-    RTCEngineErrorStreamNotFound = 103004,
-    /// 音频路由切换失败
-    RTCEngineErrorSwitchAudioRouteFail = 103005
+    /// 未加入频道 / Not in channel (old 103002)
+    RTCEngineErrorNotJoinedChannel = 103001,
+    /// 码流不存在 / Track not found (old 103004)
+    RTCEngineErrorStreamNotFound = 103003,
+    /// 令牌不合法 / Token invalid (old 100008)
+    RTCEngineErrorSdkTokenInvalid = 103004,
+    /// 重复操作冲突 / Already joined or conflicting operation (old 100007)
+    RTCEngineErrorConflict = 103005,
+    /// 网络错误（含 HTTP 非 200）/ Connection failed, incl. non-200 HTTP (old 100009)
+    RTCEngineErrorNetError = 103006,
+    /// 超时 / Connection or request timeout (old 100005)
+    RTCEngineErrorTimeout = 103007,
+    /// 协议解析错误 / Message or response decode failed (old 100004)
+    RTCEngineErrorProtocolParsingError = 103011,
+    /// 媒体网络错误 / WebRTC or media network error (old 100010)
+    RTCEngineErrorMediaNetError = 103012,
+    /// 未初始化 / 当前状态不允许 / Invalid state, e.g. not initialized (old 100002)
+    RTCEngineErrorNotInitialized = 103024,
+    /// 媒体模块尚未初始化，与 RTCEngineErrorNotInitialized 同值，switch 中不要同时写两者
+    /// Media module not initialized. Same value as RTCEngineErrorNotInitialized, do not use both in one switch (old 100003)
+    RTCEngineErrorMediaNotInitialized __attribute__((deprecated("Use RTCEngineErrorNotInitialized (same value 103024)"))) = 103024,
+    /// 系统内部错误 / SDK internal error (old 100001)
+    RTCEngineErrorSystemError = 103025,
+    /// 用户取消了 / Operation cancelled (old 100012)
+    RTCEngineErrorUserCancelled = 103026,
+    /// 虚拟背景已装载 / Virtual background already installed (new; previously returned as 100007)
+    RTCEngineErrorVirtualBackgroundAlreadyInstalled = 103027,
+    /// 虚拟背景未装载 / Virtual background not installed (new; previously returned as 100007)
+    RTCEngineErrorVirtualBackgroundNotInstalled = 103028,
+    /// 虚拟背景模型不存在或无效 / Virtual background model not found or invalid (new; previously returned as 100011)
+    RTCEngineErrorVirtualBackgroundModelNotFound = 103029,
+    /// 虚拟背景推理会话创建失败 / Virtual background session failed (new; previously returned as 100001)
+    RTCEngineErrorVirtualBackgroundSessionFailed = 103030,
+    /// 参数错误 / Invalid argument (old 100006)
+    RTCEngineErrorInvalidArgs = 103031,
+    /// 设备访问无权限（无法区分摄像头 / 麦克风时）/ Device permission denied (old 103001)
+    RTCEngineErrorDeviceNoAuthorized = 103042,
+    /// 操作不被允许 / Operation forbidden for current identity or role (old 103003)
+    RTCEngineErrorForbidden = 103043,
+    /// 音频路由切换失败 / Audio route switch failed (old 103005)
+    RTCEngineErrorSwitchAudioRouteFail = 103044,
+    /// 频道内没有该用户 / User not found in channel (old 100011)
+    RTCEngineErrorNotFound = 103204,
+    /// 无摄像头权限 / Camera permission denied (new; previously 103001)
+    RTCEngineErrorCameraNoAuthorized = 103231,
+    /// 无麦克风权限 / Microphone permission denied (new; previously 103001)
+    RTCEngineErrorMicNoAuthorized = 103251
 } RTCEngineError;
 
 

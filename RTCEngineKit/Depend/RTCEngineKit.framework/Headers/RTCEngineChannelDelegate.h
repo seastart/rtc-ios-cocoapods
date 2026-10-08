@@ -40,8 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 发生不可恢复的错误或者被动离开频道，这个事件触发需要重新获取令牌
 /// @param channel 事件来源频道实例
 /// @param reason 离开原因
-/// @param errCode 错误码
-/// @param errMsg 错误信息
+/// @param errCode 错误码，SDK 本地错误为 103xxx，后端业务码(1000–99999)原样透传，见 RTCEngineError
+///        Error code: 103xxx for SDK local errors, backend codes (1000–99999) passed through. See RTCEngineError
+/// @param errMsg 错误信息（来自后端，语言跟随后端），仅供日志，请按 errCode 判断 / Message from the backend, for logging only; branch on errCode
 - (void)engineChannel:(RTCEngineChannel *)channel onDisconnected:(RTCLeaveReason)reason errCode:(RTCEngineError)errCode errMsg:(nullable NSString *)errMsg;
 
 #pragma mark 开始重连回调

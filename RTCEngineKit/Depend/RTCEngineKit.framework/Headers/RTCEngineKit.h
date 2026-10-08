@@ -116,15 +116,18 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 开启本地摄像头的预览画面
 /// @param frontCamera YES-前置摄像头 NO-后置摄像头
 /// @param view 承载视频画面的控件
+/// @return 无摄像头权限时返回 RTCEngineErrorCameraNoAuthorized(103231) / Returns RTCEngineErrorCameraNoAuthorized (103231) without camera permission
 - (RTCEngineError)startLocalPreview:(BOOL)frontCamera view:(VIEW_CLASS *)view;
 
 #pragma mark 更新本地摄像头的预览画面
 /// 更新本地摄像头的预览画面
 /// @param view 承载视频画面的控件
+/// @return 无摄像头权限时返回 RTCEngineErrorCameraNoAuthorized(103231) / Returns RTCEngineErrorCameraNoAuthorized (103231) without camera permission
 - (RTCEngineError)updateLocalView:(VIEW_CLASS *)view;
 
 #pragma mark 停止摄像头预览
 /// 停止摄像头预览
+/// @return 无摄像头权限时返回 RTCEngineErrorCameraNoAuthorized(103231) / Returns RTCEngineErrorCameraNoAuthorized (103231) without camera permission
 - (RTCEngineError)stopLocalPreview;
 
 #pragma mark 切换摄像头
@@ -309,6 +312,8 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// @param modelPath 人像分割模型(selfie_segmenter_fixed.onnx)文件路径，
 ///        传 nil 使用 SDK 内置的那一份
 /// @note 虚拟背景是自研组件，与美颜不同，**不需要授权密钥**
+/// @return 模型文件不存在或无效时返回 RTCEngineErrorVirtualBackgroundModelNotFound(103029)
+///         Returns RTCEngineErrorVirtualBackgroundModelNotFound (103029) if the model file is missing or invalid
 - (RTCEngineError)installVirtualBackground:(nullable NSString *)modelPath;
 
 #pragma mark 卸载虚拟背景组件

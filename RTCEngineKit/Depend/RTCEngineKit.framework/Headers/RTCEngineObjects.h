@@ -475,7 +475,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *identifier;
 /// 音频路由
 @property (nonatomic, assign) RTCAudioRoute route;
-/// 音频路由名称
+/// 音频路由名称，可直接显示给用户：扬声器按系统首选语言为「扬声器」/「Speaker」，其余取系统端口名
+/// Display name. The speaker route is "扬声器" or "Speaker" by system language; others use the system port name
 @property (nonatomic, copy, nullable) NSString *routeName;
 
 /// 初始化音频路由对象

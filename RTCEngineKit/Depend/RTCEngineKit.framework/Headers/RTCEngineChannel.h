@@ -165,6 +165,7 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 #pragma mark 音频发送状态
 /// 音频发送状态
 /// @param enabled YES-开启 NO-关闭
+/// @return 无麦克风权限时返回 RTCEngineErrorMicNoAuthorized(103251) / Returns RTCEngineErrorMicNoAuthorized (103251) without microphone permission
 - (RTCEngineError)enabledSendAudio:(BOOL)enabled;
 
 #pragma mark 设置音频优先策略
