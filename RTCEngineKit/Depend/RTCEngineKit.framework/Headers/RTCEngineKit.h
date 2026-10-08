@@ -51,6 +51,20 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 /// 获取RTC引擎实例
 + (RTCEngineKit *)sharedEngine;
 
+#pragma mark SDK 语言
+/// SDK 语言（BCP 47 语言标签，如 @"zh-CN"、@"en"），nil 或空串 = 跟随系统语言（[NSLocale preferredLanguages].firstObject）
+/// 只影响请求后端时的 Accept-Language 请求头：后端据此返回对应语言的业务错误文案（1000–99999 后端码，见 lastServerErrorMessage）；
+/// SDK 自身产生的错误码与日志不随语言变化。进程级生效，随时可设，对之后的请求生效，建议在加入频道 / 启用即时通讯前设置。
+@property (class, nonatomic, copy, nullable) NSString *language;
+
+/// 当前实际生效的语言：language 已设置则为它，否则为系统语言（取不到时为 @"zh"）
+@property (class, nonatomic, copy, readonly) NSString *currentLanguage;
+
+#pragma mark 后端业务错误文案
+/// 最近一次接口返回后端业务码（1000–99999）时，服务端返回的错误文案（语言随 language）
+/// 在收到 1000–99999 的返回值后立即读取；最近一次调用不是后端业务错误时为 nil
+@property (class, nonatomic, copy, readonly, nullable) NSString *lastServerErrorMessage;
+
 #pragma mark 解密字符串
 /// 解密字符串
 /// - Parameter value: 加密字符串
