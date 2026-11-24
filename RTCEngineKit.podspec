@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RTCEngineKit'
-  s.version          = '3.2.1'
+  s.version          = '3.3.0'
   s.summary          = 'RTC服务引擎.'
   
 # This description is used to generate tags and improve search results.
@@ -34,7 +34,8 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '16.0'
   
   # 依赖系统Frameworks库
-  s.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreFoundation', 'CoreMedia', 'CoreVideo', 'Foundation', 'QuartzCore', 'Metal', 'MetalPerformanceShaders', 'Security', 'OpenGLES', 'Accelerate', 'CoreML', 'CoreGraphics', 'ReplayKit', 'SystemConfiguration', 'CallKit'
+  # 注：Network(nw_path_monitor / nw_connection)、CoreTelephony(CTCellularData 蜂窝权限)供会前网络检测使用
+  s.ios.frameworks = 'VideoToolbox', 'AudioToolbox', 'AVFoundation', 'CoreFoundation', 'CoreMedia', 'CoreVideo', 'Foundation', 'QuartzCore', 'Metal', 'MetalPerformanceShaders', 'Security', 'OpenGLES', 'Accelerate', 'CoreML', 'CoreGraphics', 'ReplayKit', 'SystemConfiguration', 'CallKit', 'Network', 'CoreTelephony'
   # 依赖系统Librarie库
   s.ios.library = 'c++', 'z', 'iconv'
   

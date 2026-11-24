@@ -16,12 +16,14 @@
 #import <RTCEngineKit/RTCScreenDelegate.h>
 #import <RTCEngineKit/RTCEngineIMDelegate.h>
 #import <RTCEngineKit/RTCEngineChannel.h>
+#import <RTCEngineKit/RTCNetworkCheckObjects.h>
 #else
 #import "RTCEngineObjects.h"
 #import "RTCEngineDelegate.h"
 #import "RTCScreenDelegate.h"
 #import "RTCEngineIMDelegate.h"
 #import "RTCEngineChannel.h"
+#import "RTCNetworkCheckObjects.h"
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
@@ -240,6 +242,24 @@ typedef void (^RTCEngineKitFinishBlock)(void);
 #pragma mark 停止网络测速
 /// 停止网络测速
 - (void)stopSpeedTest;
+
+
+#pragma mark - ------------ 会前网络检测相关接口函数 ------------
+
+#pragma mark 开始会前网络检测
+/// 开始会前网络检测
+/// 入会前调用，不需要初始化引擎、不需要令牌；逐项检测网络权限、网络连接情况、最大传输单元、域名解析、服务器连接情况，
+/// 全部正常时约 5 秒内完成，最长约 10 秒
+/// @param params 检测参数（appId + serverUrl 或 token 二选一；单项超时 timeoutMs 默认 3000）
+/// @param onItem 单项完成回调（主线程），按固定顺序 permission → connectivity → mtu → dns → server 每项回调一次
+/// @param completion 检测完成回调（主线程）：正常结束 errorCode 为 RTCEngineErrorOK 且 result 非空；
+///        被 cancelNetworkCheck 取消时 result 为 nil、errorCode 为 RTCEngineErrorUserCancelled(103026)
+/// @return appId / serverUrl 为空且无法从 token 解出时返回 RTCEngineErrorInvalidArgs(103031)；已有检测在进行中返回 RTCEngineErrorConflict(103005)
+- (RTCEngineError)networkCheck:(RTCNetworkCheckParams *)params onItem:(nullable RTCNetworkCheckItemBlock)onItem completion:(nullable RTCNetworkCheckCompletionBlock)completion;
+
+#pragma mark 取消会前网络检测
+/// 取消会前网络检测：不再回调 onItem，完成回调以 RTCEngineErrorUserCancelled(103026) 结束；可立即发起新的检测
+- (void)cancelNetworkCheck;
 
 
 #pragma mark - ------------ 视频渲染相关接口函数 ------------
